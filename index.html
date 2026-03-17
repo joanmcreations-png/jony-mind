@@ -262,10 +262,10 @@
       background-size: cover; background-position: center;
     }
     .slider-before {
-      background-image: url('https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/f936baa8-1ded-429d-8472-0ded179a11b3/1.9.2_1.9.2.jpg?content-type=image%2Fjpeg');
+      background-image: url('https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/f5155ea0-7f28-4e80-a057-e83fa4564d12/1.9.1_1.9.1.jpg?content-type=image%2Fjpeg');
     }
     .slider-after {
-      background-image: url('https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/f5155ea0-7f28-4e80-a057-e83fa4564d12/1.9.1_1.9.1.jpg?content-type=image%2Fjpeg');
+      background-image: url('https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/f936baa8-1ded-429d-8472-0ded179a11b3/1.9.2_1.9.2.jpg?content-type=image%2Fjpeg');
       clip-path: inset(0 50% 0 0);
     }
     .slider-line {
@@ -283,12 +283,20 @@
     .slider-handle::before { content: '◀▶'; font-size: 13px; color: var(--dark); letter-spacing: -2px; }
     .slider-tag {
       position: absolute; bottom: 20px; z-index: 10;
-      background: rgba(0,0,0,.7); backdrop-filter: blur(8px);
-      color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-      padding: 5px 12px; border-radius: 100px;
+      backdrop-filter: blur(8px);
+      font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      padding: 6px 16px; border-radius: 100px;
+      transition: opacity .3s, transform .3s;
     }
-    .slider-tag.before { left: 20px; }
-    .slider-tag.after { right: 20px; color: var(--orange); }
+    .slider-tag.before { left: 20px; background: rgba(255,255,255,.12); color: rgba(255,255,255,.6); border: 1px solid rgba(255,255,255,.15); }
+    .slider-tag.after { right: 20px; background: rgba(232,82,42,.85); color: #fff; border: 1px solid rgba(232,82,42,.6); }
+    .slider-status {
+      position: absolute; top: 20px; left: 50%; transform: translateX(-50%); z-index: 12;
+      font-family: 'Fraunces', serif; font-size: 20px; font-weight: 900; color: #fff;
+      text-shadow: 0 2px 16px rgba(0,0,0,.6);
+      transition: opacity .4s;
+      pointer-events: none;
+    }
 
     /* ── FEATURES GRID ───────────────────────── */
     .features { background: #0a0a0a; padding: 110px 48px; }
@@ -666,17 +674,18 @@
 <!-- BEFORE / AFTER -->
 <section class="before-after-section">
   <div class="before-after-header fade-up">
-    <span class="label" style="color:rgba(232,82,42,.8); justify-content:center; display:flex;">Ve la diferencia</span>
-    <h2>Mismo clip.<br>Dos mundos distintos.</h2>
-    <p>Arrastra el slider y comprueba lo que el PowerGrade evolved.film hace a tu footage. Sin filtros. Sin magia. Solo técnica.</p>
+    <span class="label" style="color:rgba(232,82,42,.8); justify-content:center; display:flex;">El poder del PowerGrade</span>
+    <h2>Before & After</h2>
+    <p>Arrastra y comprueba lo que evolved.film hace en DaVinci Resolve.</p>
   </div>
   <div class="slider-container" id="sliderContainer">
     <div class="slider-before" id="sliderBefore"></div>
     <div class="slider-after" id="sliderAfter"></div>
     <div class="slider-line" id="sliderLine"></div>
     <div class="slider-handle" id="sliderHandle"></div>
-    <span class="slider-tag before">Sin PowerGrade</span>
-    <span class="slider-tag after">Con PowerGrade</span>
+    <span class="slider-tag before" id="tagBefore">Before</span>
+    <span class="slider-tag after" id="tagAfter">After</span>
+    <div class="slider-status" id="sliderStatus">Desliza para ver la magia</div>
   </div>
 </section>
 
@@ -684,9 +693,9 @@
 <section class="features">
   <div class="features-inner">
     <div class="features-header fade-up">
-      <span class="label" style="justify-content:center; display:flex; margin-bottom:16px;">Lo que obtienes</span>
-      <h2>Todo lo que necesitas.<br>El día que entras.</h2>
-      <p>No es solo un preset. Es un sistema completo pensado para que nunca vuelvas a editar a ciegas.</p>
+      <span class="label" style="justify-content:center; display:flex; margin-bottom:16px;">La comunidad</span>
+      <h2>Todo lo que necesitas.<br>En un mismo sitio.</h2>
+      <p>La comunidad privada de AlwaysFilmLab. Herramientas, formación y creadores — todo junto.</p>
     </div>
     <div class="features-grid">
       <div class="feature-item fade-up">
@@ -994,7 +1003,11 @@
   const after = document.getElementById('sliderAfter');
   const line = document.getElementById('sliderLine');
   const handle = document.getElementById('sliderHandle');
+  const tagBefore = document.getElementById('tagBefore');
+  const tagAfter = document.getElementById('tagAfter');
+  const sliderStatus = document.getElementById('sliderStatus');
   let dragging = false;
+  let hasInteracted = false;
 
   function setSlider(x) {
     const rect = container.getBoundingClientRect();
@@ -1003,6 +1016,15 @@
     after.style.clipPath = `inset(0 ${100 - pctPx}% 0 0)`;
     line.style.left = pctPx + '%';
     handle.style.left = pctPx + '%';
+    // Fade tags based on slider position
+    tagBefore.style.opacity = Math.min(1, (1 - pct) * 2.5);
+    tagAfter.style.opacity = Math.min(1, pct * 2.5);
+    // Hide status text on first interaction
+    if (!hasInteracted) {
+      hasInteracted = true;
+      sliderStatus.style.opacity = '0';
+      setTimeout(() => { sliderStatus.style.display = 'none'; }, 400);
+    }
   }
 
   container.addEventListener('mousedown', e => { dragging = true; container.style.cursor = 'grabbing'; setSlider(e.clientX); });
