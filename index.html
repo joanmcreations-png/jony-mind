@@ -126,6 +126,7 @@
     .hero-sub { color: rgba(255,255,255,.72); font-size: 17px; max-width: 500px; line-height: 1.65; margin-bottom: 44px; }
 
     .hero-actions { display: flex; flex-direction: column; align-items: center; gap: 22px; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
     .btn-hero { padding: 17px 44px; font-size: 14px; }
 
     .hero-social-proof { display: flex; align-items: center; gap: 14px; }
@@ -202,7 +203,13 @@
     .how-steps::before {
       content: '';
       position: absolute; top: 32px; left: calc(16.666% + 16px); right: calc(16.666% + 16px);
-      height: 1px; background: linear-gradient(to right, var(--orange), rgba(232,82,42,.3), var(--orange));
+      height: 1px;
+      background: linear-gradient(to right, var(--orange), rgba(232,82,42,.3), var(--orange));
+      animation: linePulse 2s ease-in-out infinite;
+    }
+    @keyframes linePulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
     }
     .how-step { padding: 0 32px; text-align: center; }
     .how-num {
@@ -211,7 +218,18 @@
       font-family: 'Fraunces', serif; font-size: 26px; font-weight: 900;
       display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;
       box-shadow: 0 8px 32px rgba(232,82,42,.4); position: relative; z-index: 1;
+      animation: none;
     }
+    .how-step.visible .how-num {
+      animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+    @keyframes popIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .how-step:nth-child(1).visible .how-num { animation-delay: 0.1s; }
+    .how-step:nth-child(2).visible .how-num { animation-delay: 0.3s; }
+    .how-step:nth-child(3).visible .how-num { animation-delay: 0.5s; }
     .how-step h3 { color: #fff; font-size: 18px; font-weight: 700; margin-bottom: 10px; }
     .how-step p { color: rgba(255,255,255,.4); font-size: 14px; line-height: 1.7; }
 
@@ -235,12 +253,10 @@
       background-size: cover; background-position: center;
     }
     .slider-before {
-      background-image: url('https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=900&q=80');
-      filter: saturate(0.3) brightness(1.1) contrast(0.9);
+      background-image: url('https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/f936baa8-1ded-429d-8472-0ded179a11b3/1.9.2_1.9.2.jpg?content-type=image%2Fjpeg');
     }
     .slider-after {
-      background-image: url('https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=900&q=80');
-      filter: saturate(1.4) contrast(1.15) brightness(0.88) hue-rotate(-8deg);
+      background-image: url('https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/f5155ea0-7f28-4e80-a057-e83fa4564d12/1.9.1_1.9.1.jpg?content-type=image%2Fjpeg');
       clip-path: inset(0 50% 0 0);
     }
     .slider-line {
@@ -415,7 +431,7 @@
     }
     .final-cta > * { position: relative; z-index: 1; }
     .final-cta h2 { font-family: 'Fraunces', serif; font-size: clamp(36px, 5.5vw, 72px); font-weight: 900; color: #fff; line-height: 1.0; margin-bottom: 20px; max-width: 680px; margin-left: auto; margin-right: auto; }
-    .final-cta h2 em { color: var(--orange); font-style: normal; }
+    .final-cta h2 em { color: var(--orange); font-style: italic; }
     .final-cta p { color: rgba(255,255,255,.45); font-size: 17px; max-width: 440px; margin: 0 auto 44px; line-height: 1.7; }
     .final-cta-btns { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
 
@@ -501,7 +517,7 @@
   </div>
   <a class="nav-logo" href="#"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/1a6abddb-ed7b-4600-a979-99d125130d77/1%2724x1024.png?content-type=image%2Fpng" alt="Always Film Lab" /></a>
   <div class="nav-right">
-    <a href="#planes" class="btn btn-fill nav-cta">Comunidad</a>
+    <a href="https://alwaysfilmlab.circle.so/checkout/comunidad-evolved-film" class="btn btn-fill nav-cta">Comunidad</a>
     <button class="hamburger" id="hamburger" aria-label="Menú">
       <span></span><span></span><span></span>
     </button>
@@ -513,30 +529,36 @@
   <a href="#planes" onclick="closeMobileMenu()">Mentoría 1:1</a>
   <a href="#planes" onclick="closeMobileMenu()">Tienda</a>
   <a href="#planes" onclick="closeMobileMenu()">Planes</a>
-  <a href="#planes" class="btn btn-fill" style="text-align:center; margin-top:8px;" onclick="closeMobileMenu()">Entrar a la comunidad</a>
+  <a href="https://alwaysfilmlab.circle.so/checkout/comunidad-evolved-film" class="btn btn-fill" style="text-align:center; margin-top:8px;" onclick="closeMobileMenu()">Entrar a la comunidad</a>
 </div>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-pill">
     <span class="dot"></span>
-    +1.000 creadores dentro — Únete hoy
+    Usado por +800 creadores
   </div>
   <h1>Haz que tus vídeos<br>se vean como<br><em>una película</em></h1>
   <p class="hero-sub">El PowerGrade profesional + curso de color cinematográfico que ya transformó los vídeos de más de 1.000 creadores.</p>
   <div class="hero-actions">
-    <a href="#demo" class="btn btn-fill btn-hero">Ver demo</a>
+    <div class="hero-btns">
+      <a href="https://www.youtube.com/watch?v=naJlbJ2XVss&t=188s" target="_blank" class="btn btn-fill btn-hero">Ver demo</a>
+      <a href="https://alwaysfilmlab.circle.so/checkout/comunidad-evolved-film" class="btn btn-outline btn-hero" style="border-color:rgba(255,255,255,.4); color:#fff;">Entra ahora</a>
+    </div>
     <div class="hero-social-proof">
       <div class="avatars">
-        <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/d6c25178-363a-45f5-ac88-6f2bdef1abe3/Frame+6+%281%29.png?content-type=image%2Fpng" alt="Creadores" style="height:40px; border-radius:4px; border: 2px solid rgba(255,255,255,.3);" />
+        <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/d6c25178-363a-45f5-ac88-6f2bdef1abe3/Frame+6+%281%29.png?content-type=image%2Fpng" alt="Creadores" style="height:40px; border-radius:4px;" />
       </div>
-      <p class="social-proof-text"><strong>+1.000</strong> creadores confían en Evolved Film</p>
+      <p class="social-proof-text"><strong>+1.000</strong> creadores confían en AlwaysFilmLab</p>
     </div>
   </div>
   <div class="hero-scroll">
     <div class="hero-scroll-line"></div>
     scroll
   </div>
+  <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/6fd1abdb-ca0b-4ee6-9814-b9606a0a7151/Evolved+Film+NODE.png?content-type=image%2Fpng"
+    alt="" aria-hidden="true"
+    style="position:absolute; bottom:60px; right:40px; width:180px; opacity:0.12; transform:rotate(-12deg); pointer-events:none; z-index:1; filter:brightness(0) invert(1);" />
 </section>
 
 <!-- AS SEEN ON -->
@@ -554,16 +576,19 @@
 <div class="intro-wrap">
   <div class="intro">
     <div class="intro-text fade-up">
-      <span class="label">¿Por qué Always Film Lab?</span>
-      <h2>Un espacio para<br>crecer <span>sin límites.</span></h2>
-      <p>Cursos, PowerGrades, LUTs, workshops en directo y mentorías. Todo lo que necesitas para que tus vídeos lleguen al siguiente nivel — sin crear contenido solo.</p>
-      <a href="#planes" class="btn btn-fill">Entra a la comunidad</a>
+      <span class="label">Deja de conformarte</span>
+      <h2>Para de editar en gris.<br>Empieza a crear <span>como un profesional.</span></h2>
+      <p>Tienes el equipo. Tienes las ganas. Lo único que te falta es el sistema: el PowerGrade, los LUTs, el curso y la comunidad que te van a cambiar la forma de ver el color para siempre.</p>
+      <a href="https://alwaysfilmlab.circle.so/checkout/comunidad-evolved-film" class="btn btn-fill">Entra a la comunidad</a>
     </div>
     <div class="intro-video fade-up" id="demo">
-      <div class="video-mock">
-        <div class="play-btn">▶</div>
-        <span class="video-label">Always Film Lab — Demo</span>
-      </div>
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/9yIhWLxn2mc?modestbranding=1&rel=0&showinfo=0&color=white"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        style="width:100%; height:100%; min-height:280px; display:block; border-radius:16px;">
+      </iframe>
     </div>
   </div>
 </div>
@@ -574,8 +599,8 @@
   <div class="how-inner" style="position:relative; z-index:1;">
     <div class="how-header fade-up">
       <span class="label" style="color:rgba(232,82,42,.8); justify-content:center; display:flex;">Así de fácil</span>
-      <h2>En 3 pasos tienes color cinematográfico</h2>
-      <p>Sin cursos de años. Sin complicaciones.</p>
+      <h2>De cero a cinematográfico<br>en menos de 10 minutos</h2>
+      <p>Sin años de práctica. Sin tutoriales interminables. Sin excusas.</p>
     </div>
     <div class="how-steps">
       <div class="how-step fade-up">
@@ -601,8 +626,8 @@
 <section class="before-after-section">
   <div class="before-after-header fade-up">
     <span class="label" style="color:rgba(232,82,42,.8); justify-content:center; display:flex;">El poder del PowerGrade</span>
-    <h2>Ve la diferencia tú mismo</h2>
-    <p>Arrastra el slider para comparar el footage original con el PowerGrade aplicado.</p>
+    <h2>Esto no es magia.<br>Es el PowerGrade.</h2>
+    <p>Arrastra el slider. Ve lo que Evolved Film hace a tu footage en tiempo real.</p>
   </div>
   <div class="slider-container" id="sliderContainer">
     <div class="slider-before" id="sliderBefore"></div>
@@ -619,7 +644,7 @@
   <div class="features-inner">
     <div class="features-header fade-up">
       <span class="label" style="color:rgba(232,82,42,.8); justify-content:center; display:flex;">Lo que obtienes</span>
-      <h2>Todo en un solo lugar</h2>
+      <h2>Todo lo que necesitas.<br>Nada que no necesitas.</h2>
       <p>Herramientas profesionales + comunidad + formación continua.</p>
     </div>
     <div class="features-grid">
@@ -638,8 +663,8 @@
   <div class="story-inner-grid" style="max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;">
     <div class="fade-up">
       <span class="label" style="color:rgba(232,82,42,.8);">La historia detrás</span>
-      <h2 style="font-family:'Fraunces',serif; font-size:clamp(28px,4vw,46px); font-weight:900; color:#fff; line-height:1.05; margin-bottom:16px;">Creado por un creador,<br>para creadores.</h2>
-      <p style="color:rgba(255,255,255,.4); font-size:16px; line-height:1.75;">Evolved Film nació de la frustración de no encontrar herramientas de color que funcionasen de verdad para el creador moderno. Joan construyó lo que él mismo necesitaba — y ahora está en tus manos.</p>
+      <h2 style="font-family:'Fraunces',serif; font-size:clamp(28px,4vw,46px); font-weight:900; color:#fff; line-height:1.05; margin-bottom:16px;">Yo también estuve<br>donde estás tú ahora.</h2>
+      <p style="color:rgba(255,255,255,.4); font-size:16px; line-height:1.75;">Llevaba años editando vídeos que se veían... normales. Sin ese punch cinematográfico que tienen las películas. Probé decenas de LUTs, tutoriales y cursos. Nada funcionaba del todo. Así que construí mi propio sistema — el PowerGrade evolved.film v.1. Hoy más de 1.000 creadores lo usan. Y ahora es tuyo.</p>
     </div>
     <div class="fade-up" style="border-radius:16px; overflow:hidden; box-shadow:0 32px 80px rgba(0,0,0,.4);">
       <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/42bd7e4b-0a75-48b9-81a6-8fa7d927dbcf/Evolved+Story1.jpg?content-type=image%2Fjpeg" alt="Evolved Film Story" style="width:100%; height:auto; display:block;" />
@@ -671,7 +696,7 @@
         <li>Workshop mensual en directo</li>
         <li>Desbloquear niveles Pro</li>
       </ul>
-      <a href="#" class="btn btn-outline plan-cta">Comprar — $9</a>
+      <a href="https://alwaysfilmlab.circle.so/checkout/essential-creators-basic" class="btn btn-outline plan-cta">Comprar — $9</a>
     </div>
 
     <div class="plan featured fade-up">
@@ -695,7 +720,7 @@
         <li>Actualizaciones de por vida</li>
         <li>Sesiones privadas 1:1 con Joan</li>
       </ul>
-      <a href="#" class="btn btn-fill plan-cta">Comprar — $89.99</a>
+      <a href="https://alwaysfilmlab.circle.so/checkout/comunidad-evolved-film" class="btn btn-fill plan-cta">Comprar — $89.99</a>
     </div>
 
     <div class="plan fade-up">
@@ -715,7 +740,7 @@
         <li>Revisión de color, narrativa y estrategia</li>
         <li>Prioridad para dudas importantes</li>
       </ul>
-      <a href="#" class="btn btn-outline plan-cta">Empezar — $150/mes</a>
+      <a href="https://alwaysfilmlab.circle.so/checkout/time-to-evolve" class="btn btn-outline plan-cta">Empezar — $150/mes</a>
     </div>
   </div>
 </section>
@@ -724,14 +749,15 @@
 <section class="tutorial">
   <div class="tutorial-inner fade-up">
     <span class="label">Aprende desde cero</span>
-    <h2>Cómo usar el PowerGrade</h2>
-    <p>Un tutorial completo para dominar el color en DaVinci Resolve desde el primer día, sin importar tu nivel.</p>
+    <h2>¿No sabes por dónde empezar?</h2>
+    <p>Este tutorial gratuito te enseña las bases del color grading cinematográfico desde cero. Es el primer paso antes de entrar a la comunidad.</p>
     <div class="tutorial-video">
       <div class="video-mock" style="height:100%; min-height:240px;">
         <div class="play-btn">▶</div>
         <span class="video-label">Cómo usar el PowerGrade · evolved.film v.1</span>
       </div>
     </div>
+    <a href="https://www.youtube.com/watch?v=naJlbJ2XVss&t=188s" target="_blank" class="btn btn-outline" style="margin-top: 24px; display:inline-block;">Ver tutorial gratuito →</a>
   </div>
 </section>
 
@@ -739,7 +765,7 @@
 <section class="stats">
   <div class="stats-inner">
     <div class="fade-up"><div class="stat-n">+1.000</div><div class="stat-l">Creadores activos</div></div>
-    <div class="fade-up"><div class="stat-n">3</div><div class="stat-l">Planes disponibles</div></div>
+    <div class="fade-up"><div class="stat-n">+800</div><div class="stat-l">Descargas del PowerGrade</div></div>
     <div class="fade-up"><div class="stat-n">v.1</div><div class="stat-l">PowerGrade profesional</div></div>
     <div class="fade-up"><div class="stat-n">∞</div><div class="stat-l">Actualizaciones incluidas</div></div>
   </div>
@@ -784,10 +810,10 @@
 
 <!-- FINAL CTA -->
 <section class="final-cta">
-  <h2 class="fade-up">Nunca más crees<br>contenido <em>solo.</em></h2>
-  <p class="fade-up">Únete a más de 1.000 creadores que ya transformaron sus vídeos con Evolved Film.</p>
+  <h2 class="fade-up">¿Sigues editando<br>en <em>modo estándar?</em></h2>
+  <p class="fade-up">Cada día que pasa son vídeos sin ese look cinematográfico que buscas. La comunidad, el PowerGrade y el curso están aquí. Solo falta que entres.</p>
   <div class="final-cta-btns fade-up">
-    <a href="#planes" class="btn btn-fill btn-hero">Entrar a la comunidad</a>
+    <a href="https://alwaysfilmlab.circle.so/checkout/comunidad-evolved-film" class="btn btn-fill btn-hero">Entrar a la comunidad</a>
     <a href="#planes" class="btn btn-dark">Ver planes</a>
   </div>
 </section>
@@ -802,9 +828,9 @@
     </div>
     <div class="footer-col">
       <div class="footer-col-title">Productos</div>
-      <a href="#">Essential Creators — $9</a>
-      <a href="#">Evolved Film — $89.99</a>
-      <a href="#">Time to Evolve — $150/mes</a>
+      <a href="https://alwaysfilmlab.circle.so/checkout/essential-creators-basic">Essential Creators — $9</a>
+      <a href="https://alwaysfilmlab.circle.so/checkout/comunidad-evolved-film">Evolved Film — $89.99</a>
+      <a href="https://alwaysfilmlab.circle.so/checkout/time-to-evolve">Time to Evolve — $150/mes</a>
       <a href="#">Tienda</a>
     </div>
     <div class="footer-col">
@@ -829,7 +855,7 @@
     <strong>Evolved Film</strong>
     $89.99 · Pago único
   </div>
-  <a href="#planes" class="btn btn-fill sticky-bar-btn">Comprar ahora</a>
+  <a href="https://alwaysfilmlab.circle.so/checkout/comunidad-evolved-film" class="btn btn-fill sticky-bar-btn">Comprar ahora</a>
 </div>
 
 <script>
