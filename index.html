@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Always Film Lab — Haz que tus vídeos se vean como una película</title>
+  <meta name="description" content="Haz que tus vídeos se vean como una película. PowerGrade profesional, curso de color cinematográfico y comunidad de creadores. Más de 1.000 creadores confían en Always Film Lab.">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -36,7 +37,7 @@
       transition: background .2s, transform .15s, box-shadow .2s;
     }
     .btn-fill { background: var(--orange); color: #fff; box-shadow: 0 6px 24px rgba(232,82,42,.3); }
-    .btn-fill:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 10px 32px rgba(232,82,42,.4); }
+    .btn-fill:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 10px 36px rgba(232,82,42,.45), 0 0 20px rgba(232,82,42,.15); }
     .btn-outline { background: transparent; border: 2px solid var(--orange); color: var(--orange); }
     .btn-outline:hover { background: var(--orange); color: #fff; }
     .btn-dark { background: rgba(255,255,255,.1); color: #fff; border: 1px solid rgba(255,255,255,.15); }
@@ -50,7 +51,9 @@
       background: rgba(17,16,16,.85);
       backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(255,255,255,.08);
+      transition: padding .3s, background .3s, box-shadow .3s;
     }
+    nav.scrolled { background: rgba(17,16,16,.95); box-shadow: 0 4px 24px rgba(0,0,0,.3); }
     .nav-links { display: flex; gap: 36px; }
     .nav-links a { color: rgba(255,255,255,.95); text-decoration: none; font-size: 14px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; transition: color .2s; }
     .nav-links a:hover { color: var(--orange); }
@@ -251,7 +254,7 @@
       position: relative; max-width: 900px; margin: 0 auto;
       border-radius: 16px; overflow: hidden;
       box-shadow: 0 40px 100px rgba(0,0,0,.6);
-      cursor: col-resize; user-select: none;
+      cursor: grab; user-select: none;
       aspect-ratio: 16/9;
     }
     .slider-before, .slider-after {
@@ -259,10 +262,10 @@
       background-size: cover; background-position: center;
     }
     .slider-before {
-      background-image: url('https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/f5155ea0-7f28-4e80-a057-e83fa4564d12/1.9.1_1.9.1.jpg?content-type=image%2Fjpeg');
+      background-image: url('https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/f936baa8-1ded-429d-8472-0ded179a11b3/1.9.2_1.9.2.jpg?content-type=image%2Fjpeg');
     }
     .slider-after {
-      background-image: url('https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/f936baa8-1ded-429d-8472-0ded179a11b3/1.9.2_1.9.2.jpg?content-type=image%2Fjpeg');
+      background-image: url('https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/f5155ea0-7f28-4e80-a057-e83fa4564d12/1.9.1_1.9.1.jpg?content-type=image%2Fjpeg');
       clip-path: inset(0 50% 0 0);
     }
     .slider-line {
@@ -334,8 +337,8 @@
     .plan:hover { transform: translateY(-5px); box-shadow: 0 24px 56px rgba(0,0,0,.09); }
     .plan.featured {
       background: var(--dark);
-      border-color: rgba(232,82,42,0.4);
-      box-shadow: 0 0 0 1px rgba(232,82,42,0.15), 0 32px 80px rgba(0,0,0,0.2);
+      border-color: rgba(232,82,42,0.35);
+      box-shadow: 0 0 0 1px rgba(232,82,42,0.1), 0 0 40px rgba(232,82,42,0.08), 0 32px 80px rgba(0,0,0,0.2);
     }
     .plan.featured::before {
       content: 'MÁS POPULAR'; position: absolute; top: 18px; right: 18px;
@@ -498,7 +501,6 @@
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
     /* ── RESPONSIVE ──────────────────────────── */
-    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1100px; margin: 0 auto; }
     @media (max-width: 900px) {
       nav { padding: 14px 20px; }
       .nav-links { display: none; }
@@ -520,6 +522,7 @@
       .footer-top > *:first-child { grid-column: 1/-1; }
       .sticky-bar { display: flex; }
       body { padding-bottom: 70px; }
+      .final-cta-img { height: 400px; }
     }
     @media (max-width: 600px) {
       .features-grid { grid-template-columns: 1fr; }
@@ -528,6 +531,7 @@
       .footer-top > *:first-child { grid-column: auto; }
       .as-seen { padding: 18px 20px; gap: 16px; }
       .slider-container { border-radius: 12px; }
+      .final-cta-img { height: 360px; }
     }
   </style>
 </head>
@@ -571,7 +575,7 @@
     </div>
     <div class="hero-social-proof">
       <div class="avatars">
-        <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/d6c25178-363a-45f5-ac88-6f2bdef1abe3/Frame+6+%281%29.png?content-type=image%2Fpng" alt="Creadores" style="height:40px; border-radius:4px;" />
+        <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/d6c25178-363a-45f5-ac88-6f2bdef1abe3/Frame+6+%281%29.png?content-type=image%2Fpng" alt="Creadores" style="height:40px; border-radius:4px;" loading="lazy" />
       </div>
       <p class="social-proof-text"><strong>+1.000</strong> creadores confían en AlwaysFilmLab</p>
     </div>
@@ -581,7 +585,7 @@
     scroll
   </div>
   <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/6fd1abdb-ca0b-4ee6-9814-b9606a0a7151/Evolved+Film+NODE.png?content-type=image%2Fpng"
-    alt="" aria-hidden="true"
+    alt="" aria-hidden="true" loading="lazy"
     style="position:absolute; bottom:60px; right:40px; width:180px; opacity:0.12; transform:rotate(-12deg); pointer-events:none; z-index:1; filter:brightness(0) invert(1);" />
 </section>
 
@@ -590,16 +594,17 @@
   <span class="as-seen-label">Compatible con</span>
   <div class="as-seen-logos">
     <div class="as-seen-logo-item">
-      <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/f80cabc3-a6c1-4f69-9454-1c12069cbc92/davincilogo.png?content-type=image%2Fpng" alt="DaVinci Resolve" />
+      <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/f80cabc3-a6c1-4f69-9454-1c12069cbc92/davincilogo.png?content-type=image%2Fpng" alt="DaVinci Resolve" loading="lazy" />
       <span>DaVinci Resolve</span>
     </div>
     <div class="as-seen-divider"></div>
     <div class="as-seen-logo-item">
-      <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/881dc87f-450f-4f2e-9f24-ffa83035dc40/premierelogo.png?content-type=image%2Fpng" alt="Adobe Premiere Pro" />
+      <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/881dc87f-450f-4f2e-9f24-ffa83035dc40/premierelogo.png?content-type=image%2Fpng" alt="Adobe Premiere Pro" loading="lazy" />
       <span>Adobe Premiere</span>
     </div>
     <div class="as-seen-divider"></div>
     <div class="as-seen-logo-item"><span>Final Cut Pro</span></div>
+    <div class="as-seen-divider"></div>
     <div class="as-seen-logo-item"><span>CapCut</span></div>
   </div>
 </div>
@@ -615,15 +620,15 @@
     </div>
     <div class="intro-video fade-up" id="demo">
       <div class="fake-player" id="fakePlayer" onclick="loadVideo()" style="position:relative; width:100%; height:100%; min-height:380px; cursor:pointer; border-radius:20px; overflow:hidden;">
-        <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2734af12-ba79-456b-9fcf-79d0cec3d828/Frame+410%2780.jpg?content-type=image%2Fjpeg" alt="Always Film Lab Demo" style="width:100%; height:100%; object-fit:cover; display:block;" />
+        <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2734af12-ba79-456b-9fcf-79d0cec3d828/Frame+410%2780.jpg?content-type=image%2Fjpeg" alt="Always Film Lab Demo" style="width:100%; height:100%; object-fit:cover; display:block;" loading="lazy" />
         <div style="position:absolute; inset:0; background:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; transition:background 0.2s;" onmouseover="this.style.background='rgba(0,0,0,0.45)'" onmouseout="this.style.background='rgba(0,0,0,0.3)'">
           <div style="width:72px; height:72px; border-radius:50%; background:rgba(232,82,42,0.9); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 32px rgba(0,0,0,0.4); transition:transform 0.2s;">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
           </div>
         </div>
       </div>
-      <div id="videoIframe" style="display:none; width:100%; height:100%; min-height:280px; border-radius:16px; overflow:hidden;">
-        <iframe src="" id="ytIframe" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; height:100%; min-height:280px; display:block;"></iframe>
+      <div id="videoIframe" style="display:none; position:absolute; inset:0; width:100%; height:100%; border-radius:20px; overflow:hidden;">
+        <iframe src="" id="ytIframe" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; height:100%; display:block; border:none;"></iframe>
       </div>
     </div>
   </div>
@@ -631,7 +636,7 @@
 
 <!-- HOW IT WORKS -->
 <section class="how" style="position:relative;">
-  <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/6fd1abdb-ca0b-4ee6-9814-b9606a0a7151/Evolved+Film+NODE.png?content-type=image%2Fpng" alt="" aria-hidden="true" style="position:absolute; bottom:-20px; right:-30px; width:280px; max-width:40%; opacity:0.2; transform:rotate(-8deg); pointer-events:none; z-index:0;" />
+  <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/6fd1abdb-ca0b-4ee6-9814-b9606a0a7151/Evolved+Film+NODE.png?content-type=image%2Fpng" alt="" aria-hidden="true" loading="lazy" style="position:absolute; bottom:-20px; right:-30px; width:280px; max-width:40%; opacity:0.2; transform:rotate(-8deg); pointer-events:none; z-index:0;" />
   <div class="how-inner" style="position:relative; z-index:1;">
     <div class="how-header fade-up">
       <span class="label" style="color:rgba(232,82,42,.8); justify-content:center; display:flex;">Así de fácil</span>
@@ -727,7 +732,7 @@
       <p style="color:rgba(255,255,255,.4); font-size:16px; line-height:1.75;">Llevaba años editando vídeos que se veían... normales. Sin ese punch cinematográfico que tienen las películas. Probé decenas de LUTs, tutoriales y cursos. Nada funcionaba del todo. Así que construí mi propio sistema — el PowerGrade evolved.film v.1. Hoy más de 1.000 creadores lo usan. Y ahora es tuyo.</p>
     </div>
     <div class="fade-up" style="border-radius:16px; overflow:hidden; box-shadow:0 32px 80px rgba(0,0,0,.4);">
-      <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8e0a47ae-a15d-4348-8097-18dc5730728d/EvolvedFilm+Banner.png?content-type=image%2Fpng" alt="Evolved Film" style="width:100%; height:auto; display:block; border-radius:16px; box-shadow: 0 32px 80px rgba(0,0,0,.4);" />
+      <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8e0a47ae-a15d-4348-8097-18dc5730728d/EvolvedFilm+Banner.png?content-type=image%2Fpng" alt="Evolved Film" loading="lazy" style="width:100%; height:auto; display:block; border-radius:16px; box-shadow: 0 32px 80px rgba(0,0,0,.4);" />
     </div>
   </div>
 </div>
@@ -814,10 +819,14 @@
     <h2>¿No sabes por dónde empezar?</h2>
     <p>Este tutorial gratuito te enseña las bases del color grading cinematográfico desde cero. Es el primer paso antes de entrar a la comunidad.</p>
     <div class="tutorial-video">
-      <div class="video-mock" style="height:100%; min-height:240px;">
-        <div class="play-btn">▶</div>
-        <span class="video-label">Cómo usar el PowerGrade · evolved.film v.1</span>
-      </div>
+      <a href="https://www.youtube.com/watch?v=naJlbJ2XVss&t=188s" target="_blank" class="tutorial-fake-player" style="position:relative; display:block; width:100%; height:100%; min-height:240px; cursor:pointer; text-decoration:none; overflow:hidden;">
+        <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2734af12-ba79-456b-9fcf-79d0cec3d828/Frame+410%2780.jpg?content-type=image%2Fjpeg" alt="Tutorial PowerGrade" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" />
+        <div style="position:absolute; inset:0; background:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; transition:background 0.2s;" onmouseover="this.style.background='rgba(0,0,0,0.45)'" onmouseout="this.style.background='rgba(0,0,0,0.3)'">
+          <div style="width:72px; height:72px; border-radius:50%; background:rgba(232,82,42,0.9); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 32px rgba(0,0,0,0.4); transition:transform 0.2s;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+      </a>
     </div>
     <a href="https://www.youtube.com/watch?v=naJlbJ2XVss&t=188s" target="_blank" class="btn btn-outline" style="margin-top: 24px; display:inline-block;">Ver tutorial gratuito →</a>
   </div>
@@ -853,7 +862,7 @@
   <div class="testi-grid">
     <div class="testi-card fade-up">
       <div class="testi-card-top">
-        <img class="testi-ava-img" src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8b0d0c4f-8f9f-41ea-b6c1-43caedd1de13/516235689_18033027560678759_961178840817833607_n.jpg?content-type=image%2Fjpeg" alt="lacapsularodante" />
+        <img class="testi-ava-img" src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8b0d0c4f-8f9f-41ea-b6c1-43caedd1de13/516235689_18033027560678759_961178840817833607_n.jpg?content-type=image%2Fjpeg" alt="lacapsularodante" loading="lazy" />
         <div><div class="testi-name">@lacapsularodante</div><div class="testi-role">Creador digital</div></div>
       </div>
       <div class="testi-stars">★★★★★</div>
@@ -861,7 +870,7 @@
     </div>
     <div class="testi-card fade-up">
       <div class="testi-card-top">
-        <img class="testi-ava-img" src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/fb3ccd45-1302-43eb-bedd-5223a50e63da/449649960_1489366201945213_3772254378393202287_n.jpg?content-type=image%2Fjpeg" alt="madebyizan" />
+        <img class="testi-ava-img" src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/fb3ccd45-1302-43eb-bedd-5223a50e63da/449649960_1489366201945213_3772254378393202287_n.jpg?content-type=image%2Fjpeg" alt="madebyizan" loading="lazy" />
         <div><div class="testi-name">madebyizan</div><div class="testi-role">Clothing & Fashion Designer</div></div>
       </div>
       <div class="testi-stars">★★★★★</div>
@@ -869,7 +878,7 @@
     </div>
     <div class="testi-card fade-up">
       <div class="testi-card-top">
-        <img class="testi-ava-img" src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2360483e-7ecb-440a-b25b-6269a05f48d3/539051284_17972632340923305_4889991602022121833_n.jpg?content-type=image%2Fjpeg" alt="Nxs Films" />
+        <img class="testi-ava-img" src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2360483e-7ecb-440a-b25b-6269a05f48d3/539051284_17972632340923305_4889991602022121833_n.jpg?content-type=image%2Fjpeg" alt="Nxs Films" loading="lazy" />
         <div><div class="testi-name">Nxs Films</div><div class="testi-role">Videógrafo profesional</div></div>
       </div>
       <div class="testi-stars">★★★★★</div>
@@ -877,7 +886,7 @@
     </div>
     <div class="testi-card fade-up">
       <div class="testi-card-top">
-        <img class="testi-ava-img" src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/af7b0d84-9fdb-4c54-9410-b90112f89eae/475973132_539512095383241_4793932967821196491_n.jpg?content-type=image%2Fjpeg" alt="guaguell" />
+        <img class="testi-ava-img" src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/af7b0d84-9fdb-4c54-9410-b90112f89eae/475973132_539512095383241_4793932967821196491_n.jpg?content-type=image%2Fjpeg" alt="guaguell" loading="lazy" />
         <div><div class="testi-name">@guaguell</div><div class="testi-role">Creador de contenido</div></div>
       </div>
       <div class="testi-stars">★★★★★</div>
@@ -907,7 +916,7 @@
 
 <!-- FINAL CTA -->
 <section class="final-cta">
-  <img class="final-cta-img" src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/ed44bccf-a964-4517-8e02-fb109070bf54/2.17.1_2.17.1.jpg?content-type=image%2Fjpeg" alt="" />
+  <img class="final-cta-img" src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/ed44bccf-a964-4517-8e02-fb109070bf54/2.17.1_2.17.1.jpg?content-type=image%2Fjpeg" alt="" loading="lazy" />
   <div class="final-cta-overlay">
     <span class="label" style="margin-bottom:16px;">El siguiente paso es tuyo</span>
     <h2 class="fade-up">Tu estilo.<br>Tu color.<br><em>Tu historia.</em></h2>
@@ -923,7 +932,7 @@
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <div class="footer-logo-text"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/1a6abddb-ed7b-4600-a979-99d125130d77/1%2724x1024.png?content-type=image%2Fpng" alt="Always Film Lab" /></div>
+      <div class="footer-logo-text"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/1a6abddb-ed7b-4600-a979-99d125130d77/1%2724x1024.png?content-type=image%2Fpng" alt="Always Film Lab" loading="lazy" /></div>
       <div class="footer-tagline">Tu laboratorio de Color.<br>Haz que tus vídeos cuenten una historia.</div>
       <div class="footer-email"><a href="mailto:alwaysjoan@alwaysfilmlab.com">alwaysjoan@alwaysfilmlab.com</a></div>
     </div>
@@ -996,12 +1005,12 @@
     handle.style.left = pctPx + '%';
   }
 
-  container.addEventListener('mousedown', e => { dragging = true; setSlider(e.clientX); });
+  container.addEventListener('mousedown', e => { dragging = true; container.style.cursor = 'grabbing'; setSlider(e.clientX); });
   window.addEventListener('mousemove', e => { if (dragging) setSlider(e.clientX); });
-  window.addEventListener('mouseup', () => { dragging = false; });
-  container.addEventListener('touchstart', e => { dragging = true; setSlider(e.touches[0].clientX); }, { passive: true });
+  window.addEventListener('mouseup', () => { dragging = false; container.style.cursor = 'grab'; });
+  container.addEventListener('touchstart', e => { dragging = true; container.style.cursor = 'grabbing'; setSlider(e.touches[0].clientX); }, { passive: true });
   window.addEventListener('touchmove', e => { if (dragging) setSlider(e.touches[0].clientX); }, { passive: true });
-  window.addEventListener('touchend', () => { dragging = false; });
+  window.addEventListener('touchend', () => { dragging = false; container.style.cursor = 'grab'; });
 
 
   // ── FAQ accordion
@@ -1055,6 +1064,16 @@
     });
   }, { threshold: 0.3 });
   document.querySelectorAll('.stats').forEach(s => statsObs.observe(s));
+
+  // ── Nav scroll effect
+  const navEl = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      navEl.classList.add('scrolled');
+    } else {
+      navEl.classList.remove('scrolled');
+    }
+  }, { passive: true });
 </script>
 </body>
 </html>
