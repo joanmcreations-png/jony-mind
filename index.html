@@ -56,8 +56,11 @@
     .nav-links a:hover { color: #fff; }
     .nav-logo {
       position: absolute; left: 50%; transform: translateX(-50%);
-      font-family: 'Fraunces', serif; font-size: 17px; font-weight: 900;
-      color: #fff; text-decoration: none; text-align: center; white-space: nowrap;
+      text-decoration: none; display: flex; align-items: center;
+    }
+    .nav-logo img {
+      width: 140px; height: auto;
+      filter: brightness(0) invert(1);
     }
     .nav-right { display: flex; align-items: center; gap: 16px; }
     .nav-cta { padding: 9px 22px; font-size: 12px; }
@@ -89,7 +92,7 @@
       text-align: center; padding: 130px 24px 100px;
       background:
         linear-gradient(180deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,.4) 50%, rgba(0,0,0,.7) 100%),
-        url('https://images.unsplash.com/photo-1536240478700-b869ad10e128?w=1800&q=80') center/cover no-repeat;
+        url('https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2befbc5f-b9c3-4661-8afb-7fbed302403b/2.5.1_2.5.1.jpg?content-type=image%2Fjpeg') center/cover no-repeat;
       overflow: hidden;
     }
     /* Film grain overlay */
@@ -119,12 +122,6 @@
     }
     .hero h1 em {
       font-style: italic; position: relative; display: inline-block;
-    }
-    .hero h1 em::after {
-      content: '';
-      position: absolute; bottom: -4px; left: -12px; right: -12px; height: 48px;
-      border: 3px solid var(--orange); border-radius: 50%;
-      transform: rotate(-1.5deg); pointer-events: none;
     }
     .hero-sub { color: rgba(255,255,255,.72); font-size: 17px; max-width: 500px; line-height: 1.65; margin-bottom: 44px; }
 
@@ -425,7 +422,8 @@
     /* ── FOOTER ──────────────────────────────── */
     footer { background: #0C0C0C; padding: 60px 48px 32px; }
     .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 48px; }
-    .footer-logo-text { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 4px; }
+    .footer-logo-text { display: flex; align-items: center; margin-bottom: 4px; }
+    .footer-logo-text img { height: 32px; width: auto; filter: brightness(0) invert(1); opacity: 0.85; }
     .footer-tagline { font-size: 13px; color: rgba(255,255,255,.3); font-style: italic; margin-bottom: 18px; }
     .footer-email { font-size: 13px; color: rgba(255,255,255,.4); }
     .footer-email a { color: var(--orange); text-decoration: none; }
@@ -460,6 +458,7 @@
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
     /* ── RESPONSIVE ──────────────────────────── */
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1100px; margin: 0 auto; }
     @media (max-width: 900px) {
       nav { padding: 14px 20px; }
       .nav-links { display: none; }
@@ -470,6 +469,7 @@
       .how { padding: 72px 24px; }
       .how-steps { grid-template-columns: 1fr; gap: 48px; }
       .how-steps::before { display: none; }
+      .story-inner-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
       .features { padding: 72px 24px; }
       .features-grid { grid-template-columns: 1fr 1fr; }
       .plans-grid { grid-template-columns: 1fr; max-width: 440px; }
@@ -499,7 +499,7 @@
     <a href="#planes">Mentoría 1:1</a>
     <a href="#planes">Tienda</a>
   </div>
-  <a class="nav-logo" href="#">Always Film Lab</a>
+  <a class="nav-logo" href="#"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/1a6abddb-ed7b-4600-a979-99d125130d77/1%2724x1024.png?content-type=image%2Fpng" alt="Always Film Lab" /></a>
   <div class="nav-right">
     <a href="#planes" class="btn btn-fill nav-cta">Comunidad</a>
     <button class="hamburger" id="hamburger" aria-label="Menú">
@@ -520,20 +520,17 @@
 <section class="hero">
   <div class="hero-pill">
     <span class="dot"></span>
-    +800 creadores dentro — Únete hoy
+    +1.000 creadores dentro — Únete hoy
   </div>
   <h1>Haz que tus vídeos<br>se vean como<br><em>una película</em></h1>
-  <p class="hero-sub">El PowerGrade profesional + curso de color cinematográfico que ya transformó los vídeos de más de 800 creadores.</p>
+  <p class="hero-sub">El PowerGrade profesional + curso de color cinematográfico que ya transformó los vídeos de más de 1.000 creadores.</p>
   <div class="hero-actions">
     <a href="#demo" class="btn btn-fill btn-hero">Ver demo</a>
     <div class="hero-social-proof">
       <div class="avatars">
-        <div class="avatar">🎬</div>
-        <div class="avatar">📷</div>
-        <div class="avatar">🎥</div>
-        <div class="avatar">✨</div>
+        <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/d6c25178-363a-45f5-ac88-6f2bdef1abe3/Frame+6+%281%29.png?content-type=image%2Fpng" alt="Creadores" style="height:40px; border-radius:4px; border: 2px solid rgba(255,255,255,.3);" />
       </div>
-      <p class="social-proof-text"><strong>+800</strong> creadores confían en Evolved Film</p>
+      <p class="social-proof-text"><strong>+1.000</strong> creadores confían en Evolved Film</p>
     </div>
   </div>
   <div class="hero-scroll">
@@ -546,10 +543,10 @@
 <div class="as-seen">
   <span class="as-seen-label">Compatible con</span>
   <div class="as-seen-logos">
-    <span class="as-seen-logo">DaVinci Resolve</span>
-    <span class="as-seen-logo">Adobe Premiere</span>
+    <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/f80cabc3-a6c1-4f69-9454-1c12069cbc92/davincilogo.png?content-type=image%2Fpng" alt="DaVinci Resolve" style="height:22px; filter:brightness(0) invert(1); opacity:0.4;" />
+    <span class="as-seen-logo">Premiere Pro</span>
     <span class="as-seen-logo">Final Cut Pro</span>
-    <span class="as-seen-logo">Circle.so</span>
+    <span class="as-seen-logo">CapCut</span>
   </div>
 </div>
 
@@ -572,8 +569,9 @@
 </div>
 
 <!-- HOW IT WORKS -->
-<section class="how">
-  <div class="how-inner">
+<section class="how" style="position:relative;">
+  <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/6fd1abdb-ca0b-4ee6-9814-b9606a0a7151/Evolved+Film+NODE.png?content-type=image%2Fpng" alt="" aria-hidden="true" style="position:absolute; bottom:-40px; right:-60px; width:420px; max-width:50%; opacity:0.17; transform:rotate(8deg); pointer-events:none; z-index:0; mix-blend-mode:luminosity;" />
+  <div class="how-inner" style="position:relative; z-index:1;">
     <div class="how-header fade-up">
       <span class="label" style="color:rgba(232,82,42,.8); justify-content:center; display:flex;">Así de fácil</span>
       <h2>En 3 pasos tienes color cinematográfico</h2>
@@ -634,6 +632,20 @@
     </div>
   </div>
 </section>
+
+<!-- STORY IMAGE -->
+<div style="background:var(--dark); padding: 0 48px 100px; overflow:hidden;">
+  <div class="story-inner-grid" style="max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;">
+    <div class="fade-up">
+      <span class="label" style="color:rgba(232,82,42,.8);">La historia detrás</span>
+      <h2 style="font-family:'Fraunces',serif; font-size:clamp(28px,4vw,46px); font-weight:900; color:#fff; line-height:1.05; margin-bottom:16px;">Creado por un creador,<br>para creadores.</h2>
+      <p style="color:rgba(255,255,255,.4); font-size:16px; line-height:1.75;">Evolved Film nació de la frustración de no encontrar herramientas de color que funcionasen de verdad para el creador moderno. Joan construyó lo que él mismo necesitaba — y ahora está en tus manos.</p>
+    </div>
+    <div class="fade-up" style="border-radius:16px; overflow:hidden; box-shadow:0 32px 80px rgba(0,0,0,.4);">
+      <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/42bd7e4b-0a75-48b9-81a6-8fa7d927dbcf/Evolved+Story1.jpg?content-type=image%2Fjpeg" alt="Evolved Film Story" style="width:100%; height:auto; display:block;" />
+    </div>
+  </div>
+</div>
 
 <!-- PLANS -->
 <section class="plans" id="planes">
@@ -726,7 +738,7 @@
 <!-- STATS -->
 <section class="stats">
   <div class="stats-inner">
-    <div class="fade-up"><div class="stat-n">+800</div><div class="stat-l">Creadores activos</div></div>
+    <div class="fade-up"><div class="stat-n">+1.000</div><div class="stat-l">Creadores activos</div></div>
     <div class="fade-up"><div class="stat-n">3</div><div class="stat-l">Planes disponibles</div></div>
     <div class="fade-up"><div class="stat-n">v.1</div><div class="stat-l">PowerGrade profesional</div></div>
     <div class="fade-up"><div class="stat-n">∞</div><div class="stat-l">Actualizaciones incluidas</div></div>
@@ -773,7 +785,7 @@
 <!-- FINAL CTA -->
 <section class="final-cta">
   <h2 class="fade-up">Nunca más crees<br>contenido <em>solo.</em></h2>
-  <p class="fade-up">Únete a más de 800 creadores que ya transformaron sus vídeos con Evolved Film.</p>
+  <p class="fade-up">Únete a más de 1.000 creadores que ya transformaron sus vídeos con Evolved Film.</p>
   <div class="final-cta-btns fade-up">
     <a href="#planes" class="btn btn-fill btn-hero">Entrar a la comunidad</a>
     <a href="#planes" class="btn btn-dark">Ver planes</a>
@@ -784,7 +796,7 @@
 <footer>
   <div class="footer-top">
     <div>
-      <div class="footer-logo-text">Always Film Lab</div>
+      <div class="footer-logo-text"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/1a6abddb-ed7b-4600-a979-99d125130d77/1%2724x1024.png?content-type=image%2Fpng" alt="Always Film Lab" /></div>
       <div class="footer-tagline">Tu laboratorio de Color</div>
       <div class="footer-email">Contacto: <a href="mailto:alwaysjoan@alwaysfilmlab.com">alwaysjoan@alwaysfilmlab.com</a></div>
     </div>
