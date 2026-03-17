@@ -46,24 +46,24 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 24px 64px;
-      background: rgba(17,16,16,.75);
+      padding: 16px 48px;
+      background: rgba(17,16,16,.85);
       backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,.06);
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
-    .nav-links { display: flex; gap: 28px; }
-    .nav-links a { color: rgba(255,255,255,.7); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s; }
-    .nav-links a:hover { color: #fff; }
+    .nav-links { display: flex; gap: 36px; }
+    .nav-links a { color: rgba(255,255,255,.95); text-decoration: none; font-size: 14px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; transition: color .2s; }
+    .nav-links a:hover { color: var(--orange); }
     .nav-logo {
       position: absolute; left: 50%; transform: translateX(-50%);
       text-decoration: none; display: flex; align-items: center;
     }
     .nav-logo img {
-      width: 160px; height: auto;
+      width: 110px; height: auto;
       filter: brightness(0) invert(1);
     }
     .nav-right { display: flex; align-items: center; gap: 16px; }
-    .nav-cta { padding: 9px 22px; font-size: 12px; }
+    .nav-cta { padding: 10px 24px; font-size: 12px; font-weight: 700; letter-spacing: .06em; }
 
     /* Hamburger */
     .hamburger {
@@ -154,28 +154,34 @@
 
     /* ── AS SEEN ON ──────────────────────────── */
     .as-seen {
-      background: var(--dark2); padding: 20px 48px;
+      background: var(--dark2); padding: 22px 48px;
       display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap;
+      border-bottom: 1px solid rgba(255,255,255,.05);
     }
-    .as-seen-label { color: rgba(255,255,255,.25); font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
-    .as-seen-logos { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; justify-content: center; }
-    .as-seen-logo { color: rgba(255,255,255,.22); font-size: 13px; font-weight: 700; letter-spacing: .04em; }
+    .as-seen-label { color: rgba(255,255,255,.3); font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; }
+    .as-seen-logos { display: flex; align-items: center; gap: 36px; flex-wrap: wrap; justify-content: center; }
+    .as-seen-logo-item { display: flex; align-items: center; gap: 8px; opacity: 0.55; transition: opacity .2s; }
+    .as-seen-logo-item:hover { opacity: 0.85; }
+    .as-seen-logo-item img { height: 22px; width: auto; filter: brightness(0) invert(1); }
+    .as-seen-logo-item span { color: #fff; font-size: 13px; font-weight: 600; letter-spacing: .02em; white-space: nowrap; }
+    .as-seen-divider { width: 1px; height: 20px; background: rgba(255,255,255,.12); }
 
     /* ── INTRO ────────────────────────────────── */
     .intro-wrap { background: var(--cream); padding: 0 48px; }
     .intro {
-      max-width: 1100px; margin: 0 auto; padding: 100px 0;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+      max-width: 1160px; margin: 0 auto; padding: 100px 0;
+      display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: center;
     }
     .intro-text h2 {
       font-family: 'Fraunces', serif;
-      font-size: clamp(34px, 4.5vw, 56px); font-weight: 900; line-height: 1.05; margin-bottom: 20px;
+      font-size: clamp(30px, 3.8vw, 48px); font-weight: 900; line-height: 1.08; margin-bottom: 20px;
     }
     .intro-text h2 span { color: var(--orange); }
     .intro-text p { color: var(--muted); font-size: 16px; line-height: 1.75; margin-bottom: 32px; }
     .intro-video {
-      border-radius: 16px; overflow: hidden; aspect-ratio: 16/9;
-      background: var(--dark2); box-shadow: 0 32px 80px rgba(0,0,0,.18); position: relative;
+      border-radius: 20px; overflow: hidden;
+      min-height: 380px; height: 420px;
+      background: var(--dark2); box-shadow: 0 40px 100px rgba(0,0,0,.22); position: relative;
     }
     .video-mock {
       width: 100%; height: 100%; min-height: 220px;
@@ -575,10 +581,18 @@
 <div class="as-seen">
   <span class="as-seen-label">Compatible con</span>
   <div class="as-seen-logos">
-    <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/f80cabc3-a6c1-4f69-9454-1c12069cbc92/davincilogo.png?content-type=image%2Fpng" alt="DaVinci Resolve" style="height:20px; filter:brightness(0) invert(1); opacity:0.45;" />
-    <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/881dc87f-450f-4f2e-9f24-ffa83035dc40/premierelogo.png?content-type=image%2Fpng" alt="Adobe Premiere" style="height:20px; filter:brightness(0) invert(1); opacity:0.45;" />
-    <span class="as-seen-logo">Final Cut Pro</span>
-    <span class="as-seen-logo">CapCut</span>
+    <div class="as-seen-logo-item">
+      <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/f80cabc3-a6c1-4f69-9454-1c12069cbc92/davincilogo.png?content-type=image%2Fpng" alt="DaVinci Resolve" />
+      <span>DaVinci Resolve</span>
+    </div>
+    <div class="as-seen-divider"></div>
+    <div class="as-seen-logo-item">
+      <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/881dc87f-450f-4f2e-9f24-ffa83035dc40/premierelogo.png?content-type=image%2Fpng" alt="Adobe Premiere Pro" />
+      <span>Adobe Premiere</span>
+    </div>
+    <div class="as-seen-divider"></div>
+    <div class="as-seen-logo-item"><span>Final Cut Pro</span></div>
+    <div class="as-seen-logo-item"><span>CapCut</span></div>
   </div>
 </div>
 
@@ -586,13 +600,13 @@
 <div class="intro-wrap">
   <div class="intro">
     <div class="intro-text fade-up">
-      <span class="label">Para de conformarte</span>
-      <h2>Para de editar en gris.<br>Empieza a crear <span>como un profesional.</span></h2>
-      <p>Tienes el equipo. Tienes las ganas. Lo único que te falta es el sistema: el PowerGrade, los LUTs, el curso y la comunidad que van a cambiar tu forma de crear para siempre.</p>
+      <span class="label">Always Film Lab</span>
+      <h2>El sistema que necesitas para llevar tus vídeos al <span>siguiente nivel.</span></h2>
+      <p>Un espacio privado con cursos de color, PowerGrades, LUTs, workshops en directo y una comunidad diseñada para que nunca pares de crecer.</p>
       <a href="https://alwaysfilmlab.circle.so/checkout/comunidad-evolved-film" class="btn btn-fill">Entra a la comunidad</a>
     </div>
     <div class="intro-video fade-up" id="demo">
-      <div class="fake-player" id="fakePlayer" onclick="loadVideo()" style="position:relative; width:100%; height:100%; min-height:280px; cursor:pointer; border-radius:16px; overflow:hidden;">
+      <div class="fake-player" id="fakePlayer" onclick="loadVideo()" style="position:relative; width:100%; height:100%; min-height:380px; cursor:pointer; border-radius:20px; overflow:hidden;">
         <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2734af12-ba79-456b-9fcf-79d0cec3d828/Frame+410%2780.jpg?content-type=image%2Fjpeg" alt="Always Film Lab Demo" style="width:100%; height:100%; object-fit:cover; display:block;" />
         <div style="position:absolute; inset:0; background:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; transition:background 0.2s;" onmouseover="this.style.background='rgba(0,0,0,0.45)'" onmouseout="this.style.background='rgba(0,0,0,0.3)'">
           <div style="width:72px; height:72px; border-radius:50%; background:rgba(232,82,42,0.9); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 32px rgba(0,0,0,0.4); transition:transform 0.2s;">
