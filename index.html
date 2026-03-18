@@ -169,6 +169,88 @@
     .as-seen-logo-item span { color: #fff; font-size: 13px; font-weight: 600; letter-spacing: .02em; white-space: nowrap; }
     .as-seen-divider { width: 1px; height: 20px; background: rgba(255,255,255,.12); }
 
+    /* ── AVATAR CAROUSEL ─────────────────────── */
+    .avatar-carousel {
+      background: var(--dark); padding: 48px 0; overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+    .avatar-carousel-label {
+      text-align: center; color: rgba(255,255,255,.3); font-size: 11px; font-weight: 700;
+      letter-spacing: .16em; text-transform: uppercase; margin-bottom: 28px;
+    }
+    .avatar-track-wrapper { position: relative; }
+    .avatar-track-wrapper::before, .avatar-track-wrapper::after {
+      content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2;
+    }
+    .avatar-track-wrapper::before { left: 0; background: linear-gradient(to right, var(--dark), transparent); }
+    .avatar-track-wrapper::after { right: 0; background: linear-gradient(to left, var(--dark), transparent); }
+    .avatar-track {
+      display: flex; gap: 32px; animation: scrollAvatars 25s linear infinite; width: max-content;
+    }
+    .avatar-track:hover { animation-play-state: paused; }
+    @keyframes scrollAvatars {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .avatar-item {
+      display: flex; flex-direction: column; align-items: center; gap: 8px; flex-shrink: 0;
+    }
+    .avatar-item img {
+      width: 68px; height: 68px; border-radius: 50%; object-fit: cover;
+      border: 2px solid rgba(232,82,42,.35); transition: border-color .2s, transform .2s;
+    }
+    .avatar-item:hover img { border-color: var(--orange); transform: scale(1.1); }
+    .avatar-item span {
+      font-size: 11px; color: rgba(255,255,255,.4); font-weight: 500;
+      white-space: nowrap; transition: color .2s;
+    }
+    .avatar-item:hover span { color: rgba(255,255,255,.8); }
+
+    /* ── VALUE STACK ─────────────────────────── */
+    .value-stack { background: var(--cream); padding: 80px 24px 20px; }
+    .value-stack-inner { max-width: 1060px; margin: 0 auto; text-align: center; }
+    .value-stack-header { margin-bottom: 48px; }
+    .value-stack-header h2 {
+      font-family: 'Fraunces', serif; font-size: clamp(28px, 4vw, 52px); font-weight: 900;
+      color: var(--dark); line-height: 1.1;
+    }
+    .value-stack-header h2 .value-green { color: var(--orange); font-style: italic; }
+    .value-stack-header p { color: var(--muted); font-size: 15px; margin-top: 8px; font-style: italic; }
+    .value-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 48px;
+    }
+    .value-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 16px;
+      padding: 28px 20px; transition: transform .2s, box-shadow .2s;
+    }
+    .value-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,.08); }
+    .value-card-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: rgba(232,82,42,.08); border: 1px solid rgba(232,82,42,.15);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .value-card-icon svg { width: 22px; height: 22px; color: var(--orange); stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .value-card h4 { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+    .value-card .value-price { font-size: 13px; color: var(--orange); font-weight: 700; }
+
+    /* ── PROMISE SECTION ─────────────────────── */
+    .promise { background: var(--dark); padding: 80px 24px; }
+    .promise-inner { max-width: 1000px; margin: 0 auto; text-align: center; }
+    .promise-inner h2 {
+      font-family: 'Fraunces', serif; font-size: clamp(28px, 4vw, 48px); font-weight: 900;
+      color: #fff; margin-bottom: 56px;
+    }
+    .promise-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+    .promise-item { text-align: center; }
+    .promise-icon {
+      width: 56px; height: 56px; margin: 0 auto 20px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .promise-icon svg { width: 40px; height: 40px; color: #fff; stroke: currentColor; fill: none; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+    .promise-sub { font-size: 12px; color: rgba(255,255,255,.35); margin-bottom: 6px; line-height: 1.4; }
+    .promise-title { font-size: 17px; font-weight: 800; color: #fff; line-height: 1.3; }
+
     /* ── INTRO ────────────────────────────────── */
     .intro-wrap { background: var(--cream); padding: 0 48px; }
     .intro {
@@ -180,7 +262,18 @@
       font-size: clamp(30px, 3.8vw, 48px); font-weight: 900; line-height: 1.08; margin-bottom: 20px;
     }
     .intro-text h2 span { color: var(--orange); }
-    .intro-text p { color: var(--muted); font-size: 16px; line-height: 1.75; margin-bottom: 32px; }
+    .intro-text p { color: var(--muted); font-size: 16px; line-height: 1.75; margin-bottom: 24px; }
+    .intro-checklist { list-style: none; margin-bottom: 32px; }
+    .intro-checklist li {
+      display: flex; align-items: center; gap: 12px; padding: 8px 0;
+      font-size: 15px; color: var(--dark); font-weight: 500;
+    }
+    .intro-checklist li .check-icon {
+      width: 22px; height: 22px; border-radius: 6px; flex-shrink: 0;
+      background: rgba(232,82,42,.1); color: var(--orange);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 800;
+    }
     .intro-video {
       border-radius: 20px; overflow: hidden;
       min-height: 380px; height: 420px;
@@ -316,7 +409,7 @@
       background: radial-gradient(circle at 20% 20%, rgba(232,82,42,.06), transparent 60%);
       opacity: 0; transition: opacity .3s;
     }
-    .feature-item:hover { border-color: rgba(232,82,42,.25); transform: translateY(-4px); background: #181818; }
+    .feature-item:hover { border-color: rgba(232,82,42,.3); transform: translateY(-6px); background: #181818; box-shadow: 0 20px 60px rgba(232,82,42,.08), 0 0 0 1px rgba(232,82,42,.1); }
     .feature-item:hover::before { opacity: 1; }
     .feature-icon-wrap {
       width: 48px; height: 48px; border-radius: 12px;
@@ -522,6 +615,8 @@
       .story-inner-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
       .features { padding: 72px 24px; }
       .features-grid { grid-template-columns: 1fr 1fr; }
+      .value-grid { grid-template-columns: repeat(2, 1fr); }
+      .promise-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
       .plans-grid { grid-template-columns: 1fr; max-width: 440px; }
       .stats-inner { grid-template-columns: repeat(2,1fr); }
       .testi-grid { grid-template-columns: 1fr; }
@@ -534,6 +629,8 @@
     }
     @media (max-width: 600px) {
       .features-grid { grid-template-columns: 1fr; }
+      .value-grid { grid-template-columns: 1fr 1fr; }
+      .promise-grid { grid-template-columns: 1fr; gap: 32px; }
       .stats-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
       .footer-top { grid-template-columns: 1fr; }
       .footer-top > *:first-child { grid-column: auto; }
@@ -617,6 +714,32 @@
   </div>
 </div>
 
+<!-- AVATAR CAROUSEL -->
+<section class="avatar-carousel">
+  <div class="avatar-carousel-label">Creadores que ya confían en AlwaysFilmLab</div>
+  <div class="avatar-track-wrapper">
+    <div class="avatar-track" id="avatarTrack">
+      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8b0d0c4f-8f9f-41ea-b6c1-43caedd1de13/516235689_18033027560678759_961178840817833607_n.jpg?content-type=image%2Fjpeg" alt="lacapsularodante" loading="lazy" /><span>@lacapsularodante</span></div>
+      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/fb3ccd45-1302-43eb-bedd-5223a50e63da/449649960_1489366201945213_3772254378393202287_n.jpg?content-type=image%2Fjpeg" alt="madebyizan" loading="lazy" /><span>@madebyizan</span></div>
+      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2360483e-7ecb-440a-b25b-6269a05f48d3/539051284_17972632340923305_4889991602022121833_n.jpg?content-type=image%2Fjpeg" alt="Nxs Films" loading="lazy" /><span>@nxsfilms</span></div>
+      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/af7b0d84-9fdb-4c54-9410-b90112f89eae/475973132_539512095383241_4793932967821196491_n.jpg?content-type=image%2Fjpeg" alt="guaguell" loading="lazy" /><span>@guaguell</span></div>
+      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8b0d0c4f-8f9f-41ea-b6c1-43caedd1de13/516235689_18033027560678759_961178840817833607_n.jpg?content-type=image%2Fjpeg" alt="lacapsularodante" loading="lazy" /><span>@marcrodri</span></div>
+      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/fb3ccd45-1302-43eb-bedd-5223a50e63da/449649960_1489366201945213_3772254378393202287_n.jpg?content-type=image%2Fjpeg" alt="creator" loading="lazy" /><span>@danielcine</span></div>
+      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2360483e-7ecb-440a-b25b-6269a05f48d3/539051284_17972632340923305_4889991602022121833_n.jpg?content-type=image%2Fjpeg" alt="creator" loading="lazy" /><span>@filmbypaul</span></div>
+      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/af7b0d84-9fdb-4c54-9410-b90112f89eae/475973132_539512095383241_4793932967821196491_n.jpg?content-type=image%2Fjpeg" alt="creator" loading="lazy" /><span>@alvarocuts</span></div>
+      <!-- Duplicated for infinite loop -->
+      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8b0d0c4f-8f9f-41ea-b6c1-43caedd1de13/516235689_18033027560678759_961178840817833607_n.jpg?content-type=image%2Fjpeg" alt="lacapsularodante" loading="lazy" /><span>@lacapsularodante</span></div>
+      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/fb3ccd45-1302-43eb-bedd-5223a50e63da/449649960_1489366201945213_3772254378393202287_n.jpg?content-type=image%2Fjpeg" alt="madebyizan" loading="lazy" /><span>@madebyizan</span></div>
+      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2360483e-7ecb-440a-b25b-6269a05f48d3/539051284_17972632340923305_4889991602022121833_n.jpg?content-type=image%2Fjpeg" alt="Nxs Films" loading="lazy" /><span>@nxsfilms</span></div>
+      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/af7b0d84-9fdb-4c54-9410-b90112f89eae/475973132_539512095383241_4793932967821196491_n.jpg?content-type=image%2Fjpeg" alt="guaguell" loading="lazy" /><span>@guaguell</span></div>
+      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8b0d0c4f-8f9f-41ea-b6c1-43caedd1de13/516235689_18033027560678759_961178840817833607_n.jpg?content-type=image%2Fjpeg" alt="creator" loading="lazy" /><span>@marcrodri</span></div>
+      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/fb3ccd45-1302-43eb-bedd-5223a50e63da/449649960_1489366201945213_3772254378393202287_n.jpg?content-type=image%2Fjpeg" alt="creator" loading="lazy" /><span>@danielcine</span></div>
+      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2360483e-7ecb-440a-b25b-6269a05f48d3/539051284_17972632340923305_4889991602022121833_n.jpg?content-type=image%2Fjpeg" alt="creator" loading="lazy" /><span>@filmbypaul</span></div>
+      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/af7b0d84-9fdb-4c54-9410-b90112f89eae/475973132_539512095383241_4793932967821196491_n.jpg?content-type=image%2Fjpeg" alt="creator" loading="lazy" /><span>@alvarocuts</span></div>
+    </div>
+  </div>
+</section>
+
 <!-- INTRO / VIDEO -->
 <div class="intro-wrap">
   <div class="intro">
@@ -624,6 +747,12 @@
       <span class="label">Always Film Lab</span>
       <h2>El sistema que necesitas para llevar tus vídeos al <span>siguiente nivel.</span></h2>
       <p>Un espacio privado con cursos de color, PowerGrades, LUTs, workshops en directo y una comunidad diseñada para que nunca pares de crecer.</p>
+      <ul class="intro-checklist">
+        <li><span class="check-icon">✓</span> PowerGrade profesional listo para usar</li>
+        <li><span class="check-icon">✓</span> Curso completo de color cinematográfico</li>
+        <li><span class="check-icon">✓</span> LUTs de conversión para tu cámara</li>
+        <li><span class="check-icon">✓</span> Actualizaciones de por vida incluidas</li>
+      </ul>
       <a href="https://alwaysfilmlab.circle.so/checkout/comunidad-evolved-film" target="_blank" class="btn btn-fill">Entra a la comunidad</a>
     </div>
     <div class="intro-video fade-up" id="demo">
@@ -745,6 +874,38 @@
     </div>
   </div>
 </div>
+
+<!-- VALUE STACK -->
+<section class="value-stack">
+  <div class="value-stack-inner">
+    <div class="value-stack-header fade-up">
+      <h2>+$300 de valor <span class="value-green">por solo $89.99</span></h2>
+      <p>nuestro objetivo es el impacto, no solo el beneficio.</p>
+    </div>
+    <div class="value-grid">
+      <div class="value-card fade-up">
+        <div class="value-card-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <h4>PowerGrade evolved.film v.1</h4>
+        <div class="value-price">Valor: $79</div>
+      </div>
+      <div class="value-card fade-up">
+        <div class="value-card-icon"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></div>
+        <h4>Curso de Color Completo</h4>
+        <div class="value-price">Valor: $120</div>
+      </div>
+      <div class="value-card fade-up">
+        <div class="value-card-icon"><svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+        <h4>LUTs para todas las cámaras</h4>
+        <div class="value-price">Valor: $47</div>
+      </div>
+      <div class="value-card fade-up">
+        <div class="value-card-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h4>Comunidad + Workshops</h4>
+        <div class="value-price">Valor: $60</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- PLANS -->
 <section class="plans" id="planes">
@@ -900,6 +1061,36 @@
       </div>
       <div class="testi-stars">★★★★★</div>
       <p class="testi-q">"Desde que entré no he parado de aprender. Los workshops en directo son una pasada y el feedback de Joan vale su peso en oro. Lo recomiendo sin dudarlo."</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROMISE -->
+<section class="promise">
+  <div class="promise-inner">
+    <h2 class="fade-up">Nuestra promesa.</h2>
+    <div class="promise-grid">
+      <div class="promise-item fade-up">
+        <div class="promise-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="promise-sub">Color cinematográfico sin complicaciones</div>
+        <div class="promise-title">Resultados profesionales<br>en menos de 10 minutos</div>
+      </div>
+      <div class="promise-item fade-up">
+        <div class="promise-icon">
+          <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+        </div>
+        <div class="promise-sub">Compra una vez. Tuyo para siempre.</div>
+        <div class="promise-title">Acceso de por vida<br>a actualizaciones</div>
+      </div>
+      <div class="promise-item fade-up">
+        <div class="promise-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="promise-sub">Crece rodeado de creadores reales.</div>
+        <div class="promise-title">La mejor comunidad<br>de color grading en español</div>
+      </div>
     </div>
   </div>
 </section>
