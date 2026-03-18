@@ -171,21 +171,21 @@
 
     /* ── AVATAR CAROUSEL ─────────────────────── */
     .avatar-carousel {
-      background: var(--dark); padding: 48px 0; overflow: hidden;
-      border-bottom: 1px solid rgba(255,255,255,.05);
+      background: var(--dark); padding: 56px 0 48px; overflow: hidden;
+      border-top: 1px solid rgba(255,255,255,.06);
     }
     .avatar-carousel-label {
-      text-align: center; color: rgba(255,255,255,.3); font-size: 11px; font-weight: 700;
-      letter-spacing: .16em; text-transform: uppercase; margin-bottom: 28px;
+      text-align: center; color: rgba(255,255,255,.35); font-size: 11px; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase; margin-bottom: 32px;
     }
     .avatar-track-wrapper { position: relative; }
     .avatar-track-wrapper::before, .avatar-track-wrapper::after {
-      content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2;
+      content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2;
     }
     .avatar-track-wrapper::before { left: 0; background: linear-gradient(to right, var(--dark), transparent); }
     .avatar-track-wrapper::after { right: 0; background: linear-gradient(to left, var(--dark), transparent); }
     .avatar-track {
-      display: flex; gap: 32px; animation: scrollAvatars 25s linear infinite; width: max-content;
+      display: flex; gap: 48px; animation: scrollAvatars 30s linear infinite; width: max-content;
     }
     .avatar-track:hover { animation-play-state: paused; }
     @keyframes scrollAvatars {
@@ -193,18 +193,23 @@
       100% { transform: translateX(-50%); }
     }
     .avatar-item {
-      display: flex; flex-direction: column; align-items: center; gap: 8px; flex-shrink: 0;
+      display: flex; flex-direction: column; align-items: center; gap: 10px; flex-shrink: 0;
     }
     .avatar-item img {
-      width: 68px; height: 68px; border-radius: 50%; object-fit: cover;
-      border: 2px solid rgba(232,82,42,.35); transition: border-color .2s, transform .2s;
+      width: 80px; height: 80px; border-radius: 50%; object-fit: cover;
+      border: 3px solid rgba(232,82,42,.4);
+      box-shadow: 0 0 0 3px rgba(232,82,42,.1);
+      transition: border-color .2s, transform .2s, box-shadow .2s;
     }
-    .avatar-item:hover img { border-color: var(--orange); transform: scale(1.1); }
+    .avatar-item:hover img {
+      border-color: var(--orange); transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(232,82,42,.25);
+    }
     .avatar-item span {
-      font-size: 11px; color: rgba(255,255,255,.4); font-weight: 500;
+      font-size: 12px; color: rgba(255,255,255,.45); font-weight: 500;
       white-space: nowrap; transition: color .2s;
     }
-    .avatar-item:hover span { color: rgba(255,255,255,.8); }
+    .avatar-item:hover span { color: rgba(255,255,255,.9); }
 
     /* ── VALUE STACK ─────────────────────────── */
     .value-stack { background: var(--cream); padding: 80px 24px 20px; }
@@ -693,26 +698,6 @@
     alt="" aria-hidden="true" loading="lazy"
     style="position:absolute; bottom:60px; right:40px; width:180px; opacity:0.12; transform:rotate(-12deg); pointer-events:none; z-index:1; filter:brightness(0) invert(1);" />
 </section>
-
-<!-- AS SEEN ON -->
-<div class="as-seen">
-  <span class="as-seen-label">Compatible con</span>
-  <div class="as-seen-logos">
-    <div class="as-seen-logo-item">
-      <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/f80cabc3-a6c1-4f69-9454-1c12069cbc92/davincilogo.png?content-type=image%2Fpng" alt="DaVinci Resolve" loading="lazy" />
-      <span>DaVinci Resolve</span>
-    </div>
-    <div class="as-seen-divider"></div>
-    <div class="as-seen-logo-item">
-      <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/881dc87f-450f-4f2e-9f24-ffa83035dc40/premierelogo.png?content-type=image%2Fpng" alt="Adobe Premiere Pro" loading="lazy" />
-      <span>Adobe Premiere</span>
-    </div>
-    <div class="as-seen-divider"></div>
-    <div class="as-seen-logo-item"><span>Final Cut Pro</span></div>
-    <div class="as-seen-divider"></div>
-    <div class="as-seen-logo-item"><span>CapCut</span></div>
-  </div>
-</div>
 
 <!-- AVATAR CAROUSEL -->
 <section class="avatar-carousel">
