@@ -178,14 +178,16 @@
       text-align: center; color: rgba(255,255,255,.3); font-size: 10px; font-weight: 600;
       letter-spacing: .2em; text-transform: uppercase; margin-bottom: 28px;
     }
-    .avatar-track-wrapper { position: relative; }
-    .avatar-track-wrapper::before, .avatar-track-wrapper::after {
-      content: ''; position: absolute; top: 0; bottom: 0; width: 160px; z-index: 2; pointer-events: none;
+    .avatar-track-wrapper {
+      position: relative; max-width: 700px; margin: 0 auto;
     }
-    .avatar-track-wrapper::before { left: 0; background: linear-gradient(to right, var(--dark) 0%, transparent 100%); }
-    .avatar-track-wrapper::after { right: 0; background: linear-gradient(to left, var(--dark) 0%, transparent 100%); }
+    .avatar-track-wrapper::before, .avatar-track-wrapper::after {
+      content: ''; position: absolute; top: 0; bottom: 0; width: 30%; z-index: 2; pointer-events: none;
+    }
+    .avatar-track-wrapper::before { left: 0; background: linear-gradient(to right, var(--dark) 10%, transparent 100%); }
+    .avatar-track-wrapper::after { right: 0; background: linear-gradient(to left, var(--dark) 10%, transparent 100%); }
     .avatar-track {
-      display: flex; gap: 40px; animation: scrollAvatars 40s linear infinite; width: max-content;
+      display: flex; gap: 48px; animation: scrollAvatars 35s linear infinite; width: max-content;
     }
     .avatar-track:hover { animation-play-state: paused; }
     @keyframes scrollAvatars {
@@ -196,17 +198,17 @@
       display: flex; flex-direction: column; align-items: center; gap: 8px; flex-shrink: 0;
     }
     .avatar-ring {
-      width: 72px; height: 72px; border-radius: 50%; padding: 3px;
+      width: 80px; height: 80px; border-radius: 50%; padding: 3px;
       background: linear-gradient(135deg, var(--orange), #ff7b54, var(--orange-dark));
-      transition: transform .25s, box-shadow .25s;
+      transition: transform .3s, box-shadow .3s;
     }
     .avatar-item:hover .avatar-ring {
-      transform: scale(1.08);
-      box-shadow: 0 0 24px rgba(232,82,42,.3);
+      transform: scale(1.1);
+      box-shadow: 0 0 28px rgba(232,82,42,.35);
     }
     .avatar-ring img {
       width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
-      border: 2px solid var(--dark);
+      border: 3px solid var(--dark);
     }
     .avatar-item span {
       font-size: 11px; color: rgba(255,255,255,.35); font-weight: 500;
@@ -682,8 +684,9 @@
       body { padding-bottom: 70px; }
       .final-cta-img { height: 400px; }
       .avatar-carousel { padding: 40px 0 36px; }
-      .avatar-ring { width: 64px; height: 64px; }
-      .avatar-track { gap: 32px; }
+      .avatar-track-wrapper { max-width: 500px; }
+      .avatar-ring { width: 68px; height: 68px; }
+      .avatar-track { gap: 36px; }
     }
     @media (max-width: 600px) {
       .hero h1 { font-size: clamp(28px, 8vw, 42px); }
@@ -706,9 +709,10 @@
       .slider-section { padding: 72px 24px; }
       .final-cta-img { height: 320px; }
       .final-cta-content h2 { font-size: clamp(24px, 6vw, 38px); }
-      .avatar-ring { width: 56px; height: 56px; }
+      .avatar-track-wrapper { max-width: 360px; }
+      .avatar-ring { width: 60px; height: 60px; }
       .avatar-item span { font-size: 10px; }
-      .avatar-track { gap: 24px; }
+      .avatar-track { gap: 28px; }
       .avatar-carousel-label { font-size: 9px; margin-bottom: 18px; }
       .how-num { width: 48px; height: 48px; font-size: 20px; }
       .faq-q { font-size: 14px; padding: 16px 0; }
