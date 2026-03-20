@@ -180,6 +180,7 @@
     }
     .avatar-track-wrapper {
       position: relative; max-width: 680px; margin: 0 auto; overflow: hidden;
+      padding: 12px 0;
       -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
       mask-image: linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
     }
@@ -242,14 +243,22 @@
     .value-card .value-price { font-size: 13px; color: var(--orange); font-weight: 700; }
 
     /* ── PROMISE SECTION ─────────────────────── */
-    .promise { background: var(--dark); padding: 80px 24px; }
+    .promise { background: var(--dark); padding: 100px 24px 80px; }
     .promise-inner { max-width: 1000px; margin: 0 auto; text-align: center; }
     .promise-inner h2 {
       font-family: 'Fraunces', serif; font-size: clamp(28px, 4vw, 48px); font-weight: 900;
       color: #fff; margin-bottom: 56px;
     }
-    .promise-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-    .promise-item { text-align: center; }
+    .promise-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .promise-item {
+      text-align: center; padding: 40px 28px 36px;
+      background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06);
+      border-radius: 20px; transition: border-color .3s, transform .3s, box-shadow .3s;
+    }
+    .promise-item:hover {
+      border-color: rgba(232,82,42,.3); transform: translateY(-4px);
+      box-shadow: 0 8px 40px rgba(232,82,42,.1), 0 0 60px rgba(232,82,42,.05);
+    }
     .promise-icon {
       width: 56px; height: 56px; margin: 0 auto 20px;
       display: flex; align-items: center; justify-content: center;
@@ -291,12 +300,23 @@
       display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px;
     }
     .play-btn {
-      width: 64px; height: 64px; border-radius: 50%;
-      background: rgba(255,255,255,.12); border: 2px solid rgba(255,255,255,.25);
+      width: 72px; height: 72px; border-radius: 50%;
+      background: rgba(255,255,255,.15); border: 2px solid rgba(255,255,255,.3);
       display: flex; align-items: center; justify-content: center;
-      color: #fff; font-size: 22px; cursor: pointer; transition: all .2s;
+      color: #fff; font-size: 22px; cursor: pointer; transition: all .25s;
+      backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
     }
-    .play-btn:hover { background: var(--orange); border-color: var(--orange); transform: scale(1.08); }
+    .play-btn:hover { background: rgba(255,255,255,.25); border-color: rgba(255,255,255,.5); transform: scale(1.05); }
+    .sqs-controls {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 12px 16px; display: flex; align-items: center; justify-content: space-between;
+      background: linear-gradient(transparent, rgba(0,0,0,.5));
+      pointer-events: none; opacity: 0; transition: opacity .3s;
+    }
+    .fake-player:hover .sqs-controls { opacity: 1; }
+    .sqs-time { font-size: 12px; color: rgba(255,255,255,.7); font-family: 'Inter', sans-serif; font-variant-numeric: tabular-nums; }
+    .sqs-icons { display: flex; gap: 16px; }
+    .sqs-icons svg { width: 18px; height: 18px; color: rgba(255,255,255,.7); }
     .video-label { color: rgba(255,255,255,.3); font-size: 12px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; }
 
     /* ── HOW IT WORKS ────────────────────────── */
@@ -547,7 +567,7 @@
     .testi-ava-emoji { width: 52px; height: 52px; border-radius: 50%; background: #4a8c5c; border: 2px solid rgba(74,140,92,.5); display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: #fff; flex-shrink: 0; }
     .testi-name { font-size: 15px; font-weight: 700; color: #fff; }
     .testi-role { font-size: 12px; color: rgba(255,255,255,.3); margin-top: 2px; }
-    .testi-stars { color: var(--orange); font-size: 12px; letter-spacing: 2px; margin-bottom: 16px; }
+    .testi-stars { color: #f5a623; font-size: 18px; letter-spacing: 3px; margin-bottom: 16px; }
     .testi-q { font-size: 15px; line-height: 1.75; color: rgba(255,255,255,.6); font-style: italic; }
 
     /* ── FAQ ─────────────────────────────────── */
@@ -560,7 +580,7 @@
       width: 100%; display: flex; align-items: center; justify-content: space-between;
       padding: 22px 0; gap: 16px; background: none; border: none; cursor: pointer; text-align: left;
     }
-    .faq-q-text { font-size: 15px; font-weight: 600; color: var(--orange); line-height: 1.4; }
+    .faq-q-text { font-size: 18px; font-weight: 700; color: var(--orange); line-height: 1.4; }
     .faq-icon {
       width: 28px; height: 28px; border-radius: 50%;
       background: rgba(232,82,42,.1); color: var(--orange);
@@ -569,8 +589,8 @@
       transition: transform .25s, background .2s;
     }
     .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--orange); color: #fff; }
-    .faq-a { font-size: 14px; color: var(--muted); line-height: 1.75; max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .25s; }
-    .faq-item.open .faq-a { max-height: 300px; padding-bottom: 22px; }
+    .faq-a { font-size: 15px; color: var(--muted); line-height: 1.8; max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .25s; }
+    .faq-item.open .faq-a { max-height: 400px; padding-bottom: 24px; }
 
     /* ── FINAL CTA ───────────────────────────── */
     .final-cta {
@@ -666,7 +686,8 @@
       .value-stack { padding: 60px 24px 20px; }
       .value-grid { grid-template-columns: repeat(2, 1fr); }
       .promise { padding: 60px 24px; }
-      .promise-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+      .promise-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+      .promise-item { padding: 32px 20px 28px; }
       .plans { padding: 72px 24px; }
       .plans-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
       .plan.featured { transform: scale(1); }
@@ -697,8 +718,9 @@
       .features-header h2 { font-size: clamp(24px, 6vw, 36px); }
       .value-grid { grid-template-columns: 1fr 1fr; }
       .value-stack-header h2 { font-size: clamp(24px, 6vw, 40px); }
-      .promise-grid { grid-template-columns: 1fr; gap: 32px; }
-      .promise-title { font-size: clamp(24px, 6vw, 36px); }
+      .promise-grid { grid-template-columns: 1fr; gap: 16px; }
+      .promise-item { padding: 28px 24px; }
+      .promise-title { font-size: 16px; }
       .stats-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
       .stat-num { font-size: clamp(32px, 8vw, 48px); }
       .footer-nav { gap: 32px; }
@@ -713,7 +735,9 @@
       .avatar-track { gap: 28px; }
       .avatar-carousel-label { font-size: 9px; margin-bottom: 18px; }
       .how-num { width: 48px; height: 48px; font-size: 20px; }
-      .faq-q { font-size: 14px; padding: 16px 0; }
+      .faq-q { padding: 16px 0; }
+      .faq-q-text { font-size: 16px; }
+      .faq-a { font-size: 14px; }
       .testi-card { padding: 24px; }
     }
     @media (max-width: 400px) {
@@ -832,11 +856,19 @@
       <a href="https://alwaysfilmlab.circle.so/checkout/comunidad-evolved-film" target="_blank" class="btn btn-fill">Entra a la comunidad</a>
     </div>
     <div class="intro-video fade-up" id="demo" style="position:relative;">
-      <div class="fake-player" id="fakePlayer" onclick="loadVideo()" style="position:relative; width:100%; aspect-ratio:16/9; cursor:pointer; border-radius:20px; overflow:hidden;">
+      <div class="fake-player" id="fakePlayer" onclick="loadVideo()" style="position:relative; width:100%; aspect-ratio:16/9; cursor:pointer; border-radius:16px; overflow:hidden;">
         <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2734af12-ba79-456b-9fcf-79d0cec3d828/Frame+410%2780.jpg?content-type=image%2Fjpeg" alt="Always Film Lab Demo" style="width:100%; height:100%; object-fit:cover; display:block;" loading="lazy" />
-        <div style="position:absolute; inset:0; background:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; transition:background 0.2s;" onmouseover="this.style.background='rgba(0,0,0,0.45)'" onmouseout="this.style.background='rgba(0,0,0,0.3)'">
-          <div style="width:72px; height:72px; border-radius:50%; background:rgba(232,82,42,0.9); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 32px rgba(0,0,0,0.4); transition:transform 0.2s;">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+        <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center;">
+          <div class="play-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="6,3 20,12 6,21"/></svg>
+          </div>
+        </div>
+        <div class="sqs-controls">
+          <span class="sqs-time">00:00 / 00:58</span>
+          <div class="sqs-icons">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
           </div>
         </div>
       </div>
@@ -1066,11 +1098,19 @@
     <h2>¿No sabes por dónde empezar?</h2>
     <p>Este tutorial gratuito te enseña las bases del color grading cinematográfico desde cero. Es el primer paso antes de entrar a la comunidad.</p>
     <div class="tutorial-video">
-      <a href="https://www.youtube.com/watch?v=naJlbJ2XVss&t=188s" target="_blank" class="tutorial-fake-player" style="position:relative; display:block; width:100%; height:100%; min-height:240px; cursor:pointer; text-decoration:none; overflow:hidden;">
+      <a href="https://www.youtube.com/watch?v=naJlbJ2XVss&t=188s" target="_blank" class="tutorial-fake-player fake-player" style="position:relative; display:block; width:100%; aspect-ratio:16/9; cursor:pointer; text-decoration:none; overflow:hidden; border-radius:16px;">
         <img src="https://img.youtube.com/vi/naJlbJ2XVss/maxresdefault.jpg" alt="Tutorial PowerGrade" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" />
-        <div style="position:absolute; inset:0; background:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; transition:background 0.2s;" onmouseover="this.style.background='rgba(0,0,0,0.45)'" onmouseout="this.style.background='rgba(0,0,0,0.3)'">
-          <div style="width:72px; height:72px; border-radius:50%; background:rgba(232,82,42,0.9); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 32px rgba(0,0,0,0.4); transition:transform 0.2s;">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+        <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center;">
+          <div class="play-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="6,3 20,12 6,21"/></svg>
+          </div>
+        </div>
+        <div class="sqs-controls">
+          <span class="sqs-time">00:00 / 05:02</span>
+          <div class="sqs-icons">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
           </div>
         </div>
       </a>
@@ -1195,15 +1235,16 @@
       <span class="label" style="justify-content:center; display:flex;">Resuelve tus dudas</span>
       <h2>Preguntas frecuentes</h2>
     </div>
-    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Qué incluye mi acceso a AlwaysFilmLab?</span><span class="faq-icon">+</span></button><div class="faq-a">Según el plan que elijas, tendrás acceso a la comunidad privada en Circle.so, el PowerGrade profesional evolved.film v.1, LUTs de conversión, curso completo de color, workshops mensuales en directo y mucho más. Consulta cada plan para ver el detalle completo.</div></div>
-    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿El PowerGrade y los LUTs funcionan en cualquier programa de edición?</span><span class="faq-icon">+</span></button><div class="faq-a">El PowerGrade (.drx) es compatible con DaVinci Resolve. Los LUTs funcionan en DaVinci Resolve, Adobe Premiere, Final Cut Pro y cualquier software que admita archivos .cube o .3dl.</div></div>
-    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Esto funciona con mi cámara?</span><span class="faq-icon">+</span></button><div class="faq-a">Sí. Incluimos LUTs de conversión para LOG, SLOG-3 y APPLE LOG, que cubren la mayoría de cámaras Sony, Canon, Fujifilm y Apple. Si tienes dudas con tu cámara específica, puedes preguntarlo en la comunidad.</div></div>
-    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Necesito experiencia previa en color o edición para entrar?</span><span class="faq-icon">+</span></button><div class="faq-a">Para nada. El curso empieza desde cero y está diseñado para que cualquier creador, sin importar su nivel, pueda aprender a aplicar color cinematográfico en sus vídeos.</div></div>
-    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Cómo funciona el acceso a los productos que ya compré?</span><span class="faq-icon">+</span></button><div class="faq-a">Si ya tienes acceso a Essential o Evolved Film, lo encontrarás en tu cuenta de Circle.so. Si haces upgrade a un plan superior, el precio se descuenta automáticamente. Escríbenos si tienes algún problema.</div></div>
-    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Hay actualizaciones incluidas?</span><span class="faq-icon">+</span></button><div class="faq-a">Sí. Todas las actualizaciones futuras de Evolved Film están incluidas sin coste adicional. El producto crece y tú te beneficias automáticamente.</div></div>
-    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Puedo personalizar los PowerGrades y LUTs para mis proyectos?</span><span class="faq-icon">+</span></button><div class="faq-a">Totalmente. El PowerGrade es un punto de partida profesional que puedes ajustar a tu gusto. En el curso te enseñamos exactamente cómo adaptarlo a cada tipo de plano y cámara.</div></div>
-    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Cómo funcionan los workshops y mentorías?</span><span class="faq-icon">+</span></button><div class="faq-a">Los workshops son sesiones grupales mensuales en directo donde Joan enseña y responde en tiempo real. Las mentorías 1:1 del plan Time to Evolve son llamadas privadas de 60 min exclusivas para ti.</div></div>
-    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Tendré soporte si me bloqueo con algo?</span><span class="faq-icon">+</span></button><div class="faq-a">Sí. Dentro de la comunidad puedes preguntar lo que necesites y el equipo o la propia comunidad te ayudarán. También puedes escribirnos directamente a alwaysjoan@alwaysfilmlab.com.</div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Qué incluye mi acceso a AlwaysFilmLab?</span><span class="faq-icon">+</span></button><div class="faq-a">Tendrás acceso a cursos de color, PowerGrades, LUTs, workshops en vivo, mentorías grupales, herramientas creativas y una comunidad activa de creadores. Todo centralizado en un solo espacio.</div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿El PowerGrade y los LUTs funcionan en cualquier programa de edición?</span><span class="faq-icon">+</span></button><div class="faq-a">El PowerGrade <strong>solo funciona en DaVinci Resolve</strong>, porque está construido con nodos. Pero los <strong>LUTs funcionan en cualquier programa (incluidos en el PowerGrade)</strong>: Premiere Pro, Final Cut, CapCut, DaVinci, Lumafusion, etc.</div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Esto funciona con mi cámara?</span><span class="faq-icon">+</span></button><div class="faq-a">Sí. Sony, Canon, Panasonic, Fujifilm, Nikon, iPhone, drones... Mientras grabes en LOG, Rec.709 o el perfil estándar de tu cámara, todo funciona.</div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Necesito experiencia previa en color o edición para entrar?</span><span class="faq-icon">+</span></button><div class="faq-a">No. AlwaysFilmLab está diseñado para todos los niveles: desde principiantes que nunca han usado un nodo, hasta coloristas avanzados que buscan optimizar su flujo de trabajo.</div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Cómo funciona el acceso a los productos que ya compré (Essential LUT o Evolved Film)?</span><span class="faq-icon">+</span></button><div class="faq-a">Si ya compraste productos, recibirás acceso automático a la comunidad en la categoría que te corresponde (Essential Creators, Evolved Film o Time to Evolve). No necesitas volver a comprarlos.</div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Hay actualizaciones incluidas?</span><span class="faq-icon">+</span></button><div class="faq-a">Sí. Cada mes añadimos nuevos tutoriales, herramientas, LUTs y sesiones. Siempre tendrás acceso a la versión más actualizada sin pagar de más.</div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Puedo personalizar los PowerGrades y LUTs para mis proyectos?</span><span class="faq-icon">+</span></button><div class="faq-a">Sí. Todos los PowerGrades y LUTs están pensados para ser flexibles. Puedes modificar nodos, parámetros y looks para crear tu propio estilo único.</div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Tendré acceso desde cualquier dispositivo?</span><span class="faq-icon">+</span></button><div class="faq-a">Sí. Puedes acceder a la comunidad y a todos los recursos desde ordenador, tablet o móvil. Los archivos descargables (como LUTs y PowerGrades) se pueden usar en cualquier software compatible y con la APP de Circle de la app store.</div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Cómo funcionan los workshops y mentorías?</span><span class="faq-icon">+</span></button><div class="faq-a">Cada cierto tiempo organizamos workshops en vivo donde podrás aprender nuevas técnicas, resolver dudas y compartir tu progreso. Además, en los niveles avanzados hay mentorías más personalizadas.</div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Tendré soporte si me bloqueo con algo?</span><span class="faq-icon">+</span></button><div class="faq-a">Sí. Puedes escribir en la comunidad o enviarme tu duda — intento responder siempre lo antes posible.</div></div>
   </div>
 </section>
 
