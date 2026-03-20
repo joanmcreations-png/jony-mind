@@ -171,21 +171,21 @@
 
     /* ── AVATAR CAROUSEL ─────────────────────── */
     .avatar-carousel {
-      background: var(--dark); padding: 56px 0 48px; overflow: hidden;
+      background: var(--dark); padding: 48px 0 40px; overflow: hidden;
       border-top: 1px solid rgba(255,255,255,.06);
     }
     .avatar-carousel-label {
-      text-align: center; color: rgba(255,255,255,.35); font-size: 11px; font-weight: 700;
-      letter-spacing: .18em; text-transform: uppercase; margin-bottom: 32px;
+      text-align: center; color: rgba(255,255,255,.3); font-size: 10px; font-weight: 600;
+      letter-spacing: .2em; text-transform: uppercase; margin-bottom: 28px;
     }
     .avatar-track-wrapper { position: relative; }
     .avatar-track-wrapper::before, .avatar-track-wrapper::after {
-      content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2;
+      content: ''; position: absolute; top: 0; bottom: 0; width: 160px; z-index: 2; pointer-events: none;
     }
-    .avatar-track-wrapper::before { left: 0; background: linear-gradient(to right, var(--dark), transparent); }
-    .avatar-track-wrapper::after { right: 0; background: linear-gradient(to left, var(--dark), transparent); }
+    .avatar-track-wrapper::before { left: 0; background: linear-gradient(to right, var(--dark) 0%, transparent 100%); }
+    .avatar-track-wrapper::after { right: 0; background: linear-gradient(to left, var(--dark) 0%, transparent 100%); }
     .avatar-track {
-      display: flex; gap: 48px; animation: scrollAvatars 30s linear infinite; width: max-content;
+      display: flex; gap: 40px; animation: scrollAvatars 40s linear infinite; width: max-content;
     }
     .avatar-track:hover { animation-play-state: paused; }
     @keyframes scrollAvatars {
@@ -193,23 +193,26 @@
       100% { transform: translateX(-50%); }
     }
     .avatar-item {
-      display: flex; flex-direction: column; align-items: center; gap: 10px; flex-shrink: 0;
+      display: flex; flex-direction: column; align-items: center; gap: 8px; flex-shrink: 0;
     }
-    .avatar-item img {
-      width: 80px; height: 80px; border-radius: 50%; object-fit: cover;
-      border: 3px solid rgba(232,82,42,.4);
-      box-shadow: 0 0 0 3px rgba(232,82,42,.1);
-      transition: border-color .2s, transform .2s, box-shadow .2s;
+    .avatar-ring {
+      width: 72px; height: 72px; border-radius: 50%; padding: 3px;
+      background: linear-gradient(135deg, var(--orange), #ff7b54, var(--orange-dark));
+      transition: transform .25s, box-shadow .25s;
     }
-    .avatar-item:hover img {
-      border-color: var(--orange); transform: scale(1.1);
-      box-shadow: 0 0 20px rgba(232,82,42,.25);
+    .avatar-item:hover .avatar-ring {
+      transform: scale(1.08);
+      box-shadow: 0 0 24px rgba(232,82,42,.3);
+    }
+    .avatar-ring img {
+      width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
+      border: 2px solid var(--dark);
     }
     .avatar-item span {
-      font-size: 12px; color: rgba(255,255,255,.45); font-weight: 500;
+      font-size: 11px; color: rgba(255,255,255,.35); font-weight: 500;
       white-space: nowrap; transition: color .2s;
     }
-    .avatar-item:hover span { color: rgba(255,255,255,.9); }
+    .avatar-item:hover span { color: rgba(255,255,255,.85); }
 
     /* ── VALUE STACK ─────────────────────────── */
     .value-stack { background: var(--cream); padding: 80px 24px 20px; }
@@ -679,8 +682,8 @@
       body { padding-bottom: 70px; }
       .final-cta-img { height: 400px; }
       .avatar-carousel { padding: 40px 0 36px; }
-      .avatar-item img { width: 70px; height: 70px; }
-      .avatar-track { gap: 36px; }
+      .avatar-ring { width: 64px; height: 64px; }
+      .avatar-track { gap: 32px; }
     }
     @media (max-width: 600px) {
       .hero h1 { font-size: clamp(28px, 8vw, 42px); }
@@ -703,10 +706,10 @@
       .slider-section { padding: 72px 24px; }
       .final-cta-img { height: 320px; }
       .final-cta-content h2 { font-size: clamp(24px, 6vw, 38px); }
-      .avatar-item img { width: 60px; height: 60px; border-width: 2px; }
+      .avatar-ring { width: 56px; height: 56px; }
       .avatar-item span { font-size: 10px; }
-      .avatar-track { gap: 28px; }
-      .avatar-carousel-label { font-size: 10px; margin-bottom: 20px; }
+      .avatar-track { gap: 24px; }
+      .avatar-carousel-label { font-size: 9px; margin-bottom: 18px; }
       .how-num { width: 48px; height: 48px; font-size: 20px; }
       .faq-q { font-size: 14px; padding: 16px 0; }
       .testi-card { padding: 24px; }
@@ -782,23 +785,31 @@
   <div class="avatar-carousel-label">Creadores que ya confían en AlwaysFilmLab</div>
   <div class="avatar-track-wrapper">
     <div class="avatar-track" id="avatarTrack">
-      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8b0d0c4f-8f9f-41ea-b6c1-43caedd1de13/516235689_18033027560678759_961178840817833607_n.jpg?content-type=image%2Fjpeg" alt="lacapsularodante" loading="lazy" /><span>@lacapsularodante</span></div>
-      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/fb3ccd45-1302-43eb-bedd-5223a50e63da/449649960_1489366201945213_3772254378393202287_n.jpg?content-type=image%2Fjpeg" alt="madebyizan" loading="lazy" /><span>@madebyizan</span></div>
-      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2360483e-7ecb-440a-b25b-6269a05f48d3/539051284_17972632340923305_4889991602022121833_n.jpg?content-type=image%2Fjpeg" alt="Nxs Films" loading="lazy" /><span>@nxsfilms</span></div>
-      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/af7b0d84-9fdb-4c54-9410-b90112f89eae/475973132_539512095383241_4793932967821196491_n.jpg?content-type=image%2Fjpeg" alt="guaguell" loading="lazy" /><span>@guaguell</span></div>
-      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8b0d0c4f-8f9f-41ea-b6c1-43caedd1de13/516235689_18033027560678759_961178840817833607_n.jpg?content-type=image%2Fjpeg" alt="lacapsularodante" loading="lazy" /><span>@marcrodri</span></div>
-      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/fb3ccd45-1302-43eb-bedd-5223a50e63da/449649960_1489366201945213_3772254378393202287_n.jpg?content-type=image%2Fjpeg" alt="creator" loading="lazy" /><span>@danielcine</span></div>
-      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2360483e-7ecb-440a-b25b-6269a05f48d3/539051284_17972632340923305_4889991602022121833_n.jpg?content-type=image%2Fjpeg" alt="creator" loading="lazy" /><span>@filmbypaul</span></div>
-      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/af7b0d84-9fdb-4c54-9410-b90112f89eae/475973132_539512095383241_4793932967821196491_n.jpg?content-type=image%2Fjpeg" alt="creator" loading="lazy" /><span>@alvarocuts</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8b0d0c4f-8f9f-41ea-b6c1-43caedd1de13/516235689_18033027560678759_961178840817833607_n.jpg?content-type=image%2Fjpeg" alt="danielcine" loading="lazy" /></div><span>@danielcine</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/fb3ccd45-1302-43eb-bedd-5223a50e63da/449649960_1489366201945213_3772254378393202287_n.jpg?content-type=image%2Fjpeg" alt="filmbypaul" loading="lazy" /></div><span>@filmbypaul</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/af7b0d84-9fdb-4c54-9410-b90112f89eae/475973132_539512095383241_4793932967821196491_n.jpg?content-type=image%2Fjpeg" alt="alvarocuts" loading="lazy" /></div><span>@alvarocuts</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8b0d0c4f-8f9f-41ea-b6c1-43caedd1de13/516235689_18033027560678759_961178840817833607_n.jpg?content-type=image%2Fjpeg" alt="lacapsularodante" loading="lazy" /></div><span>@lacapsularodante</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/fb3ccd45-1302-43eb-bedd-5223a50e63da/449649960_1489366201945213_3772254378393202287_n.jpg?content-type=image%2Fjpeg" alt="madebyizan" loading="lazy" /></div><span>@madebyizan</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2360483e-7ecb-440a-b25b-6269a05f48d3/539051284_17972632340923305_4889991602022121833_n.jpg?content-type=image%2Fjpeg" alt="nxsfilms" loading="lazy" /></div><span>@nxsfilms</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/af7b0d84-9fdb-4c54-9410-b90112f89eae/475973132_539512095383241_4793932967821196491_n.jpg?content-type=image%2Fjpeg" alt="guaguell" loading="lazy" /></div><span>@guaguell</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8b0d0c4f-8f9f-41ea-b6c1-43caedd1de13/516235689_18033027560678759_961178840817833607_n.jpg?content-type=image%2Fjpeg" alt="marcrodri" loading="lazy" /></div><span>@marcrodri</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2360483e-7ecb-440a-b25b-6269a05f48d3/539051284_17972632340923305_4889991602022121833_n.jpg?content-type=image%2Fjpeg" alt="tripiana.media" loading="lazy" /></div><span>@tripiana.media</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/fb3ccd45-1302-43eb-bedd-5223a50e63da/449649960_1489366201945213_3772254378393202287_n.jpg?content-type=image%2Fjpeg" alt="chriss.boustedt" loading="lazy" /></div><span>@chriss.boustedt</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/af7b0d84-9fdb-4c54-9410-b90112f89eae/475973132_539512095383241_4793932967821196491_n.jpg?content-type=image%2Fjpeg" alt="ellieksnow" loading="lazy" /></div><span>@ellieksnow</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2360483e-7ecb-440a-b25b-6269a05f48d3/539051284_17972632340923305_4889991602022121833_n.jpg?content-type=image%2Fjpeg" alt="jasoncoopensen" loading="lazy" /></div><span>@jasoncoopensen</span></div>
       <!-- Duplicated for infinite loop -->
-      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8b0d0c4f-8f9f-41ea-b6c1-43caedd1de13/516235689_18033027560678759_961178840817833607_n.jpg?content-type=image%2Fjpeg" alt="lacapsularodante" loading="lazy" /><span>@lacapsularodante</span></div>
-      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/fb3ccd45-1302-43eb-bedd-5223a50e63da/449649960_1489366201945213_3772254378393202287_n.jpg?content-type=image%2Fjpeg" alt="madebyizan" loading="lazy" /><span>@madebyizan</span></div>
-      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2360483e-7ecb-440a-b25b-6269a05f48d3/539051284_17972632340923305_4889991602022121833_n.jpg?content-type=image%2Fjpeg" alt="Nxs Films" loading="lazy" /><span>@nxsfilms</span></div>
-      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/af7b0d84-9fdb-4c54-9410-b90112f89eae/475973132_539512095383241_4793932967821196491_n.jpg?content-type=image%2Fjpeg" alt="guaguell" loading="lazy" /><span>@guaguell</span></div>
-      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8b0d0c4f-8f9f-41ea-b6c1-43caedd1de13/516235689_18033027560678759_961178840817833607_n.jpg?content-type=image%2Fjpeg" alt="creator" loading="lazy" /><span>@marcrodri</span></div>
-      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/fb3ccd45-1302-43eb-bedd-5223a50e63da/449649960_1489366201945213_3772254378393202287_n.jpg?content-type=image%2Fjpeg" alt="creator" loading="lazy" /><span>@danielcine</span></div>
-      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2360483e-7ecb-440a-b25b-6269a05f48d3/539051284_17972632340923305_4889991602022121833_n.jpg?content-type=image%2Fjpeg" alt="creator" loading="lazy" /><span>@filmbypaul</span></div>
-      <div class="avatar-item"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/af7b0d84-9fdb-4c54-9410-b90112f89eae/475973132_539512095383241_4793932967821196491_n.jpg?content-type=image%2Fjpeg" alt="creator" loading="lazy" /><span>@alvarocuts</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8b0d0c4f-8f9f-41ea-b6c1-43caedd1de13/516235689_18033027560678759_961178840817833607_n.jpg?content-type=image%2Fjpeg" alt="danielcine" loading="lazy" /></div><span>@danielcine</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/fb3ccd45-1302-43eb-bedd-5223a50e63da/449649960_1489366201945213_3772254378393202287_n.jpg?content-type=image%2Fjpeg" alt="filmbypaul" loading="lazy" /></div><span>@filmbypaul</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/af7b0d84-9fdb-4c54-9410-b90112f89eae/475973132_539512095383241_4793932967821196491_n.jpg?content-type=image%2Fjpeg" alt="alvarocuts" loading="lazy" /></div><span>@alvarocuts</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8b0d0c4f-8f9f-41ea-b6c1-43caedd1de13/516235689_18033027560678759_961178840817833607_n.jpg?content-type=image%2Fjpeg" alt="lacapsularodante" loading="lazy" /></div><span>@lacapsularodante</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/fb3ccd45-1302-43eb-bedd-5223a50e63da/449649960_1489366201945213_3772254378393202287_n.jpg?content-type=image%2Fjpeg" alt="madebyizan" loading="lazy" /></div><span>@madebyizan</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2360483e-7ecb-440a-b25b-6269a05f48d3/539051284_17972632340923305_4889991602022121833_n.jpg?content-type=image%2Fjpeg" alt="nxsfilms" loading="lazy" /></div><span>@nxsfilms</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/af7b0d84-9fdb-4c54-9410-b90112f89eae/475973132_539512095383241_4793932967821196491_n.jpg?content-type=image%2Fjpeg" alt="guaguell" loading="lazy" /></div><span>@guaguell</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8b0d0c4f-8f9f-41ea-b6c1-43caedd1de13/516235689_18033027560678759_961178840817833607_n.jpg?content-type=image%2Fjpeg" alt="marcrodri" loading="lazy" /></div><span>@marcrodri</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2360483e-7ecb-440a-b25b-6269a05f48d3/539051284_17972632340923305_4889991602022121833_n.jpg?content-type=image%2Fjpeg" alt="tripiana.media" loading="lazy" /></div><span>@tripiana.media</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/fb3ccd45-1302-43eb-bedd-5223a50e63da/449649960_1489366201945213_3772254378393202287_n.jpg?content-type=image%2Fjpeg" alt="chriss.boustedt" loading="lazy" /></div><span>@chriss.boustedt</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/af7b0d84-9fdb-4c54-9410-b90112f89eae/475973132_539512095383241_4793932967821196491_n.jpg?content-type=image%2Fjpeg" alt="ellieksnow" loading="lazy" /></div><span>@ellieksnow</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2360483e-7ecb-440a-b25b-6269a05f48d3/539051284_17972632340923305_4889991602022121833_n.jpg?content-type=image%2Fjpeg" alt="jasoncoopensen" loading="lazy" /></div><span>@jasoncoopensen</span></div>
     </div>
   </div>
 </section>
