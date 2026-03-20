@@ -533,7 +533,7 @@
     .testimonials h2 { font-family: 'Fraunces', serif; font-size: clamp(28px, 4vw, 52px); font-weight: 900; color: #fff; margin-bottom: 16px; }
     .testi-subtitle { color: rgba(255,255,255,.35); font-size: 16px; margin-bottom: 64px; }
     .testi-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
       max-width: 1080px; margin: 0 auto;
     }
     .testi-card {
@@ -544,7 +544,7 @@
     .testi-card:hover { border-color: rgba(232,82,42,.3); transform: translateY(-3px); }
     .testi-card-top { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
     .testi-ava-img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 2px solid rgba(232,82,42,.25); }
-    .testi-ava-emoji { width: 52px; height: 52px; border-radius: 50%; background: #222; border: 2px solid rgba(232,82,42,.25); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+    .testi-ava-emoji { width: 52px; height: 52px; border-radius: 50%; background: #4a8c5c; border: 2px solid rgba(74,140,92,.5); display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: #fff; flex-shrink: 0; }
     .testi-name { font-size: 15px; font-weight: 700; color: #fff; }
     .testi-role { font-size: 12px; color: rgba(255,255,255,.3); margin-top: 2px; }
     .testi-stars { color: var(--orange); font-size: 12px; letter-spacing: 2px; margin-bottom: 16px; }
@@ -672,7 +672,7 @@
       .plan.featured { transform: scale(1); }
       .plan.featured:hover { transform: translateY(-5px); }
       .stats-inner { grid-template-columns: repeat(2,1fr); }
-      .testi-grid { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: repeat(2, 1fr); }
       .tutorial { padding: 72px 24px; }
       .footer-main { padding: 48px 24px 36px; }
       .footer-top-row { flex-direction: column; gap: 32px; }
@@ -693,6 +693,7 @@
       .intro-checklist li { font-size: 14px; }
       .fake-player { min-height: 220px !important; }
       .features-grid { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
       .features-header h2 { font-size: clamp(24px, 6vw, 36px); }
       .value-grid { grid-template-columns: 1fr 1fr; }
       .value-stack-header h2 { font-size: clamp(24px, 6vw, 40px); }
@@ -1109,10 +1110,10 @@
     <div class="testi-card fade-up">
       <div class="testi-card-top">
         <img class="testi-ava-img" src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8b0d0c4f-8f9f-41ea-b6c1-43caedd1de13/516235689_18033027560678759_961178840817833607_n.jpg?content-type=image%2Fjpeg" alt="lacapsularodante" loading="lazy" />
-        <div><div class="testi-name">@lacapsularodante</div><div class="testi-role">Creador digital</div></div>
+        <div><div class="testi-name">@lacapsularodante</div><div class="testi-role">Creadora de contenido</div></div>
       </div>
       <div class="testi-stars">★★★★★</div>
-      <p class="testi-q">"El powergrade es una herramienta potentísima, pero no es solo eso. El cariño que le pones a cada tutorial es brutal y se aprende muchísimo. Totalmente recomendado."</p>
+      <p class="testi-q">"El powergrade es una herramienta potentísima, pero no es solo eso. El cariño que le pones a cada tutorial es brutal y se aprende muchísimo!"</p>
     </div>
     <div class="testi-card fade-up">
       <div class="testi-card-top">
@@ -1120,7 +1121,7 @@
         <div><div class="testi-name">madebyizan</div><div class="testi-role">Clothing & Fashion Designer</div></div>
       </div>
       <div class="testi-stars">★★★★★</div>
-      <p class="testi-q">"Siempre vi el color grading en DaVinci como algo complejo, pero desde que me uní a Evolved Film lo aplico en todos mis vídeos. Ha sido un auténtico game changer para mi canal."</p>
+      <p class="testi-q">"Siempre vi el color grading en DaVinci como algo complejo, pero desde que me uní a Evolved Film he aprendido muchísimo y ya lo aplico en mis vídeos. Ha sido un auténtico game changer para mi canal."</p>
     </div>
     <div class="testi-card fade-up">
       <div class="testi-card-top">
@@ -1128,15 +1129,31 @@
         <div><div class="testi-name">Nxs Films</div><div class="testi-role">Videógrafo profesional</div></div>
       </div>
       <div class="testi-stars">★★★★★</div>
-      <p class="testi-q">"Este powergrade ha mejorado la calidad audiovisual tanto de mis vídeos personales como profesionales. Mis clientes siempre quedan sorprendidos con el resultado."</p>
+      <p class="testi-q">"Este powergrade ha mejorado la calidad audiovisual tanto de mis vídeos personales como profesionales."</p>
     </div>
     <div class="testi-card fade-up">
       <div class="testi-card-top">
-        <img class="testi-ava-img" src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/af7b0d84-9fdb-4c54-9410-b90112f89eae/475973132_539512095383241_4793932967821196491_n.jpg?content-type=image%2Fjpeg" alt="guaguell" loading="lazy" />
-        <div><div class="testi-name">@guaguell</div><div class="testi-role">Creador de contenido</div></div>
+        <img class="testi-ava-img" src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/af7b0d84-9fdb-4c54-9410-b90112f89eae/475973132_539512095383241_4793932967821196491_n.jpg?content-type=image%2Fjpeg" alt="guaguell_" loading="lazy" />
+        <div><div class="testi-name">guaguell_</div><div class="testi-role">Tech & Filmmaking</div></div>
       </div>
       <div class="testi-stars">★★★★★</div>
-      <p class="testi-q">"Desde que entré no he parado de aprender. Los workshops en directo son una pasada y el feedback de Joan vale su peso en oro. Lo recomiendo sin dudarlo."</p>
+      <p class="testi-q">"Ya con varios clicks ha sido una locura. Siento que para los que empezamos con Davinci sería bueno. Se nota mucho como lo has trabajado."</p>
+    </div>
+    <div class="testi-card fade-up">
+      <div class="testi-card-top">
+        <div class="testi-ava-emoji">SA</div>
+        <div><div class="testi-name">Sebastian Alzate</div><div class="testi-role">Filmmaker</div></div>
+      </div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-q">"Este PowerGrade me ayudó a darle un look cinematográfico a mis vídeos."</p>
+    </div>
+    <div class="testi-card fade-up">
+      <div class="testi-card-top">
+        <img class="testi-ava-img" src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8bcd20cd-a19e-40d5-91c3-a9af2a021846/unnamed.jpg?content-type=image%2Fjpeg" alt="Erick Leon" loading="lazy" />
+        <div><div class="testi-name">Erick Leon</div><div class="testi-role">Creador de contenido</div></div>
+      </div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-q">"Todo muy bien. Joan la verdad es que me parece increíble, creo que para personas que están empezando con Davinci es perfecto."</p>
     </div>
   </div>
 </section>
