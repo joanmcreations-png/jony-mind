@@ -904,6 +904,27 @@
         <p>Ajusta el PowerGrade a tu cámara con los LUTs de conversión incluidos. Listo. Tu vídeo, como una película.</p>
       </div>
     </div>
+    <div class="how-video fade-up" style="max-width:800px; margin:56px auto 0;">
+      <div class="fake-player" id="fakePlayerHow" onclick="loadHowVideo()" style="position:relative; width:100%; aspect-ratio:16/9; cursor:pointer; border-radius:16px; overflow:hidden;">
+        <img src="https://img.youtube.com/vi/wiuByfUr954/maxresdefault.jpg" alt="Cómo usar el PowerGrade en 5 minutos" style="width:100%; height:100%; object-fit:cover; display:block;" loading="lazy" />
+        <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center;">
+          <div class="play-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="6,3 20,12 6,21"/></svg>
+          </div>
+        </div>
+        <div class="sqs-controls">
+          <span class="sqs-time">00:00 / 05:00</span>
+          <div class="sqs-icons">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+          </div>
+        </div>
+      </div>
+      <div id="videoIframeHow" style="display:none; width:100%; aspect-ratio:16/9; border-radius:16px; overflow:hidden;">
+        <iframe src="" id="ytIframeHow" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; height:100%; display:block; border:none;"></iframe>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1326,6 +1347,12 @@
     const wrapper = document.getElementById('videoIframe');
     wrapper.style.display = 'block';
     document.getElementById('ytIframe').src = 'https://www.youtube-nocookie.com/embed/9yIhWLxn2mc?autoplay=1&modestbranding=1&rel=0&vq=hd1080';
+  }
+  function loadHowVideo() {
+    document.getElementById('fakePlayerHow').style.display = 'none';
+    const wrapper = document.getElementById('videoIframeHow');
+    wrapper.style.display = 'block';
+    document.getElementById('ytIframeHow').src = 'https://www.youtube-nocookie.com/embed/wiuByfUr954?autoplay=1&modestbranding=1&rel=0&vq=hd1080';
   }
 
   // ── Before/After slider
