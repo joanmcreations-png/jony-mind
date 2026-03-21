@@ -516,33 +516,33 @@
     .plans-header h2 { font-family: 'Fraunces', serif; font-size: clamp(30px, 4vw, 50px); font-weight: 900; color: #fff; margin-bottom: 12px; }
     .plans-header p { color: rgba(255,255,255,.5); font-size: 16px; max-width: 480px; margin: 0 auto; }
 
-    .plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1060px; margin: 0 auto; }
+    .plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
     .plan {
-      background: rgba(255,255,255,.05); border-radius: 20px; padding: 36px 30px;
-      border: 1px solid rgba(255,255,255,.1); display: flex; flex-direction: column;
-      transition: transform .2s, box-shadow .2s; position: relative; overflow: hidden;
+      background: rgba(255,255,255,.04); border-radius: 20px; padding: 40px 32px;
+      border: 1px solid rgba(255,255,255,.08); display: flex; flex-direction: column;
+      transition: transform .3s cubic-bezier(.4,0,.2,1), box-shadow .3s; position: relative; overflow: hidden;
     }
-    .plan:hover { transform: translateY(-5px); box-shadow: 0 24px 56px rgba(0,0,0,.3); }
+    .plan:hover { transform: translateY(-6px); box-shadow: 0 24px 56px rgba(0,0,0,.4); }
     .plan .plan-name { color: #fff; }
     .plan .plan-price { color: #fff; }
     .plan .plan-includes { color: rgba(255,255,255,.4); }
     .plan .plan-divider { background: rgba(255,255,255,.08); }
-    .plan .plan-features li { color: rgba(255,255,255,.7); border-bottom-color: rgba(255,255,255,.05); }
-    .plan .plan-features li::before { background: rgba(232,82,42,.15); color: var(--orange); }
+    .plan .plan-features li { color: rgba(255,255,255,.65); border-bottom-color: rgba(255,255,255,.05); }
+    .plan .plan-features li::before { background: rgba(232,82,42,.12); color: var(--orange); }
 
     /* ── FEATURED (Evolved Film) ── */
     .plan.featured {
-      background: var(--dark);
-      border-color: rgba(232,82,42,0.4);
-      box-shadow: 0 0 0 1px rgba(232,82,42,0.15), 0 0 60px rgba(232,82,42,0.1), 0 32px 80px rgba(0,0,0,0.25);
-      transform: scale(1.04);
+      background: linear-gradient(170deg, rgba(232,82,42,.08) 0%, rgba(15,15,15,1) 40%);
+      border-color: rgba(232,82,42,0.5);
+      box-shadow: 0 0 0 1px rgba(232,82,42,0.15), 0 0 80px rgba(232,82,42,0.12), 0 32px 80px rgba(0,0,0,0.3);
+      transform: scale(1.05);
     }
-    .plan.featured:hover { transform: scale(1.04) translateY(-5px); }
+    .plan.featured:hover { transform: scale(1.05) translateY(-6px); box-shadow: 0 0 0 1px rgba(232,82,42,0.2), 0 0 100px rgba(232,82,42,0.15), 0 40px 100px rgba(0,0,0,0.4); }
     .plan.featured::before {
       content: 'MÁS POPULAR'; position: absolute; top: 18px; right: 18px;
       background: var(--orange); color: #fff; font-size: 9px; font-weight: 700; letter-spacing: .1em;
-      padding: 4px 10px; border-radius: 100px;
+      padding: 5px 12px; border-radius: 100px;
     }
     .plan-includes { font-size: 13px; color: var(--muted); font-weight: 600; margin-bottom: 12px; }
     .plan.featured .plan-includes { color: rgba(255,255,255,.45); }
@@ -578,14 +578,14 @@
     .plan-tag { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
     .plan-name { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 900; color: var(--dark); margin-bottom: 4px; }
     .plan.featured .plan-name { color: #fff; }
-    .plan-pricing { margin: 12px 0 18px; display: flex; align-items: baseline; gap: 4px; flex-wrap: wrap; }
-    .plan-price { font-size: 46px; font-weight: 900; color: var(--dark); line-height: 1; }
-    .plan.featured .plan-price { color: #fff; }
-    .plan-price-orig { font-size: 18px; text-decoration: line-through; color: var(--muted); margin-right: 2px; }
+    .plan-pricing { margin: 16px 0 20px; display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
+    .plan-price { font-size: 52px; font-weight: 900; color: var(--dark); line-height: 1; }
+    .plan.featured .plan-price { color: #fff; font-size: 56px; }
+    .plan-price-orig { font-size: 16px; text-decoration: line-through; color: rgba(255,255,255,.25); margin-right: 2px; }
     .plan-price-period { font-size: 14px; color: var(--muted); }
     .plan.featured .plan-price-period { color: rgba(255,255,255,.35); }
-    .plan-badge { display: inline-block; background: rgba(232,82,42,.1); color: var(--orange); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 100px; margin-bottom: 18px; }
-    .plan.featured .plan-badge { background: rgba(232,82,42,.2); }
+    .plan-badge { display: inline-block; background: rgba(232,82,42,.1); color: var(--orange); font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 100px; margin-bottom: 20px; }
+    .plan.featured .plan-badge { background: rgba(232,82,42,.2); color: #ff6b3a; }
 
     .plan-divider { height: 1px; background: var(--border); margin: 18px 0; }
     .plan.featured .plan-divider { background: rgba(255,255,255,.08); }
@@ -595,19 +595,19 @@
     .plan-features { list-style: none; flex: 1; margin-bottom: 28px; }
     .plan-features li {
       display: flex; align-items: flex-start; gap: 10px;
-      font-size: 13px; color: var(--dark); padding: 7px 0;
-      border-bottom: 1px solid rgba(0,0,0,.05);
+      font-size: 13px; color: var(--dark); padding: 9px 0;
+      border-bottom: 1px solid rgba(0,0,0,.05); line-height: 1.5;
     }
     .plan-features li:last-child { border-bottom: none; }
-    .plan.featured .plan-features li { color: rgba(255,255,255,.75); border-bottom-color: rgba(255,255,255,.05); }
+    .plan.featured .plan-features li { color: rgba(255,255,255,.8); border-bottom-color: rgba(255,255,255,.06); }
     .plan-features li::before {
-      content: '✓'; min-width: 18px; height: 18px;
+      content: '✓'; min-width: 20px; height: 20px;
       background: rgba(232,82,42,.1); color: var(--orange);
       border-radius: 50%; display: flex; align-items: center; justify-content: center;
       font-size: 10px; font-weight: 800; margin-top: 1px; flex-shrink: 0;
     }
-    .plan.featured .plan-features li::before { background: rgba(232,82,42,.2); }
-    .plan-cta { display: block; width: 100%; text-align: center; padding: 14px; border-radius: 100px; font-size: 13px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; text-decoration: none; cursor: pointer; border: none; transition: all .2s; }
+    .plan.featured .plan-features li::before { background: var(--orange); color: #fff; }
+    .plan-cta { display: block; width: 100%; text-align: center; padding: 16px; border-radius: 100px; font-size: 13px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; text-decoration: none; cursor: pointer; border: none; transition: all .25s cubic-bezier(.4,0,.2,1); }
 
     /* ── TUTORIAL ────────────────────────────── */
     .tutorial { padding: 100px 24px; background: var(--cream); color: var(--dark); }
