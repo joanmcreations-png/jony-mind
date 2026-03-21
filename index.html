@@ -634,18 +634,23 @@
     .faq-q {
       width: 100%; display: flex; align-items: center; justify-content: space-between;
       padding: 22px 0; gap: 16px; background: none; border: none; cursor: pointer; text-align: left;
+      transition: padding .3s ease;
     }
-    .faq-q-text { font-size: 18px; font-weight: 700; color: var(--orange); line-height: 1.4; }
+    .faq-item.open .faq-q { padding-bottom: 8px; }
+    .faq-q-text { font-size: 18px; font-weight: 700; color: var(--orange); line-height: 1.4; transition: color .2s; }
+    .faq-q:hover .faq-q-text { color: #ff6b3a; }
     .faq-icon {
       width: 28px; height: 28px; border-radius: 50%;
       background: rgba(232,82,42,.1); color: var(--orange);
       display: flex; align-items: center; justify-content: center;
       font-size: 18px; font-weight: 300; flex-shrink: 0;
-      transition: transform .25s, background .2s;
+      transition: transform .3s cubic-bezier(.4,0,.2,1), background .2s, color .2s;
     }
     .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--orange); color: #fff; }
-    .faq-a { font-size: 15px; color: var(--muted); line-height: 1.8; max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .25s; }
-    .faq-item.open .faq-a { max-height: 400px; padding-bottom: 24px; }
+    .faq-a-wrap { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .35s cubic-bezier(.4,0,.2,1); }
+    .faq-item.open .faq-a-wrap { grid-template-rows: 1fr; }
+    .faq-a { font-size: 15px; color: var(--muted); line-height: 1.8; overflow: hidden; }
+    .faq-a-inner { padding-bottom: 24px; }
 
     /* ── FINAL CTA ───────────────────────────── */
     .final-cta {
@@ -1338,16 +1343,16 @@
       <span class="label" style="justify-content:center; display:flex;">Resuelve tus dudas</span>
       <h2>Preguntas frecuentes</h2>
     </div>
-    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Qué incluye mi acceso a AlwaysFilmLab?</span><span class="faq-icon">+</span></button><div class="faq-a">Tendrás acceso a cursos de color, PowerGrades, LUTs, workshops en vivo, mentorías grupales, herramientas creativas y una comunidad activa de creadores. Todo centralizado en un solo espacio.</div></div>
-    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿El PowerGrade y los LUTs funcionan en cualquier programa de edición?</span><span class="faq-icon">+</span></button><div class="faq-a">El PowerGrade <strong>solo funciona en DaVinci Resolve</strong>, porque está construido con nodos. Pero los <strong>LUTs funcionan en cualquier programa (incluidos en el PowerGrade)</strong>: Premiere Pro, Final Cut, CapCut, DaVinci, Lumafusion, etc.</div></div>
-    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Esto funciona con mi cámara?</span><span class="faq-icon">+</span></button><div class="faq-a">Sí. Sony, Canon, Panasonic, Fujifilm, Nikon, iPhone, drones... Mientras grabes en LOG, Rec.709 o el perfil estándar de tu cámara, todo funciona.</div></div>
-    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Necesito experiencia previa en color o edición para entrar?</span><span class="faq-icon">+</span></button><div class="faq-a">No. AlwaysFilmLab está diseñado para todos los niveles: desde principiantes que nunca han usado un nodo, hasta coloristas avanzados que buscan optimizar su flujo de trabajo.</div></div>
-    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Cómo funciona el acceso a los productos que ya compré (Essential LUT o Evolved Film)?</span><span class="faq-icon">+</span></button><div class="faq-a">Si ya compraste productos, recibirás acceso automático a la comunidad en la categoría que te corresponde (Essential Creators, Evolved Film o Time to Evolve). No necesitas volver a comprarlos.</div></div>
-    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Hay actualizaciones incluidas?</span><span class="faq-icon">+</span></button><div class="faq-a">Sí. Cada mes añadimos nuevos tutoriales, herramientas, LUTs y sesiones. Siempre tendrás acceso a la versión más actualizada sin pagar de más.</div></div>
-    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Puedo personalizar los PowerGrades y LUTs para mis proyectos?</span><span class="faq-icon">+</span></button><div class="faq-a">Sí. Todos los PowerGrades y LUTs están pensados para ser flexibles. Puedes modificar nodos, parámetros y looks para crear tu propio estilo único.</div></div>
-    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Tendré acceso desde cualquier dispositivo?</span><span class="faq-icon">+</span></button><div class="faq-a">Sí. Puedes acceder a la comunidad y a todos los recursos desde ordenador, tablet o móvil. Los archivos descargables (como LUTs y PowerGrades) se pueden usar en cualquier software compatible y con la APP de Circle de la app store.</div></div>
-    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Cómo funcionan los workshops y mentorías?</span><span class="faq-icon">+</span></button><div class="faq-a">Cada cierto tiempo organizamos workshops en vivo donde podrás aprender nuevas técnicas, resolver dudas y compartir tu progreso. Además, en los niveles avanzados hay mentorías más personalizadas.</div></div>
-    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Tendré soporte si me bloqueo con algo?</span><span class="faq-icon">+</span></button><div class="faq-a">Sí. Puedes escribir en la comunidad o enviarme tu duda — intento responder siempre lo antes posible.</div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Qué incluye mi acceso a AlwaysFilmLab?</span><span class="faq-icon">+</span></button><div class="faq-a-wrap"><div class="faq-a"><div class="faq-a-inner">Tendrás acceso a cursos de color, PowerGrades, LUTs, workshops en vivo, mentorías grupales, herramientas creativas y una comunidad activa de creadores. Todo centralizado en un solo espacio.</div></div></div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿El PowerGrade y los LUTs funcionan en cualquier programa de edición?</span><span class="faq-icon">+</span></button><div class="faq-a-wrap"><div class="faq-a"><div class="faq-a-inner">El PowerGrade <strong>solo funciona en DaVinci Resolve</strong>, porque está construido con nodos. Pero los <strong>LUTs funcionan en cualquier programa (incluidos en el PowerGrade)</strong>: Premiere Pro, Final Cut, CapCut, DaVinci, Lumafusion, etc.</div></div></div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Esto funciona con mi cámara?</span><span class="faq-icon">+</span></button><div class="faq-a-wrap"><div class="faq-a"><div class="faq-a-inner">Sí. Sony, Canon, Panasonic, Fujifilm, Nikon, iPhone, drones... Mientras grabes en LOG, Rec.709 o el perfil estándar de tu cámara, todo funciona.</div></div></div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Necesito experiencia previa en color o edición para entrar?</span><span class="faq-icon">+</span></button><div class="faq-a-wrap"><div class="faq-a"><div class="faq-a-inner">No. AlwaysFilmLab está diseñado para todos los niveles: desde principiantes que nunca han usado un nodo, hasta coloristas avanzados que buscan optimizar su flujo de trabajo.</div></div></div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Cómo funciona el acceso a los productos que ya compré (Essential LUT o Evolved Film)?</span><span class="faq-icon">+</span></button><div class="faq-a-wrap"><div class="faq-a"><div class="faq-a-inner">Si ya compraste productos, recibirás acceso automático a la comunidad en la categoría que te corresponde (Essential Creators, Evolved Film o Time to Evolve). No necesitas volver a comprarlos.</div></div></div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Hay actualizaciones incluidas?</span><span class="faq-icon">+</span></button><div class="faq-a-wrap"><div class="faq-a"><div class="faq-a-inner">Sí. Cada mes añadimos nuevos tutoriales, herramientas, LUTs y sesiones. Siempre tendrás acceso a la versión más actualizada sin pagar de más.</div></div></div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Puedo personalizar los PowerGrades y LUTs para mis proyectos?</span><span class="faq-icon">+</span></button><div class="faq-a-wrap"><div class="faq-a"><div class="faq-a-inner">Sí. Todos los PowerGrades y LUTs están pensados para ser flexibles. Puedes modificar nodos, parámetros y looks para crear tu propio estilo único.</div></div></div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Tendré acceso desde cualquier dispositivo?</span><span class="faq-icon">+</span></button><div class="faq-a-wrap"><div class="faq-a"><div class="faq-a-inner">Sí. Puedes acceder a la comunidad y a todos los recursos desde ordenador, tablet o móvil. Los archivos descargables (como LUTs y PowerGrades) se pueden usar en cualquier software compatible y con la APP de Circle de la app store.</div></div></div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Cómo funcionan los workshops y mentorías?</span><span class="faq-icon">+</span></button><div class="faq-a-wrap"><div class="faq-a"><div class="faq-a-inner">Cada cierto tiempo organizamos workshops en vivo donde podrás aprender nuevas técnicas, resolver dudas y compartir tu progreso. Además, en los niveles avanzados hay mentorías más personalizadas.</div></div></div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Tendré soporte si me bloqueo con algo?</span><span class="faq-icon">+</span></button><div class="faq-a-wrap"><div class="faq-a"><div class="faq-a-inner">Sí. Puedes escribir en la comunidad o enviarme tu duda — intento responder siempre lo antes posible.</div></div></div></div>
   </div>
 </section>
 
@@ -1480,8 +1485,10 @@
     btn.addEventListener('click', () => {
       const item = btn.closest('.faq-item');
       const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => {
+        if (i !== item) i.classList.remove('open');
+      });
+      item.classList.toggle('open', !isOpen);
     });
   });
 
