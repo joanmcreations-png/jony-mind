@@ -284,16 +284,16 @@
     .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     .comparison-col { background: rgba(232,82,42,.06); border: 2px solid rgba(232,82,42,.3); border-radius: 16px; padding: 32px 28px; position: relative; overflow: hidden; }
     .comparison-col::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--orange), #ff7b54); }
-    .comparison-col.negative { background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.08); }
+    .comparison-col.negative { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.12); }
     .comparison-col.negative::before { display: none; }
     .comparison-col-title { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 24px; }
-    .comparison-col.negative .comparison-col-title { color: rgba(255,255,255,.35); font-size: 16px; text-decoration: line-through; text-decoration-color: rgba(255,100,100,.4); }
+    .comparison-col.negative .comparison-col-title { color: #fff; font-size: 16px; }
     .comparison-row { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.05); font-size: 14px; color: rgba(255,255,255,.85); line-height: 1.5; }
     .comparison-row:last-child { border-bottom: none; }
     .comparison-check { min-width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 12px; font-weight: 800; flex-shrink: 0; margin-top: 1px; }
     .comparison-col:not(.negative) .comparison-check { background: var(--orange); color: #fff; }
     .comparison-col.negative .comparison-check { background: rgba(255,60,60,.15); color: rgba(255,80,80,.7); }
-    .comparison-col.negative .comparison-row { color: rgba(255,255,255,.3); text-decoration: line-through; text-decoration-color: rgba(255,100,100,.2); }
+    .comparison-col.negative .comparison-row { color: rgba(255,255,255,.7); }
 
     /* ── INTRO ────────────────────────────────── */
     .intro-wrap { background: var(--cream); padding: 0; width: 100%; color: var(--dark); }
