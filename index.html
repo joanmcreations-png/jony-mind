@@ -346,6 +346,26 @@
     .sqs-icons svg { width: 18px; height: 18px; color: rgba(255,255,255,.7); }
     .video-label { color: rgba(255,255,255,.3); font-size: 12px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; }
 
+    /* ── CUSTOM VIDEO CONTROLS ──────────────── */
+    .sqs-video-wrapper { cursor: pointer; }
+    .sqs-custom-controls {
+      position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+      padding: 0 0 12px; opacity: 0; transition: opacity .3s;
+      background: linear-gradient(transparent, rgba(0,0,0,.6));
+    }
+    .sqs-video-wrapper:hover .sqs-custom-controls { opacity: 1; }
+    .sqs-progress-bar {
+      width: 100%; height: 3px; background: rgba(255,255,255,.2); cursor: pointer;
+      transition: height .15s; margin-bottom: 8px;
+    }
+    .sqs-progress-bar:hover { height: 5px; }
+    .sqs-progress-fill { height: 100%; background: #fff; width: 0%; transition: width .1s linear; }
+    .sqs-controls-row { display: flex; align-items: center; gap: 12px; padding: 0 14px; }
+    .sqs-ctrl-btn { background: none; border: none; cursor: pointer; padding: 4px; display: flex; align-items: center; opacity: .8; transition: opacity .2s; }
+    .sqs-ctrl-btn:hover { opacity: 1; }
+    .sqs-ctrl-right { margin-left: auto; display: flex; gap: 8px; }
+    .sqs-custom-controls .sqs-time { font-size: 11px; color: rgba(255,255,255,.6); font-family: 'Inter', sans-serif; font-variant-numeric: tabular-nums; }
+
     /* ── HOW IT WORKS ────────────────────────── */
     .how {
       background: var(--dark); padding: 100px 48px;
@@ -937,8 +957,19 @@
           </div>
         </div>
       </div>
-      <div id="videoIframe" style="display:none; width:100%; aspect-ratio:16/9; border-radius:16px; overflow:hidden;">
-        <iframe src="" id="ytIframe" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; height:100%; display:block; border:none;"></iframe>
+      <div id="videoIframe" class="sqs-video-wrapper" style="display:none; width:100%; aspect-ratio:16/9; border-radius:16px; overflow:hidden; position:relative;">
+        <div id="ytPlayer"></div>
+        <div class="sqs-custom-controls" id="sqsControls1">
+          <div class="sqs-progress-bar" id="sqsProgress1"><div class="sqs-progress-fill" id="sqsFill1"></div></div>
+          <div class="sqs-controls-row">
+            <button class="sqs-ctrl-btn" id="sqsPlayPause1"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><polygon points="6,3 20,12 6,21"/></svg></button>
+            <span class="sqs-time" id="sqsTime1">00:00 / 00:59</span>
+            <div class="sqs-ctrl-right">
+              <button class="sqs-ctrl-btn" id="sqsMute1"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg></button>
+              <button class="sqs-ctrl-btn" id="sqsFs1"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg></button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -987,8 +1018,19 @@
           </div>
         </div>
       </div>
-      <div id="videoIframeHow" style="display:none; width:100%; aspect-ratio:16/9; border-radius:16px; overflow:hidden;">
-        <iframe src="" id="ytIframeHow" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; height:100%; display:block; border:none;"></iframe>
+      <div id="videoIframeHow" class="sqs-video-wrapper" style="display:none; width:100%; aspect-ratio:16/9; border-radius:16px; overflow:hidden; position:relative;">
+        <div id="ytPlayerHow"></div>
+        <div class="sqs-custom-controls" id="sqsControls2">
+          <div class="sqs-progress-bar" id="sqsProgress2"><div class="sqs-progress-fill" id="sqsFill2"></div></div>
+          <div class="sqs-controls-row">
+            <button class="sqs-ctrl-btn" id="sqsPlayPause2"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><polygon points="6,3 20,12 6,21"/></svg></button>
+            <span class="sqs-time" id="sqsTime2">00:00 / 00:00</span>
+            <div class="sqs-ctrl-right">
+              <button class="sqs-ctrl-btn" id="sqsMute2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg></button>
+              <button class="sqs-ctrl-btn" id="sqsFs2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg></button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1430,17 +1472,66 @@
   }
 
   // ── Fake video player
+  // ── YouTube IFrame API
+  var tag = document.createElement('script');
+  tag.src = 'https://www.youtube.com/iframe_api';
+  document.head.appendChild(tag);
+
+  var player1, player2;
+  var playIcon = '<svg width="14" height="14" viewBox="0 0 24 24" fill="white"><polygon points="6,3 20,12 6,21"/></svg>';
+  var pauseIcon = '<svg width="14" height="14" viewBox="0 0 24 24" fill="white"><rect x="5" y="3" width="4" height="18"/><rect x="15" y="3" width="4" height="18"/></svg>';
+
+  function fmt(s) { var m = Math.floor(s/60), sec = Math.floor(s%60); return (m<10?'0':'')+m+':'+(sec<10?'0':'')+sec; }
+
+  function setupControls(player, ids) {
+    var fill = document.getElementById(ids.fill);
+    var time = document.getElementById(ids.time);
+    var pp = document.getElementById(ids.pp);
+    var mute = document.getElementById(ids.mute);
+    var fs = document.getElementById(ids.fs);
+    var prog = document.getElementById(ids.prog);
+    var wrapper = document.getElementById(ids.wrapper);
+
+    setInterval(function() {
+      if (!player || !player.getDuration) return;
+      var dur = player.getDuration(), cur = player.getCurrentTime();
+      fill.style.width = (cur/dur*100)+'%';
+      time.textContent = fmt(cur)+' / '+fmt(dur);
+    }, 250);
+
+    pp.onclick = function(e) { e.stopPropagation(); player.getPlayerState()===1 ? player.pauseVideo() : player.playVideo(); };
+    mute.onclick = function(e) { e.stopPropagation(); player.isMuted() ? player.unMute() : player.mute(); };
+    fs.onclick = function(e) { e.stopPropagation(); var el = wrapper; if(el.requestFullscreen) el.requestFullscreen(); };
+    prog.onclick = function(e) { var r = prog.getBoundingClientRect(); var pct = (e.clientX-r.left)/r.width; player.seekTo(pct*player.getDuration(), true); };
+    wrapper.onclick = function() { player.getPlayerState()===1 ? player.pauseVideo() : player.playVideo(); };
+
+    player.addEventListener('onStateChange', function(e) {
+      pp.innerHTML = e.data===1 ? pauseIcon : playIcon;
+    });
+  }
+
   function loadVideo() {
     document.getElementById('fakePlayer').style.display = 'none';
-    const wrapper = document.getElementById('videoIframe');
+    var wrapper = document.getElementById('videoIframe');
     wrapper.style.display = 'block';
-    document.getElementById('ytIframe').src = 'https://www.youtube-nocookie.com/embed/9yIhWLxn2mc?autoplay=1&modestbranding=1&rel=0&vq=hd1080&iv_load_policy=3';
+    player1 = new YT.Player('ytPlayer', {
+      width: '100%', height: '100%',
+      videoId: '9yIhWLxn2mc',
+      playerVars: { autoplay:1, modestbranding:1, rel:0, iv_load_policy:3, controls:0, showinfo:0, fs:0, disablekb:0 },
+      events: { onReady: function() { setupControls(player1, {fill:'sqsFill1',time:'sqsTime1',pp:'sqsPlayPause1',mute:'sqsMute1',fs:'sqsFs1',prog:'sqsProgress1',wrapper:'videoIframe'}); } }
+    });
   }
+
   function loadHowVideo() {
     document.getElementById('fakePlayerHow').style.display = 'none';
-    const wrapper = document.getElementById('videoIframeHow');
+    var wrapper = document.getElementById('videoIframeHow');
     wrapper.style.display = 'block';
-    document.getElementById('ytIframeHow').src = 'https://www.youtube-nocookie.com/embed/wiuByfUr954?autoplay=1&modestbranding=1&rel=0&vq=hd1080&iv_load_policy=3';
+    player2 = new YT.Player('ytPlayerHow', {
+      width: '100%', height: '100%',
+      videoId: 'wiuByfUr954',
+      playerVars: { autoplay:1, modestbranding:1, rel:0, iv_load_policy:3, controls:0, showinfo:0, fs:0, disablekb:0 },
+      events: { onReady: function() { setupControls(player2, {fill:'sqsFill2',time:'sqsTime2',pp:'sqsPlayPause2',mute:'sqsMute2',fs:'sqsFs2',prog:'sqsProgress2',wrapper:'videoIframeHow'}); } }
+    });
   }
 
   // ── Before/After slider
