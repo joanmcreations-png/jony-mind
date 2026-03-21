@@ -208,6 +208,14 @@
       width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
       border: 3px solid var(--dark);
     }
+    .avatar-ring .avatar-initials {
+      width: 100%; height: 100%; border-radius: 50%;
+      border: 3px solid var(--dark);
+      background: #1a1a1a;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Fraunces', serif; font-weight: 700; font-size: 20px;
+      color: rgba(255,255,255,.5);
+    }
     .avatar-item span {
       font-size: 10px; color: rgba(255,255,255,.3); font-weight: 500;
       white-space: nowrap; transition: color .2s;
@@ -274,16 +282,18 @@
     .comparison-header h2 { font-family: 'Fraunces', serif; font-size: clamp(26px, 4vw, 42px); font-weight: 900; color: #fff; margin-bottom: 12px; }
     .comparison-header p { color: rgba(255,255,255,.4); font-size: 15px; }
     .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .comparison-col { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; padding: 32px 28px; }
-    .comparison-col.negative { border-color: rgba(255,100,100,.12); }
+    .comparison-col { background: rgba(232,82,42,.06); border: 2px solid rgba(232,82,42,.3); border-radius: 16px; padding: 32px 28px; position: relative; overflow: hidden; }
+    .comparison-col::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--orange), #ff7b54); }
+    .comparison-col.negative { background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.08); }
+    .comparison-col.negative::before { display: none; }
     .comparison-col-title { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 24px; }
-    .comparison-col.negative .comparison-col-title { color: rgba(255,255,255,.5); }
-    .comparison-row { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.05); font-size: 14px; color: rgba(255,255,255,.7); line-height: 1.5; }
+    .comparison-col.negative .comparison-col-title { color: rgba(255,255,255,.35); font-size: 16px; text-decoration: line-through; text-decoration-color: rgba(255,100,100,.4); }
+    .comparison-row { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.05); font-size: 14px; color: rgba(255,255,255,.85); line-height: 1.5; }
     .comparison-row:last-child { border-bottom: none; }
-    .comparison-check { min-width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 11px; font-weight: 800; flex-shrink: 0; margin-top: 1px; }
-    .comparison-col:not(.negative) .comparison-check { background: rgba(232,82,42,.15); color: var(--orange); }
-    .comparison-col.negative .comparison-check { background: rgba(255,100,100,.1); color: rgba(255,100,100,.6); }
-    .comparison-col.negative .comparison-row { color: rgba(255,255,255,.4); }
+    .comparison-check { min-width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 12px; font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+    .comparison-col:not(.negative) .comparison-check { background: var(--orange); color: #fff; }
+    .comparison-col.negative .comparison-check { background: rgba(255,60,60,.15); color: rgba(255,80,80,.7); }
+    .comparison-col.negative .comparison-row { color: rgba(255,255,255,.3); text-decoration: line-through; text-decoration-color: rgba(255,100,100,.2); }
 
     /* ── INTRO ────────────────────────────────── */
     .intro-wrap { background: var(--cream); padding: 0; width: 100%; color: var(--dark); }
@@ -869,31 +879,23 @@
   <div class="avatar-carousel-label">Creadores que ya confían en AlwaysFilmLab</div>
   <div class="avatar-track-wrapper">
     <div class="avatar-track" id="avatarTrack">
-      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8b0d0c4f-8f9f-41ea-b6c1-43caedd1de13/516235689_18033027560678759_961178840817833607_n.jpg?content-type=image%2Fjpeg" alt="danielcine" loading="lazy" /></div><span>@danielcine</span></div>
-      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/fb3ccd45-1302-43eb-bedd-5223a50e63da/449649960_1489366201945213_3772254378393202287_n.jpg?content-type=image%2Fjpeg" alt="filmbypaul" loading="lazy" /></div><span>@filmbypaul</span></div>
-      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/af7b0d84-9fdb-4c54-9410-b90112f89eae/475973132_539512095383241_4793932967821196491_n.jpg?content-type=image%2Fjpeg" alt="alvarocuts" loading="lazy" /></div><span>@alvarocuts</span></div>
       <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8b0d0c4f-8f9f-41ea-b6c1-43caedd1de13/516235689_18033027560678759_961178840817833607_n.jpg?content-type=image%2Fjpeg" alt="lacapsularodante" loading="lazy" /></div><span>@lacapsularodante</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><div class="avatar-initials">JL</div></div><span>@javierlopezm</span></div>
       <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/fb3ccd45-1302-43eb-bedd-5223a50e63da/449649960_1489366201945213_3772254378393202287_n.jpg?content-type=image%2Fjpeg" alt="madebyizan" loading="lazy" /></div><span>@madebyizan</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><div class="avatar-initials">SA</div></div><span>@sebastianalzate</span></div>
       <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2360483e-7ecb-440a-b25b-6269a05f48d3/539051284_17972632340923305_4889991602022121833_n.jpg?content-type=image%2Fjpeg" alt="nxsfilms" loading="lazy" /></div><span>@nxsfilms</span></div>
-      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/af7b0d84-9fdb-4c54-9410-b90112f89eae/475973132_539512095383241_4793932967821196491_n.jpg?content-type=image%2Fjpeg" alt="guaguell" loading="lazy" /></div><span>@guaguell</span></div>
-      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8b0d0c4f-8f9f-41ea-b6c1-43caedd1de13/516235689_18033027560678759_961178840817833607_n.jpg?content-type=image%2Fjpeg" alt="marcrodri" loading="lazy" /></div><span>@marcrodri</span></div>
-      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8bcd20cd-a19e-40d5-91c3-a9af2a021846/unnamed.jpg?content-type=image%2Fjpeg" alt="tripiana.media" loading="lazy" /></div><span>@tripiana.media</span></div>
-      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/fb3ccd45-1302-43eb-bedd-5223a50e63da/449649960_1489366201945213_3772254378393202287_n.jpg?content-type=image%2Fjpeg" alt="chriss.boustedt" loading="lazy" /></div><span>@chriss.boustedt</span></div>
-      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/af7b0d84-9fdb-4c54-9410-b90112f89eae/475973132_539512095383241_4793932967821196491_n.jpg?content-type=image%2Fjpeg" alt="ellieksnow" loading="lazy" /></div><span>@ellieksnow</span></div>
-      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2360483e-7ecb-440a-b25b-6269a05f48d3/539051284_17972632340923305_4889991602022121833_n.jpg?content-type=image%2Fjpeg" alt="jasoncoopensen" loading="lazy" /></div><span>@jasoncoopensen</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><div class="avatar-initials">FG</div></div><span>@felipegenes</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/af7b0d84-9fdb-4c54-9410-b90112f89eae/475973132_539512095383241_4793932967821196491_n.jpg?content-type=image%2Fjpeg" alt="guaguell_" loading="lazy" /></div><span>@guaguell_</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8bcd20cd-a19e-40d5-91c3-a9af2a021846/unnamed.jpg?content-type=image%2Fjpeg" alt="Erick Leon" loading="lazy" /></div><span>@erickleon</span></div>
       <!-- Duplicated for infinite loop -->
-      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8b0d0c4f-8f9f-41ea-b6c1-43caedd1de13/516235689_18033027560678759_961178840817833607_n.jpg?content-type=image%2Fjpeg" alt="danielcine" loading="lazy" /></div><span>@danielcine</span></div>
-      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/fb3ccd45-1302-43eb-bedd-5223a50e63da/449649960_1489366201945213_3772254378393202287_n.jpg?content-type=image%2Fjpeg" alt="filmbypaul" loading="lazy" /></div><span>@filmbypaul</span></div>
-      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/af7b0d84-9fdb-4c54-9410-b90112f89eae/475973132_539512095383241_4793932967821196491_n.jpg?content-type=image%2Fjpeg" alt="alvarocuts" loading="lazy" /></div><span>@alvarocuts</span></div>
       <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8b0d0c4f-8f9f-41ea-b6c1-43caedd1de13/516235689_18033027560678759_961178840817833607_n.jpg?content-type=image%2Fjpeg" alt="lacapsularodante" loading="lazy" /></div><span>@lacapsularodante</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><div class="avatar-initials">JL</div></div><span>@javierlopezm</span></div>
       <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/fb3ccd45-1302-43eb-bedd-5223a50e63da/449649960_1489366201945213_3772254378393202287_n.jpg?content-type=image%2Fjpeg" alt="madebyizan" loading="lazy" /></div><span>@madebyizan</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><div class="avatar-initials">SA</div></div><span>@sebastianalzate</span></div>
       <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2360483e-7ecb-440a-b25b-6269a05f48d3/539051284_17972632340923305_4889991602022121833_n.jpg?content-type=image%2Fjpeg" alt="nxsfilms" loading="lazy" /></div><span>@nxsfilms</span></div>
-      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/af7b0d84-9fdb-4c54-9410-b90112f89eae/475973132_539512095383241_4793932967821196491_n.jpg?content-type=image%2Fjpeg" alt="guaguell" loading="lazy" /></div><span>@guaguell</span></div>
-      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8b0d0c4f-8f9f-41ea-b6c1-43caedd1de13/516235689_18033027560678759_961178840817833607_n.jpg?content-type=image%2Fjpeg" alt="marcrodri" loading="lazy" /></div><span>@marcrodri</span></div>
-      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8bcd20cd-a19e-40d5-91c3-a9af2a021846/unnamed.jpg?content-type=image%2Fjpeg" alt="tripiana.media" loading="lazy" /></div><span>@tripiana.media</span></div>
-      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/fb3ccd45-1302-43eb-bedd-5223a50e63da/449649960_1489366201945213_3772254378393202287_n.jpg?content-type=image%2Fjpeg" alt="chriss.boustedt" loading="lazy" /></div><span>@chriss.boustedt</span></div>
-      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/af7b0d84-9fdb-4c54-9410-b90112f89eae/475973132_539512095383241_4793932967821196491_n.jpg?content-type=image%2Fjpeg" alt="ellieksnow" loading="lazy" /></div><span>@ellieksnow</span></div>
-      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2360483e-7ecb-440a-b25b-6269a05f48d3/539051284_17972632340923305_4889991602022121833_n.jpg?content-type=image%2Fjpeg" alt="jasoncoopensen" loading="lazy" /></div><span>@jasoncoopensen</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><div class="avatar-initials">FG</div></div><span>@felipegenes</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/af7b0d84-9fdb-4c54-9410-b90112f89eae/475973132_539512095383241_4793932967821196491_n.jpg?content-type=image%2Fjpeg" alt="guaguell_" loading="lazy" /></div><span>@guaguell_</span></div>
+      <div class="avatar-item"><div class="avatar-ring"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8bcd20cd-a19e-40d5-91c3-a9af2a021846/unnamed.jpg?content-type=image%2Fjpeg" alt="Erick Leon" loading="lazy" /></div><span>@erickleon</span></div>
     </div>
   </div>
 </section>
