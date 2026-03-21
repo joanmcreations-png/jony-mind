@@ -570,6 +570,10 @@
     .plan.premium .plan-divider { background: rgba(200,170,110,.12); }
     .plan.premium .plan-features li { color: rgba(255,255,255,.7); border-bottom-color: rgba(255,255,255,.05); }
     .plan.premium .plan-features li::before { background: rgba(200,170,110,.15); color: #C8AA6E; }
+    .plan-spots { margin-bottom: 16px; }
+    .plan-spots-bar { width: 100%; height: 6px; background: rgba(255,255,255,.1); border-radius: 100px; overflow: hidden; margin-bottom: 6px; }
+    .plan-spots-fill { height: 100%; background: linear-gradient(90deg, #C8AA6E, #e0c98a); border-radius: 100px; transition: width 1s ease; }
+    .plan-spots-text { font-size: 11px; color: #C8AA6E; font-weight: 600; }
     .plan.premium .plan-cta {
       background: transparent; border: 2px solid #C8AA6E; color: #C8AA6E;
     }
@@ -1218,6 +1222,10 @@
         <span class="plan-price">$199</span>
       </div>
       <span class="plan-badge">Solo este mes</span>
+      <div class="plan-spots">
+        <div class="plan-spots-bar"><div class="plan-spots-fill" style="width:60%"></div></div>
+        <span class="plan-spots-text">3 de 5 plazas cubiertas</span>
+      </div>
       <div class="plan-desc">Acceso directo a Joan. Revisión de tu trabajo, feedback real y estrategia personalizada.</div>
       <div class="plan-divider"></div>
       <ul class="plan-features">
@@ -1429,9 +1437,9 @@
         </div>
         <div class="footer-nav-col">
           <div class="footer-nav-title">Legal</div>
-          <a href="#">Privacidad</a>
-          <a href="#">Términos</a>
-          <a href="#">Cookies</a>
+          <a href="privacidad.html">Privacidad</a>
+          <a href="terminos.html">Términos</a>
+          <a href="cookies.html">Cookies</a>
         </div>
       </div>
     </div>

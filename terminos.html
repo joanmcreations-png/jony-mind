@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Términos de Servicio — Always Film Lab</title>
+  <meta name="description" content="Términos y condiciones de uso de Always Film Lab. Lee nuestras condiciones antes de utilizar nuestros servicios y productos digitales.">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange:      #E8522A;
+      --orange-dark: #C43E1A;
+      --cream:       #F4EFE6;
+      --dark:        #111010;
+      --dark2:       #1C1B1B;
+      --muted:       #6B6B6B;
+      --border:      #E2DCD4;
+    }
+
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { font-family: 'Inter', sans-serif; background: var(--dark); color: #fff; overflow-x: hidden; margin: 0; }
+
+    /* ── NAV ─────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 48px;
+      background: rgba(17,16,16,.85);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      transition: padding .3s, background .3s, box-shadow .3s;
+    }
+    nav.scrolled { background: rgba(17,16,16,.95); box-shadow: 0 4px 24px rgba(0,0,0,.3); }
+    .nav-links { display: flex; gap: 36px; }
+    .nav-links a { color: rgba(255,255,255,.95); text-decoration: none; font-size: 14px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; transition: color .2s; }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-logo {
+      position: absolute; left: 50%; transform: translateX(-50%);
+      text-decoration: none; display: flex; align-items: center;
+    }
+    .nav-logo img { width: 110px; height: auto; filter: brightness(0) invert(1); }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .nav-cta { padding: 10px 24px; font-size: 12px; font-weight: 700; letter-spacing: .06em; }
+    .btn {
+      display: inline-block; padding: 14px 32px; border-radius: 100px;
+      font-size: 13px; font-weight: 700; letter-spacing: 0.07em;
+      text-transform: uppercase; text-decoration: none; cursor: pointer; border: none;
+      transition: background .2s, transform .15s, box-shadow .2s;
+    }
+    .btn-fill { background: var(--orange); color: #fff; box-shadow: 0 6px 24px rgba(232,82,42,.3); }
+    .btn-fill:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 10px 36px rgba(232,82,42,.45), 0 0 20px rgba(232,82,42,.15); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      background: none; border: none; padding: 4px;
+    }
+    .hamburger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: transform .3s, opacity .3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none; position: fixed; top: 60px; left: 0; right: 0; z-index: 199;
+      background: rgba(17,16,16,.97); backdrop-filter: blur(20px);
+      padding: 28px 32px; flex-direction: column; gap: 20px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: rgba(255,255,255,.8); text-decoration: none; font-size: 18px; font-weight: 600; }
+    .mobile-menu a:hover { color: #fff; }
+
+    /* ── LEGAL CONTENT ───────────────────────── */
+    .legal-page {
+      max-width: 800px; margin: 0 auto;
+      padding: 140px 24px 100px;
+    }
+    .legal-page h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(32px, 5vw, 48px); font-weight: 900;
+      color: #fff; line-height: 1.1; margin-bottom: 12px;
+    }
+    .legal-page .legal-updated {
+      font-size: 14px; color: rgba(255,255,255,.35); margin-bottom: 48px;
+    }
+    .legal-page h2 {
+      font-family: 'Fraunces', serif;
+      font-size: 22px; font-weight: 700; color: #fff;
+      margin-top: 48px; margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .legal-page h3 {
+      font-size: 16px; font-weight: 700; color: rgba(255,255,255,.9);
+      margin-top: 28px; margin-bottom: 10px;
+    }
+    .legal-page p {
+      font-size: 15px; color: rgba(255,255,255,.65); line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .legal-page ul, .legal-page ol {
+      margin-bottom: 16px; padding-left: 24px;
+    }
+    .legal-page li {
+      font-size: 15px; color: rgba(255,255,255,.65); line-height: 1.8;
+      margin-bottom: 6px;
+    }
+    .legal-page a {
+      color: var(--orange); text-decoration: none; transition: color .2s;
+    }
+    .legal-page a:hover { color: var(--orange-dark); }
+    .legal-page strong { color: rgba(255,255,255,.85); }
+
+    /* ── FOOTER ──────────────────────────────── */
+    footer { background: #050505; padding: 0; border-top: 1px solid rgba(255,255,255,.06); }
+    .footer-main { padding: 100px 80px 60px; }
+    .footer-top-row {
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 60px;
+      padding-bottom: 60px; border-bottom: 1px solid rgba(255,255,255,.08);
+      flex-wrap: wrap;
+    }
+    .footer-logo-text { margin-bottom: 16px; }
+    .footer-logo-text img { height: 52px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; }
+    .footer-tagline { font-size: 15px; color: rgba(255,255,255,.35); line-height: 1.7; max-width: 280px; }
+    .footer-nav { display: flex; gap: 64px; flex-wrap: wrap; }
+    .footer-nav-title { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.25); margin-bottom: 20px; }
+    .footer-nav-col a { display: block; font-size: 15px; color: rgba(255,255,255,.45); text-decoration: none; margin-bottom: 14px; transition: color .2s; }
+    .footer-nav-col a:hover { color: #fff; }
+    .footer-bottom-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 40px 80px 0; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-copy { font-size: 13px; color: rgba(255,255,255,.2); letter-spacing: .02em; }
+    .footer-socials { display: flex; gap: 12px; }
+    .social-icon {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,.4); text-decoration: none; transition: all .25s;
+    }
+    .social-icon:hover { background: var(--orange); border-color: var(--orange); color: #fff; transform: translateY(-2px); }
+    .footer-email-row {
+      display: flex; align-items: center; justify-content: center;
+      padding: 28px 80px; background: rgba(255,255,255,.02);
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-email-row a { font-size: 14px; color: rgba(255,255,255,.35); text-decoration: none; letter-spacing: .04em; transition: color .2s; }
+    .footer-email-row a:hover { color: var(--orange); }
+
+    /* ── RESPONSIVE ──────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-cta { display: none; }
+      .nav-logo img { width: 90px; }
+      .footer-main { padding: 60px 24px 36px; }
+      .footer-top-row { flex-direction: column; gap: 32px; text-align: center; align-items: center; }
+      .footer-tagline { max-width: 100%; }
+      .footer-nav { justify-content: center; }
+      .footer-bottom-row { padding: 40px 24px 0; flex-direction: column; align-items: center; text-align: center; gap: 20px; }
+      .footer-email-row { padding: 16px 24px; }
+    }
+    @media (max-width: 600px) {
+      .legal-page { padding: 120px 20px 80px; }
+      .legal-page h1 { font-size: clamp(28px, 6vw, 36px); }
+      .legal-page h2 { font-size: 19px; margin-top: 36px; }
+      .footer-nav { gap: 32px; }
+      .footer-bottom-row { flex-direction: column; text-align: center; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-links">
+    <a href="https://alwaysfilmlab.circle.so/checkout/time-to-evolve-toolkit" target="_blank">Mentoría 1:1</a>
+    <a href="https://alwaysfilmlab.squarespace.com/tienda" target="_blank">Tienda</a>
+  </div>
+  <a class="nav-logo" href="index.html"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/1a6abddb-ed7b-4600-a979-99d125130d77/1%2724x1024.png?content-type=image%2Fpng" alt="Always Film Lab" /></a>
+  <div class="nav-right">
+    <a href="https://alwaysfilmlab.circle.so/checkout/essential-creators-basic" target="_blank" class="btn btn-fill nav-cta">Comunidad</a>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="https://alwaysfilmlab.circle.so/checkout/time-to-evolve-toolkit" target="_blank" onclick="closeMobileMenu()">Mentoría 1:1</a>
+  <a href="https://alwaysfilmlab.squarespace.com/tienda" target="_blank" onclick="closeMobileMenu()">Tienda</a>
+  <a href="index.html" onclick="closeMobileMenu()">Inicio</a>
+  <a href="https://alwaysfilmlab.circle.so/checkout/essential-creators-basic" target="_blank" class="btn btn-fill" style="text-align:center; margin-top:8px;" onclick="closeMobileMenu()">Entrar a la comunidad</a>
+</div>
+
+<!-- CONTENT -->
+<div class="legal-page">
+  <h1>Términos de Servicio</h1>
+  <p class="legal-updated">Última actualización: 21 de marzo de 2026</p>
+
+  <p>Bienvenido a AlwaysFilmLab. Estos Términos de Servicio ("Términos") regulan tu acceso y uso de nuestro sitio web <a href="https://www.alwaysfilmlab.com">www.alwaysfilmlab.com</a>, productos digitales, servicios y comunidad. Al acceder o utilizar nuestros servicios, aceptas estar vinculado por estos Términos.</p>
+  <p>Si no estás de acuerdo con estos Términos, por favor no utilices nuestros servicios.</p>
+
+  <h2>1. Definiciones</h2>
+  <ul>
+    <li><strong>"AlwaysFilmLab"</strong>, <strong>"nosotros"</strong> o <strong>"la empresa"</strong>: se refiere a AlwaysFilmLab, empresa con sede en Canadá.</li>
+    <li><strong>"Servicios"</strong>: incluye el sitio web, productos digitales, cursos, mentorías, comunidad y cualquier contenido ofrecido por AlwaysFilmLab.</li>
+    <li><strong>"Usuario"</strong>, <strong>"tú"</strong> o <strong>"cliente"</strong>: cualquier persona que acceda o utilice nuestros Servicios.</li>
+    <li><strong>"Productos digitales"</strong>: LUTs, PowerGrades, presets, cursos en vídeo y cualquier otro archivo o contenido digital vendido o distribuido por AlwaysFilmLab.</li>
+  </ul>
+
+  <h2>2. Elegibilidad</h2>
+  <p>Para utilizar nuestros Servicios, debes tener al menos 16 años de edad. Al usar nuestros Servicios, declaras y garantizas que cumples con este requisito.</p>
+
+  <h2>3. Cuenta de usuario</h2>
+  <p>Algunos de nuestros Servicios requieren que te registres en plataformas de terceros (Circle.so, Squarespace). Eres responsable de:</p>
+  <ul>
+    <li>Mantener la confidencialidad de tus credenciales de acceso.</li>
+    <li>Todas las actividades que ocurran bajo tu cuenta.</li>
+    <li>Notificarnos de inmediato cualquier uso no autorizado de tu cuenta.</li>
+  </ul>
+
+  <h2>4. Productos digitales y licencia de uso</h2>
+  <p>Al adquirir un producto digital de AlwaysFilmLab, recibes una <strong>licencia personal, no exclusiva, intransferible y no sublicenciable</strong> para utilizar dicho producto. Esto significa que:</p>
+  <ul>
+    <li>Puedes usar los productos (LUTs, PowerGrades, etc.) en tus propios proyectos personales y comerciales.</li>
+    <li><strong>No puedes</strong> redistribuir, revender, compartir, sublicenciar ni poner a disposición de terceros los archivos descargados, ya sea de forma gratuita o de pago.</li>
+    <li><strong>No puedes</strong> reclamar autoría sobre los productos digitales adquiridos.</li>
+    <li><strong>No puedes</strong> incluir los productos como parte de otro producto digital para su venta o distribución.</li>
+  </ul>
+  <p>La violación de estos términos de licencia resultará en la revocación inmediata de la licencia y podrá dar lugar a acciones legales.</p>
+
+  <h2>5. Cursos y mentorías</h2>
+  <p>El acceso a cursos y sesiones de mentoría está sujeto a las siguientes condiciones:</p>
+  <ul>
+    <li>El contenido de los cursos es para uso personal y educativo únicamente.</li>
+    <li><strong>No puedes</strong> grabar, copiar, distribuir ni compartir el contenido de los cursos o mentorías.</li>
+    <li>Las sesiones de mentoría 1:1 se programarán según disponibilidad mutua y las condiciones indicadas en el momento de la compra.</li>
+    <li>El acceso a la comunidad está vinculado al plan contratado y puede tener una duración determinada según las condiciones de cada producto.</li>
+  </ul>
+
+  <h2>6. Política de reembolsos</h2>
+  <p><strong>Debido a la naturaleza digital e inmediata de nuestros productos, todas las ventas son finales. No se ofrecen reembolsos</strong> una vez que el producto digital ha sido entregado o el acceso ha sido concedido.</p>
+  <p>Esto incluye, sin limitación:</p>
+  <ul>
+    <li>LUTs y PowerGrades descargados.</li>
+    <li>Cursos y contenido educativo al que se ha accedido.</li>
+    <li>Sesiones de mentoría reservadas o completadas.</li>
+    <li>Suscripciones a la comunidad una vez iniciado el periodo de acceso.</li>
+  </ul>
+  <p>Si experimentas problemas técnicos con un producto, contacta con nosotros a <a href="mailto:alwaysjoan@alwaysfilmlab.com">alwaysjoan@alwaysfilmlab.com</a> y haremos lo posible por ayudarte a resolver el problema.</p>
+
+  <h2>7. Precios y pagos</h2>
+  <ul>
+    <li>Todos los precios se muestran en la moneda indicada en el momento de la compra y pueden estar sujetos a impuestos aplicables.</li>
+    <li>Los pagos se procesan de forma segura a través de las plataformas Circle.so y Squarespace y sus respectivos procesadores de pago.</li>
+    <li>Nos reservamos el derecho de modificar los precios en cualquier momento. Los cambios de precio no afectarán a compras ya realizadas.</li>
+  </ul>
+
+  <h2>8. Propiedad intelectual</h2>
+  <p>Todo el contenido disponible a través de nuestros Servicios, incluyendo pero no limitado a textos, gráficos, logotipos, imágenes, vídeos, LUTs, PowerGrades, cursos y software, es propiedad de AlwaysFilmLab o de sus respectivos propietarios y está protegido por las leyes de propiedad intelectual de Canadá e internacionales.</p>
+  <p>La marca "Always Film Lab", su logotipo y elementos visuales asociados son propiedad exclusiva de AlwaysFilmLab.</p>
+
+  <h2>9. Conducta del usuario</h2>
+  <p>Al utilizar nuestros Servicios, te comprometes a:</p>
+  <ul>
+    <li>No utilizar los Servicios para fines ilegales o no autorizados.</li>
+    <li>No intentar acceder a áreas restringidas del sitio web o de las plataformas.</li>
+    <li>No interferir con el funcionamiento normal de los Servicios.</li>
+    <li>Respetar a otros miembros de la comunidad y mantener un trato profesional y cordial.</li>
+    <li>No publicar contenido ofensivo, difamatorio o inapropiado en espacios comunitarios.</li>
+  </ul>
+  <p>Nos reservamos el derecho de suspender o cancelar el acceso de cualquier usuario que incumpla estas normas de conducta, sin derecho a reembolso.</p>
+
+  <h2>10. Limitación de responsabilidad</h2>
+  <p>En la máxima medida permitida por la ley:</p>
+  <ul>
+    <li>Los Servicios se proporcionan "tal cual" y "según disponibilidad", sin garantías de ningún tipo, ya sean expresas o implícitas.</li>
+    <li>AlwaysFilmLab no garantiza que los productos digitales sean compatibles con todo el software o hardware existente.</li>
+    <li>No seremos responsables de daños indirectos, incidentales, especiales o consecuentes que resulten del uso o la imposibilidad de uso de nuestros Servicios.</li>
+    <li>Nuestra responsabilidad total en cualquier caso no excederá el importe pagado por el Servicio específico que dio lugar a la reclamación.</li>
+  </ul>
+
+  <h2>11. Servicios de terceros</h2>
+  <p>Nuestros Servicios utilizan plataformas de terceros como Circle.so y Squarespace. El uso de estas plataformas está sujeto a sus propios términos de servicio y políticas de privacidad. AlwaysFilmLab no es responsable de las prácticas o el funcionamiento de estos servicios de terceros.</p>
+
+  <h2>12. Modificaciones de los servicios</h2>
+  <p>Nos reservamos el derecho de modificar, suspender o discontinuar cualquier parte de nuestros Servicios en cualquier momento, con o sin previo aviso. No seremos responsables ante ti ni ante terceros por cualquier modificación, suspensión o interrupción de los Servicios.</p>
+
+  <h2>13. Cambios a estos términos</h2>
+  <p>Podemos actualizar estos Términos de Servicio periódicamente. Los cambios entrarán en vigor en el momento de su publicación en esta página. Tu uso continuado de los Servicios después de la publicación de los cambios constituye tu aceptación de los Términos actualizados.</p>
+
+  <h2>14. Ley aplicable y jurisdicción</h2>
+  <p>Estos Términos se rigen por las leyes de Canadá y la provincia donde AlwaysFilmLab tenga su domicilio. Cualquier disputa que surja en relación con estos Términos estará sujeta a la jurisdicción exclusiva de los tribunales competentes de dicha provincia.</p>
+
+  <h2>15. Contacto</h2>
+  <p>Si tienes preguntas sobre estos Términos de Servicio, puedes contactarnos en:</p>
+  <p>
+    <strong>AlwaysFilmLab</strong><br>
+    Canadá<br>
+    Correo electrónico: <a href="mailto:alwaysjoan@alwaysfilmlab.com">alwaysjoan@alwaysfilmlab.com</a>
+  </p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="footer-top-row">
+      <div class="footer-brand">
+        <div class="footer-logo-text"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/1a6abddb-ed7b-4600-a979-99d125130d77/1%2724x1024.png?content-type=image%2Fpng" alt="Always Film Lab" loading="lazy" /></div>
+        <div class="footer-tagline">Tu laboratorio de color.<br>Haz que tus vídeos cuenten una historia.</div>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-nav-col">
+          <div class="footer-nav-title">Productos</div>
+          <a href="https://alwaysfilmlab.circle.so/checkout/essential-creators-basic" target="_blank">Essential Creators</a>
+          <a href="https://alwaysfilmlab.circle.so/checkout/comunidad-evolved-film" target="_blank">Evolved Film</a>
+          <a href="https://alwaysfilmlab.circle.so/checkout/time-to-evolve" target="_blank">Time to Evolve</a>
+        </div>
+        <div class="footer-nav-col">
+          <div class="footer-nav-title">Legal</div>
+          <a href="privacidad.html">Privacidad</a>
+          <a href="terminos.html">Términos</a>
+          <a href="cookies.html">Cookies</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom-row">
+      <div class="footer-copy">&copy; 2026 Always Film Lab. Todos los derechos reservados.</div>
+      <div class="footer-socials">
+        <a href="https://www.youtube.com/@AlwaysJoan/videos" target="_blank" class="social-icon" title="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 0 0 .5 6.19 31.7 31.7 0 0 0 0 12a31.7 31.7 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14c1.88.55 9.38.55 9.38.55s7.5 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14A31.7 31.7 0 0 0 24 12a31.7 31.7 0 0 0-.5-5.81zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg></a>
+        <a href="https://www.instagram.com/alwaysjoan_/" target="_blank" class="social-icon" title="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.tiktok.com/@alwaysjoan" target="_blank" class="social-icon" title="TikTok"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.05a8.16 8.16 0 004.77 1.52V7.12a4.85 4.85 0 01-1-.43z"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-email-row">
+    <a href="mailto:alwaysjoan@alwaysfilmlab.com">alwaysjoan@alwaysfilmlab.com</a>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll effect
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 30);
+  });
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobileMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+</script>
+</body>
+</html>
