@@ -850,9 +850,35 @@
       .how { padding: 56px 16px; }
       .features { padding: 56px 16px; }
     }
+    /* ── COOKIE BANNER ──────────────────────── */
+    .cookie-banner {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: #1a1a1a; border-top: 1px solid rgba(255,255,255,.1);
+      padding: 16px 24px; display: flex; align-items: center; justify-content: center;
+      gap: 20px; flex-wrap: wrap;
+      transform: translateY(100%); transition: transform .4s cubic-bezier(.4,0,.2,1);
+    }
+    .cookie-banner.show { transform: translateY(0); }
+    .cookie-banner p { color: rgba(255,255,255,.6); font-size: 13px; margin: 0; line-height: 1.5; }
+    .cookie-banner p a { color: var(--orange); text-decoration: underline; }
+    .cookie-btns { display: flex; gap: 8px; flex-shrink: 0; }
+    .cookie-btn { padding: 8px 18px; border-radius: 100px; font-size: 12px; font-weight: 600; cursor: pointer; border: none; transition: all .2s; }
+    .cookie-btn.accept { background: var(--orange); color: #fff; }
+    .cookie-btn.accept:hover { background: #ff6b3a; }
+    .cookie-btn.reject { background: transparent; color: rgba(255,255,255,.5); border: 1px solid rgba(255,255,255,.15); }
+    .cookie-btn.reject:hover { border-color: rgba(255,255,255,.3); color: #fff; }
   </style>
 </head>
 <body>
+
+<!-- COOKIE BANNER -->
+<div class="cookie-banner" id="cookieBanner">
+  <p>Usamos cookies para mejorar tu experiencia. <a href="cookies.html">Más info</a></p>
+  <div class="cookie-btns">
+    <button class="cookie-btn reject" onclick="handleCookies(false)">Rechazar</button>
+    <button class="cookie-btn accept" onclick="handleCookies(true)">Aceptar</button>
+  </div>
+</div>
 
 <!-- NAV -->
 <nav>
@@ -1590,6 +1616,15 @@
       item.classList.toggle('open', !isOpen);
     });
   });
+
+  // ── Cookie banner
+  function handleCookies(accepted) {
+    localStorage.setItem('cookies', accepted ? 'accepted' : 'rejected');
+    document.getElementById('cookieBanner').classList.remove('show');
+  }
+  if (!localStorage.getItem('cookies')) {
+    setTimeout(function() { document.getElementById('cookieBanner').classList.add('show'); }, 1500);
+  }
 
   // ── Scroll fade-up animations
   const obs = new IntersectionObserver(entries => {
