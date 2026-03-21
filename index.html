@@ -715,15 +715,26 @@
 
     /* ── RESPONSIVE ──────────────────────────── */
     @media (max-width: 900px) {
-      nav { padding: 14px 20px; }
+      nav { padding: 16px 24px; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .nav-cta { display: none; }
+      .nav-logo img { width: 90px; }
       .intro-wrap { padding: 0 24px; }
       .intro { grid-template-columns: 1fr; gap: 40px; padding: 72px 0; }
+      .intro-text { text-align: center; }
+      .intro-text h2 { text-align: center; }
+      .intro-checklist { display: inline-block; text-align: left; }
+      .intro-text .btn { margin: 0 auto; }
       .how { padding: 72px 24px; }
       .how-steps { grid-template-columns: 1fr; gap: 48px; }
       .how-steps::before { display: none; }
+      .how-steps::after { display: none; }
+      .how-step { transition-delay: 0s !important; }
+      .how-step:nth-child(1) { transition-delay: 0s !important; }
+      .how-step:nth-child(2) { transition-delay: 0s !important; }
+      .how-step:nth-child(3) { transition-delay: 0s !important; }
+      .how-step .how-num { background: var(--orange); color: #fff; box-shadow: 0 8px 32px rgba(232,82,42,.4); }
       .story-inner-grid { grid-template-columns: 1fr !important; gap: 36px !important; text-align: center; }
       .story-inner-grid .fade-up:last-child { max-width: 320px !important; margin: 0 auto; }
       .features { padding: 72px 24px; }
@@ -741,7 +752,10 @@
       .testi-grid { grid-template-columns: repeat(2, 1fr); }
       .tutorial { padding: 72px 24px; }
       .footer-main { padding: 60px 24px 36px; }
-      .footer-top-row { flex-direction: column; gap: 32px; }
+      .footer-top-row { flex-direction: column; gap: 32px; text-align: center; align-items: center; }
+      .footer-tagline { max-width: 100%; }
+      .footer-nav { justify-content: center; }
+      .footer-bottom-row { padding: 40px 24px 0; flex-direction: column; align-items: center; text-align: center; gap: 20px; }
       .footer-email-row { padding: 16px 24px; }
       .sticky-bar { display: flex; }
       body { padding-bottom: 70px; }
@@ -775,8 +789,7 @@
       .footer-bottom-row { flex-direction: column; text-align: center; gap: 12px; }
       .slider-container { border-radius: 12px; }
       .slider-section { padding: 72px 24px; }
-      .final-cta-img { height: 320px; }
-      .final-cta-content h2 { font-size: clamp(24px, 6vw, 38px); }
+      .final-cta-img { height: 500px; }
       .avatar-track-wrapper { max-width: 340px; }
       .avatar-ring { width: 48px; height: 48px; }
       .avatar-item span { font-size: 9px; }
@@ -805,8 +818,8 @@
 <!-- NAV -->
 <nav>
   <div class="nav-links">
-    <a href="#planes">Mentoría 1:1</a>
-    <a href="https://tienda.alwaysfilmlab.com" target="_blank">Tienda</a>
+    <a href="https://alwaysfilmlab.circle.so/checkout/time-to-evolve-toolkit" target="_blank">Mentoría 1:1</a>
+    <a href="https://alwaysfilmlab.squarespace.com/tienda" target="_blank">Tienda</a>
   </div>
   <a class="nav-logo" href="#"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/1a6abddb-ed7b-4600-a979-99d125130d77/1%2724x1024.png?content-type=image%2Fpng" alt="Always Film Lab" /></a>
   <div class="nav-right">
@@ -819,8 +832,8 @@
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#planes" onclick="closeMobileMenu()">Mentoría 1:1</a>
-  <a href="#planes" onclick="closeMobileMenu()">Tienda</a>
+  <a href="https://alwaysfilmlab.circle.so/checkout/time-to-evolve-toolkit" target="_blank" onclick="closeMobileMenu()">Mentoría 1:1</a>
+  <a href="https://alwaysfilmlab.squarespace.com/tienda" target="_blank" onclick="closeMobileMenu()">Tienda</a>
   <a href="#planes" onclick="closeMobileMenu()">Planes</a>
   <a href="https://alwaysfilmlab.circle.so/checkout/essential-creators-basic" target="_blank" class="btn btn-fill" style="text-align:center; margin-top:8px;" onclick="closeMobileMenu()">Entrar a la comunidad</a>
 </div>
@@ -1481,16 +1494,32 @@
   // ── How-to steps sequential animation
   const howSteps = document.querySelector('.how-steps');
   if (howSteps) {
-    const howObs = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) {
-        howSteps.classList.add('visible');
-        howSteps.querySelectorAll('.how-step').forEach((step, i) => {
-          setTimeout(() => step.classList.add('visible'), i * 400);
+    const isMobile = window.innerWidth <= 900;
+    if (isMobile) {
+      // On mobile, observe each step individually
+      const stepObs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            stepObs.unobserve(e.target);
+          }
         });
-        howObs.unobserve(howSteps);
-      }
-    }, { threshold: 0.3 });
-    howObs.observe(howSteps);
+      }, { threshold: 0.2 });
+      howSteps.querySelectorAll('.how-step').forEach(step => stepObs.observe(step));
+      howSteps.classList.add('visible');
+    } else {
+      // On desktop, animate sequentially
+      const howObs = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+          howSteps.classList.add('visible');
+          howSteps.querySelectorAll('.how-step').forEach((step, i) => {
+            setTimeout(() => step.classList.add('visible'), i * 400);
+          });
+          howObs.unobserve(howSteps);
+        }
+      }, { threshold: 0.3 });
+      howObs.observe(howSteps);
+    }
   }
 
   // ── Before/After video autoplay on scroll
