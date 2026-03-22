@@ -681,22 +681,26 @@
     .testi-q { font-size: 15px; line-height: 1.75; color: rgba(255,255,255,.6); font-style: italic; }
 
     /* ── FAQ ─────────────────────────────────── */
-    .faq { padding: 100px 24px; background: var(--cream); color: var(--dark); }
-    .faq-inner { max-width: 720px; margin: 0 auto; }
+    .faq { padding: 100px 24px; background: var(--dark); }
+    .faq-inner { max-width: 800px; margin: 0 auto; }
     .faq-header { text-align: center; margin-bottom: 56px; }
-    .faq-header h2 { font-family: 'Fraunces', serif; font-size: clamp(30px, 4vw, 50px); font-weight: 900; color: var(--dark); }
-    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-header .label { color: rgba(232,82,42,.8); justify-content: center; display: flex; }
+    .faq-header h2 { font-family: 'Fraunces', serif; font-size: clamp(30px, 4vw, 50px); font-weight: 900; color: #fff; }
+    .faq-header p { color: rgba(255,255,255,.4); font-size: 16px; margin-top: 12px; }
+    .faq-item { border-radius: 12px; margin-bottom: 8px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.06); transition: background .2s, border-color .2s; }
+    .faq-item:hover { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.1); }
+    .faq-item.open { background: rgba(232,82,42,.06); border-color: rgba(232,82,42,.15); }
     .faq-q {
       width: 100%; display: flex; align-items: center; justify-content: space-between;
-      padding: 22px 0; gap: 16px; background: none; border: none; cursor: pointer; text-align: left;
+      padding: 20px 24px; gap: 16px; background: none; border: none; cursor: pointer; text-align: left;
       transition: padding .3s ease;
     }
-    .faq-item.open .faq-q { padding-bottom: 8px; }
-    .faq-q-text { font-size: 18px; font-weight: 700; color: var(--orange); line-height: 1.4; transition: color .2s; }
-    .faq-q:hover .faq-q-text { color: #ff6b3a; }
+    .faq-item.open .faq-q { padding-bottom: 4px; }
+    .faq-q-text { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; color: #fff; line-height: 1.5; transition: color .2s; }
+    .faq-q:hover .faq-q-text { color: var(--orange); }
     .faq-icon {
       width: 28px; height: 28px; border-radius: 50%;
-      background: rgba(232,82,42,.1); color: var(--orange);
+      background: rgba(255,255,255,.08); color: rgba(255,255,255,.5);
       display: flex; align-items: center; justify-content: center;
       font-size: 18px; font-weight: 300; flex-shrink: 0;
       transition: transform .3s cubic-bezier(.4,0,.2,1), background .2s, color .2s;
@@ -704,8 +708,8 @@
     .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--orange); color: #fff; }
     .faq-a-wrap { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .35s cubic-bezier(.4,0,.2,1); }
     .faq-item.open .faq-a-wrap { grid-template-rows: 1fr; }
-    .faq-a { font-size: 15px; color: var(--muted); line-height: 1.8; overflow: hidden; }
-    .faq-a-inner { padding-bottom: 24px; }
+    .faq-a { font-size: 15px; color: rgba(255,255,255,.5); line-height: 1.8; overflow: hidden; }
+    .faq-a-inner { padding: 0 24px 20px; }
 
     /* ── FINAL CTA ───────────────────────────── */
     .final-cta {
@@ -866,9 +870,10 @@
       .avatar-track { gap: 26px; }
       .avatar-carousel-label { font-size: 9px; margin-bottom: 14px; }
       .how-num { width: 48px; height: 48px; font-size: 20px; }
-      .faq-q { padding: 16px 0; }
-      .faq-q-text { font-size: 16px; }
+      .faq-q { padding: 16px 16px; }
+      .faq-q-text { font-size: 15px; }
       .faq-a { font-size: 14px; }
+      .faq-a-inner { padding: 0 16px 16px; }
       .testi-card { padding: 24px; }
     }
     @media (max-width: 400px) {
@@ -1451,7 +1456,7 @@
 <section class="faq">
   <div class="faq-inner">
     <div class="faq-header fade-up">
-      <span class="label" style="justify-content:center; display:flex;">Resuelve tus dudas</span>
+      <span class="label">Resuelve tus dudas</span>
       <h2>Preguntas frecuentes</h2>
     </div>
     <div class="faq-item"><button class="faq-q"><span class="faq-q-text">¿Qué incluye mi acceso a AlwaysFilmLab?</span><span class="faq-icon">+</span></button><div class="faq-a-wrap"><div class="faq-a"><div class="faq-a-inner">Tendrás acceso a cursos de color, PowerGrades, LUTs, workshops en vivo, mentorías grupales, herramientas creativas y una comunidad activa de creadores. Todo centralizado en un solo espacio.</div></div></div></div>
