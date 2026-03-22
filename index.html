@@ -30,6 +30,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.squarespace-cdn.com" />
+  <link rel="dns-prefetch" href="https://www.youtube.com" />
+  <link rel="dns-prefetch" href="https://alwaysfilmlab.circle.so" />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -113,9 +116,9 @@
 
     /* ── HERO ────────────────────────────────── */
     .hero {
-      position: relative; min-height: 85vh;
+      position: relative; min-height: 80vh;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center; padding: 110px 24px 80px;
+      text-align: center; padding: 100px 24px 60px;
       background:
         linear-gradient(180deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,.4) 50%, rgba(0,0,0,.7) 100%),
         url('https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2befbc5f-b9c3-4661-8afb-7fbed302403b/2.5.1_2.5.1.jpg?content-type=image%2Fjpeg') center/cover no-repeat;
@@ -888,14 +891,17 @@
     }
     /* ── COOKIE BANNER ──────────────────────── */
     .cookie-banner {
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      position: fixed; left: 0; right: 0; z-index: 9999;
+      bottom: 0;
       background: #1a1a1a; border-top: 1px solid rgba(255,255,255,.1);
       padding: 16px 24px; display: flex; align-items: center; justify-content: center;
       gap: 20px; flex-wrap: wrap;
       transform: translateY(100%); transition: transform .4s cubic-bezier(.4,0,.2,1);
     }
     .cookie-banner.show { transform: translateY(0); }
-    body.cookie-visible .sticky-bar { bottom: 56px !important; }
+    @media (max-width: 900px) {
+      .cookie-banner { bottom: 60px; padding: 12px 16px; gap: 12px; }
+    }
     .cookie-banner p { color: rgba(255,255,255,.6); font-size: 13px; margin: 0; line-height: 1.5; }
     .cookie-banner p a { color: var(--orange); text-decoration: underline; }
     .cookie-btns { display: flex; gap: 8px; flex-shrink: 0; }
