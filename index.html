@@ -405,7 +405,7 @@
     .how-steps::before {
       content: '';
       position: absolute; top: 32px; left: calc(16.666% + 16px); right: calc(16.666% + 16px);
-      height: 1px;
+      height: 1px; z-index: 0;
       background: linear-gradient(to right, var(--orange), rgba(232,82,42,.3), var(--orange));
       animation: linePulse 2s ease-in-out infinite;
     }
@@ -423,7 +423,7 @@
       background: rgba(232,82,42,.2); color: rgba(255,255,255,.3);
       font-family: 'Fraunces', serif; font-size: 26px; font-weight: 900;
       display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;
-      box-shadow: none; position: relative; z-index: 1;
+      box-shadow: none; position: relative; z-index: 2;
       transition: all .5s ease;
     }
     .how-step.visible .how-num {
