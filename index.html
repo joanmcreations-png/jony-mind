@@ -546,6 +546,14 @@
       border: 1px solid rgba(255,255,255,.08); display: flex; flex-direction: column;
       transition: transform .3s cubic-bezier(.4,0,.2,1), box-shadow .3s; position: relative; overflow: hidden;
     }
+    .plan-bg {
+      position: absolute; top: 0; left: 0; right: 0; height: 180px; z-index: 0;
+      background-size: cover; background-position: center;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.35) 0%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.35) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    .plan > *:not(.plan-bg) { position: relative; z-index: 1; }
     .plan:hover { transform: translateY(-6px); box-shadow: 0 24px 56px rgba(0,0,0,.4); }
     .plan .plan-name { color: #fff; }
     .plan .plan-price { color: #fff; }
@@ -562,8 +570,8 @@
       transform: scale(1.05);
     }
     .plan.featured:hover { transform: scale(1.05) translateY(-6px); box-shadow: 0 0 0 1px rgba(232,82,42,0.2), 0 0 100px rgba(232,82,42,0.15), 0 40px 100px rgba(0,0,0,0.4); }
-    .plan.featured::before {
-      content: 'MÁS POPULAR'; position: absolute; top: 18px; right: 18px;
+    .plan.featured::after {
+      content: 'MÁS POPULAR'; position: absolute; top: 18px; right: 18px; z-index: 2;
       background: var(--orange); color: #fff; font-size: 9px; font-weight: 700; letter-spacing: .1em;
       padding: 5px 12px; border-radius: 100px;
     }
@@ -1220,6 +1228,7 @@
   </div>
   <div class="plans-grid">
     <div class="plan fade-up">
+      <div class="plan-bg" style="background-image:url('https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/29655af1-fa4c-41b6-b215-3c5916f56cdf/checkout+essential.jpg?content-type=image%2Fjpeg')"></div>
       <div class="plan-tag">Acceso básico</div>
       <div class="plan-name">Essential Creators</div>
       <div class="plan-pricing">
@@ -1240,6 +1249,7 @@
     </div>
 
     <div class="plan featured fade-up">
+      <div class="plan-bg" style="background-image:url('https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/40047d3b-e506-4171-b08c-9bfa9e83d2ba/before+and+after.jpg?content-type=image%2Fjpeg')"></div>
       <div class="plan-tag">Más completo</div>
       <div class="plan-name">Evolved Film</div>
       <div class="plan-pricing">
@@ -1265,6 +1275,7 @@
     </div>
 
     <div class="plan premium fade-up">
+      <div class="plan-bg" style="background-image:url('https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8c70a749-a23f-467e-84e9-1b15fa49ac2b/Frame+410%2780.jpg?content-type=image%2Fjpeg')"></div>
       <div class="plan-tag">Mentoría personal</div>
       <div class="plan-name">Time to Evolve</div>
       <div class="plan-pricing">
