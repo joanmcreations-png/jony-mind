@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mentoría 1:1 con Joan — Time to Evolve | Always Film Lab</title>
+  <meta name="description" content="Mentoría personal 1:1 con Joan. Revisión de tu trabajo, feedback directo, estrategia de color y narrativa. Solo 5 plazas disponibles.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/1d0551d9-7e88-40eb-9df2-47b21a127286/store+favicon+1.png?content-type=image%2Fpng">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mentoría 1:1 con Joan — Time to Evolve">
+  <meta property="og:description" content="Acceso directo a Joan. Revisión de tu trabajo, feedback real y estrategia personalizada. Solo 5 plazas.">
+  <meta property="og:image" content="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/9958af54-40c4-4259-b099-93b193d9ad0a/EvolvedFilm+Banner.png?content-type=image%2Fpng">
+  <meta property="og:url" content="https://www.alwaysfilmlab.com/mentoria.html">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.alwaysfilmlab.com/mentoria.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #E8522A;
+      --cream: #F4EFE6;
+      --dark: #111010;
+      --dark2: #1C1B1B;
+    }
+
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { font-family: 'Inter', sans-serif; background: var(--dark); color: #fff; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: center;
+      padding: 16px 32px;
+      background: rgba(17,16,16,.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav-logo img { height: 40px; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 120px 24px 80px;
+      background: radial-gradient(ellipse at center bottom, rgba(232,82,42,.08) 0%, transparent 60%);
+    }
+    .hero-inner { max-width: 680px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(232,82,42,.12); border: 1px solid rgba(232,82,42,.25);
+      border-radius: 100px; padding: 8px 20px; font-size: 13px; font-weight: 600;
+      color: var(--orange); margin-bottom: 32px; letter-spacing: .5px;
+    }
+    .hero-badge .dot { width: 8px; height: 8px; background: var(--orange); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .4; } }
+    .hero h1 {
+      font-family: 'Fraunces', serif; font-weight: 900; font-size: clamp(36px, 6vw, 56px);
+      line-height: 1.1; margin-bottom: 20px;
+    }
+    .hero h1 em { font-style: italic; color: var(--orange); }
+    .hero .subtitle {
+      font-size: 17px; color: rgba(255,255,255,.6); line-height: 1.6; margin-bottom: 36px; max-width: 520px; margin-inline: auto;
+    }
+    .hero .spots {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+      border-radius: 12px; padding: 12px 20px; margin-bottom: 32px;
+    }
+    .spots-bar { width: 120px; height: 6px; background: rgba(255,255,255,.1); border-radius: 3px; overflow: hidden; }
+    .spots-fill { width: 60%; height: 100%; background: var(--orange); border-radius: 3px; }
+    .spots-text { font-size: 13px; color: rgba(255,255,255,.5); font-weight: 500; }
+    .btn-cta {
+      display: inline-block; background: var(--orange); color: #fff; font-weight: 700;
+      font-size: 15px; padding: 16px 40px; border-radius: 100px; text-decoration: none;
+      letter-spacing: 1px; text-transform: uppercase; transition: all .3s;
+    }
+    .btn-cta:hover { background: #ff6b3a; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(232,82,42,.3); }
+
+    /* ── WHAT YOU GET ── */
+    .includes {
+      padding: 80px 24px; max-width: 900px; margin: 0 auto;
+    }
+    .includes h2 {
+      font-family: 'Fraunces', serif; font-weight: 900; font-size: clamp(28px, 4vw, 40px);
+      text-align: center; margin-bottom: 48px;
+    }
+    .includes-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+    }
+    .include-card {
+      background: var(--dark2); border: 1px solid rgba(255,255,255,.06);
+      border-radius: 16px; padding: 28px;
+    }
+    .include-card .icon {
+      width: 44px; height: 44px; background: rgba(232,82,42,.12);
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px; font-size: 20px;
+    }
+    .include-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .include-card p { font-size: 14px; color: rgba(255,255,255,.5); line-height: 1.6; }
+
+    /* ── WHO IS IT FOR ── */
+    .for-you {
+      padding: 80px 24px; max-width: 700px; margin: 0 auto; text-align: center;
+    }
+    .for-you h2 {
+      font-family: 'Fraunces', serif; font-weight: 900; font-size: clamp(28px, 4vw, 40px);
+      margin-bottom: 36px;
+    }
+    .for-list {
+      list-style: none; text-align: left; max-width: 500px; margin: 0 auto;
+    }
+    .for-list li {
+      padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.06);
+      font-size: 15px; color: rgba(255,255,255,.7); display: flex; align-items: center; gap: 12px;
+    }
+    .for-list li .check {
+      width: 24px; height: 24px; background: rgba(232,82,42,.15); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .for-list li .check svg { width: 14px; height: 14px; stroke: var(--orange); fill: none; stroke-width: 2.5; }
+
+    /* ── PRICING ── */
+    .pricing {
+      padding: 80px 24px; text-align: center;
+    }
+    .price-card {
+      max-width: 480px; margin: 0 auto;
+      background: linear-gradient(160deg, rgba(232,82,42,.08) 0%, var(--dark2) 40%);
+      border: 1px solid rgba(232,82,42,.2); border-radius: 20px;
+      padding: 48px 40px;
+    }
+    .price-label { font-size: 12px; font-weight: 700; letter-spacing: 2px; color: var(--orange); text-transform: uppercase; margin-bottom: 8px; }
+    .price-name { font-family: 'Fraunces', serif; font-weight: 900; font-size: 32px; margin-bottom: 24px; }
+    .price-row { display: flex; align-items: baseline; justify-content: center; gap: 12px; margin-bottom: 8px; }
+    .price-orig { font-size: 20px; color: rgba(255,255,255,.3); text-decoration: line-through; }
+    .price-now { font-family: 'Fraunces', serif; font-size: 56px; font-weight: 900; }
+    .price-period { font-size: 16px; color: rgba(255,255,255,.4); margin-bottom: 24px; }
+    .price-badge {
+      display: inline-block; background: rgba(232,82,42,.12); border: 1px solid rgba(232,82,42,.2);
+      color: var(--orange); font-size: 12px; font-weight: 700; letter-spacing: 1px;
+      padding: 6px 16px; border-radius: 100px; margin-bottom: 28px;
+    }
+    .price-features {
+      list-style: none; text-align: left; margin-bottom: 32px;
+    }
+    .price-features li {
+      padding: 10px 0; font-size: 14px; color: rgba(255,255,255,.7);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .price-features li svg { flex-shrink: 0; width: 18px; height: 18px; }
+    .price-divider { height: 1px; background: rgba(255,255,255,.08); margin: 8px 0 24px; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px 24px; text-align: center;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    footer a { color: rgba(255,255,255,.4); text-decoration: none; font-size: 13px; }
+    footer a:hover { color: #fff; }
+    footer p { color: rgba(255,255,255,.25); font-size: 12px; margin-top: 12px; }
+
+    /* ── FADE-UP ── */
+    .fade-up { opacity: 0; transform: translateY(30px); transition: opacity .6s, transform .6s; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .includes-grid { grid-template-columns: 1fr; }
+      .price-card { padding: 36px 24px; }
+      .hero { padding: 100px 20px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/c47150a8-10b3-46cc-ab44-934969f8e12e/LOGO+BLANCO+2.png?content-type=image%2Fpng" alt="Always Film Lab" />
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="dot"></span> Solo 5 plazas disponibles</div>
+    <h1>Tu mentoría personal para llevar tus vídeos <em>al siguiente nivel.</em></h1>
+    <p class="subtitle">Acceso directo a Joan. Revisión de tu trabajo, feedback real, estrategia de color y narrativa visual. Sin rodeos.</p>
+    <div class="spots">
+      <div class="spots-bar"><div class="spots-fill"></div></div>
+      <span class="spots-text">3 de 5 plazas cubiertas</span>
+    </div>
+    <br>
+    <a href="https://alwaysfilmlab.circle.so/checkout/time-to-evolve-toolkit" target="_blank" class="btn-cta">Reservar mi plaza</a>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="includes fade-up">
+  <h2>Qué incluye tu mentoría</h2>
+  <div class="includes-grid">
+    <div class="include-card">
+      <div class="icon">📹</div>
+      <h3>1 llamada individual al mes</h3>
+      <p>60 minutos de sesión privada por videollamada. Tú eliges el tema: color, narrativa, workflow o estrategia.</p>
+    </div>
+    <div class="include-card">
+      <div class="icon">🎨</div>
+      <h3>Revisión de tu trabajo</h3>
+      <p>Envía tus proyectos y recibe feedback detallado sobre color, edición y dirección visual.</p>
+    </div>
+    <div class="include-card">
+      <div class="icon">🎬</div>
+      <h3>Todo lo de Evolved Film</h3>
+      <p>Acceso completo al PowerGrade, LUTs, curso de color, comunidad y todas las actualizaciones.</p>
+    </div>
+    <div class="include-card">
+      <div class="icon">⚡</div>
+      <h3>Prioridad directa</h3>
+      <p>Canal directo con Joan para dudas urgentes. Sin esperar. Sin intermediarios.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IS IT FOR -->
+<section class="for-you fade-up">
+  <h2>Es para ti si...</h2>
+  <ul class="for-list">
+    <li>
+      <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+      Ya usas Evolved Film y quieres ir más lejos
+    </li>
+    <li>
+      <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+      Necesitas feedback honesto sobre tu trabajo
+    </li>
+    <li>
+      <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+      Quieres acelerar tu progreso con guía directa
+    </li>
+    <li>
+      <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+      Buscas construir un estilo visual propio
+    </li>
+    <li>
+      <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+      Valoras el contacto directo con el creador
+    </li>
+  </ul>
+</section>
+
+<!-- PRICING -->
+<section class="pricing fade-up">
+  <div class="price-card">
+    <div class="price-label">Mentoría Personal</div>
+    <div class="price-name">Time to Evolve</div>
+    <div class="price-row">
+      <span class="price-orig">$300</span>
+      <span class="price-now">$150</span>
+    </div>
+    <div class="price-period">al mes</div>
+    <div class="price-badge">Oferta por tiempo limitado</div>
+    <ul class="price-features">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Todo lo de Evolved Film incluido
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        1 llamada individual al mes (60 min)
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Feedback directo y sin filtros
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Revisión de color, narrativa y estrategia
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Prioridad para dudas importantes
+      </li>
+    </ul>
+    <div class="price-divider"></div>
+    <a href="https://alwaysfilmlab.circle.so/checkout/time-to-evolve-toolkit" target="_blank" class="btn-cta" style="width:100%; text-align:center;">Reservar mi plaza — $150/mes</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="index.html">← Volver a Always Film Lab</a>
+  <p>&copy; 2026 Always Film Lab. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
