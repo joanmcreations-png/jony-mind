@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compra confirmada — Always Film Lab</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/1d0551d9-7e88-40eb-9df2-47b21a127286/store+favicon+1.png?content-type=image%2Fpng">
+  <link rel="apple-touch-icon" href="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/1d0551d9-7e88-40eb-9df2-47b21a127286/store+favicon+1.png?content-type=image%2Fpng">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange:      #E8522A;
+      --orange-dark: #C43E1A;
+      --cream:       #F4EFE6;
+      --dark:        #111010;
+      --dark2:       #1C1B1B;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark);
+      color: #fff;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 24px;
+    }
+
+    .confirmation {
+      max-width: 560px;
+      width: 100%;
+    }
+
+    .logo {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 32px;
+      border-radius: 14px;
+    }
+
+    .check-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+      box-shadow: 0 8px 32px rgba(232,82,42,.35);
+      animation: popIn .5s cubic-bezier(.34,1.56,.64,1) both;
+    }
+
+    .check-circle svg {
+      width: 40px;
+      height: 40px;
+      stroke: #fff;
+      stroke-width: 3;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .check-circle svg path {
+      stroke-dasharray: 60;
+      stroke-dashoffset: 60;
+      animation: drawCheck .4s .3s ease forwards;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes drawCheck {
+      to { stroke-dashoffset: 0; }
+    }
+
+    .label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .desc {
+      font-size: 16px;
+      line-height: 1.6;
+      color: rgba(255,255,255,.7);
+      margin-bottom: 36px;
+    }
+
+    .desc strong {
+      color: #fff;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: background .2s, transform .15s, box-shadow .2s;
+    }
+
+    .btn-fill {
+      background: var(--orange);
+      color: #fff;
+      box-shadow: 0 6px 24px rgba(232,82,42,.3);
+    }
+
+    .btn-fill:hover {
+      background: var(--orange-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 36px rgba(232,82,42,.45);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,.15);
+      color: #fff;
+      margin-left: 12px;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,.1);
+      border-color: rgba(255,255,255,.3);
+      transform: translateY(-1px);
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-note {
+      margin-top: 48px;
+      font-size: 13px;
+      color: rgba(255,255,255,.4);
+      line-height: 1.6;
+    }
+
+    .footer-note a {
+      color: var(--orange);
+      text-decoration: none;
+    }
+
+    .footer-note a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="confirmation">
+    <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/1d0551d9-7e88-40eb-9df2-47b21a127286/store+favicon+1.png?content-type=image%2Fpng"
+         alt="Always Film Lab" class="logo" />
+
+    <div class="check-circle">
+      <svg viewBox="0 0 40 40">
+        <path d="M10 20 L17 27 L30 13" />
+      </svg>
+    </div>
+
+    <span class="label">Compra confirmada</span>
+    <h1>Gracias por tu compra</h1>
+
+    <p class="desc">
+      Tu pedido se ha procesado correctamente. <strong>Revisa tu correo electr&oacute;nico</strong> para encontrar los detalles de tu compra y las instrucciones de descarga.
+    </p>
+
+    <div class="buttons">
+      <a href="https://www.alwaysfilmlab.com" class="btn btn-fill">Volver a la web</a>
+      <a href="https://alwaysfilmlab.circle.so" class="btn btn-outline">Ir a la comunidad</a>
+    </div>
+
+    <p class="footer-note">
+      &iquest;Necesitas ayuda? Escr&iacute;benos a <a href="mailto:alwaysfilmlab@gmail.com">alwaysfilmlab@gmail.com</a>
+    </p>
+  </div>
+
+</body>
+</html>
