@@ -1818,6 +1818,300 @@
 }
 </script>
 
+<!-- ── CHAT FAQ FLOTANTE ──────────────────────── -->
+<style>
+  .chat-fab {
+    position: fixed; bottom: 24px; right: 24px; z-index: 9998;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--orange); border: none; cursor: pointer;
+    box-shadow: 0 4px 20px rgba(232,82,42,.4);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .chat-fab:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(232,82,42,.55); }
+  .chat-fab svg { width: 26px; height: 26px; fill: #fff; transition: opacity .2s; }
+  .chat-fab .icon-close { position: absolute; opacity: 0; }
+  .chat-fab.open .icon-chat { opacity: 0; }
+  .chat-fab.open .icon-close { opacity: 1; }
+
+  .chat-window {
+    position: fixed; bottom: 92px; right: 24px; z-index: 9997;
+    width: 360px; max-height: 520px;
+    background: #1a1a1a; border: 1px solid rgba(255,255,255,.1);
+    border-radius: 16px; overflow: hidden;
+    display: flex; flex-direction: column;
+    box-shadow: 0 12px 48px rgba(0,0,0,.5);
+    transform: scale(0.8) translateY(20px); opacity: 0;
+    pointer-events: none;
+    transition: transform .3s cubic-bezier(.34,1.56,.64,1), opacity .2s;
+    transform-origin: bottom right;
+  }
+  .chat-window.open { transform: scale(1) translateY(0); opacity: 1; pointer-events: all; }
+
+  .chat-header {
+    background: var(--orange); padding: 16px 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .chat-header img { width: 36px; height: 36px; border-radius: 10px; }
+  .chat-header-text h4 { font-size: 14px; font-weight: 700; color: #fff; margin: 0; }
+  .chat-header-text p { font-size: 11px; color: rgba(255,255,255,.8); margin: 2px 0 0; }
+
+  .chat-body {
+    flex: 1; overflow-y: auto; padding: 16px;
+    display: flex; flex-direction: column; gap: 10px;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+  }
+
+  .chat-msg {
+    max-width: 85%; padding: 10px 14px;
+    font-size: 13px; line-height: 1.5;
+    border-radius: 14px; animation: chatPop .3s ease both;
+  }
+  .chat-msg.bot {
+    background: #2a2a2a; color: rgba(255,255,255,.85);
+    align-self: flex-start; border-bottom-left-radius: 4px;
+  }
+  .chat-msg.user {
+    background: var(--orange); color: #fff;
+    align-self: flex-end; border-bottom-right-radius: 4px;
+  }
+
+  @keyframes chatPop {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .chat-suggestions {
+    display: flex; flex-direction: column; gap: 6px;
+    padding: 0 16px 16px;
+  }
+  .chat-sug-btn {
+    background: transparent; border: 1px solid rgba(255,255,255,.12);
+    color: rgba(255,255,255,.7); font-size: 12px; line-height: 1.4;
+    padding: 9px 14px; border-radius: 10px; cursor: pointer;
+    text-align: left; transition: all .2s; font-family: 'Inter', sans-serif;
+  }
+  .chat-sug-btn:hover {
+    background: rgba(232,82,42,.1); border-color: var(--orange);
+    color: #fff;
+  }
+
+  .chat-input-wrap {
+    border-top: 1px solid rgba(255,255,255,.08);
+    padding: 12px 16px; display: flex; gap: 8px;
+  }
+  .chat-input {
+    flex: 1; background: #2a2a2a; border: 1px solid rgba(255,255,255,.1);
+    border-radius: 10px; padding: 9px 14px; color: #fff;
+    font-size: 13px; font-family: 'Inter', sans-serif; outline: none;
+    transition: border-color .2s;
+  }
+  .chat-input::placeholder { color: rgba(255,255,255,.3); }
+  .chat-input:focus { border-color: var(--orange); }
+  .chat-send {
+    background: var(--orange); border: none; border-radius: 10px;
+    width: 38px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: background .2s;
+  }
+  .chat-send:hover { background: var(--orange-dark); }
+  .chat-send svg { width: 18px; height: 18px; fill: #fff; }
+
+  @media (max-width: 900px) {
+    .chat-fab { bottom: 76px; right: 16px; width: 50px; height: 50px; }
+    .chat-fab svg { width: 22px; height: 22px; }
+    .chat-window { bottom: 138px; right: 16px; left: 16px; width: auto; max-height: 60vh; }
+  }
+  @media (max-width: 480px) {
+    .chat-window { bottom: 138px; right: 8px; left: 8px; max-height: 55vh; }
+  }
+</style>
+
+<!-- Chat FAB -->
+<button class="chat-fab" id="chatFab" onclick="toggleChat()" aria-label="Abrir chat de ayuda">
+  <svg class="icon-chat" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z"/></svg>
+  <svg class="icon-close" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+</button>
+
+<!-- Chat Window -->
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header">
+    <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/1d0551d9-7e88-40eb-9df2-47b21a127286/store+favicon+1.png?content-type=image%2Fpng" alt="Always Film Lab">
+    <div class="chat-header-text">
+      <h4>Always Film Lab</h4>
+      <p>Respuestas al instante</p>
+    </div>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="chat-suggestions" id="chatSugs"></div>
+  <div class="chat-input-wrap">
+    <input class="chat-input" id="chatInput" type="text" placeholder="Escribe tu pregunta..." onkeydown="if(event.key==='Enter')sendChat()">
+    <button class="chat-send" onclick="sendChat()" aria-label="Enviar">
+      <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var faqData = [
+    // ── CONTENIDO Y ACCESO ──
+    { q: '¿Qué incluye mi acceso?', k: ['incluye','acceso','qué tengo','qué obtengo','contenido','dentro'], a: 'Tendrás acceso a cursos de color, PowerGrades, LUTs, workshops en vivo, mentorías grupales, herramientas creativas y una comunidad activa de creadores. Todo centralizado en un solo espacio.' },
+    { q: '¿Qué es un PowerGrade?', k: ['powergrade','power grade','qué es','grade'], a: 'Un PowerGrade es un preset avanzado de corrección de color para DaVinci Resolve. A diferencia de un LUT, un PowerGrade usa nodos editables, lo que te da control total sobre cada aspecto del look: exposición, saturación, curvas, máscaras, etc.' },
+    { q: '¿Qué es un LUT?', k: ['qué es un lut','que es un lut','lut qué','lut que','lookup'], a: 'Un LUT (Look-Up Table) es un archivo que transforma los colores de tu vídeo aplicando un look específico. Es como un filtro profesional que puedes usar en cualquier programa de edición. Los nuestros están diseñados para dar un aspecto cinematográfico.' },
+    { q: '¿Qué diferencia hay entre LUT y PowerGrade?', k: ['diferencia','lut vs','vs powergrade','mejor lut','mejor powergrade','comparar'], a: 'Un LUT aplica un look fijo que no puedes editar por dentro. Un PowerGrade es un sistema de nodos en DaVinci Resolve donde puedes ajustar cada capa del color por separado. El PowerGrade te da mucho más control y flexibilidad.' },
+    { q: '¿Hay actualizaciones incluidas?', k: ['actualiza','update','nuevo contenido','más contenido','nuevos','añaden'], a: 'Sí. Cada mes añadimos nuevos tutoriales, herramientas, LUTs y sesiones. Siempre tendrás acceso a la versión más actualizada sin pagar de más.' },
+    { q: '¿Puedo personalizar los PowerGrades?', k: ['personalizar','modificar','editar powergrade','cambiar','nodos','ajustar','estilo propio','tocar'], a: 'Sí. Todos los PowerGrades y LUTs están pensados para ser flexibles. Puedes modificar nodos, parámetros y looks para crear tu propio estilo único.' },
+
+    // ── COMPATIBILIDAD ──
+    { q: '¿Funciona con mi cámara?', k: ['cámara','camara','sony','canon','panasonic','fuji','nikon','iphone','dron','blackmagic','red','bmpcc','gh5','gh6','a7','fx'], a: 'Sí. Sony, Canon, Panasonic, Fujifilm, Nikon, Blackmagic, RED, iPhone, drones... Mientras grabes en LOG, Rec.709 o el perfil estándar de tu cámara, todo funciona.' },
+    { q: '¿En qué programas funciona?', k: ['programa','software','premiere','final cut','capcut','davinci','resolve','lumafusion','editor','after effects','avid'], a: 'El PowerGrade solo funciona en DaVinci Resolve (está construido con nodos). Pero los LUTs funcionan en cualquier programa: Premiere Pro, Final Cut, CapCut, DaVinci, Lumafusion, After Effects, etc.' },
+    { q: '¿Funciona con la versión gratuita de DaVinci?', k: ['gratis','gratuita','free','davinci free','resolve gratis','versión gratuita','studio'], a: 'Sí. El PowerGrade y los LUTs funcionan tanto en DaVinci Resolve gratuito como en la versión Studio. No necesitas la versión de pago.' },
+    { q: '¿Funciona en Mac y Windows?', k: ['mac','windows','linux','sistema operativo','pc','macbook','imac'], a: 'Sí. Todo funciona en Mac, Windows y Linux. DaVinci Resolve y el resto de editores son multiplataforma, así que no tendrás problema.' },
+    { q: '¿Sirve para vídeos de boda?', k: ['boda','bodas','wedding','evento','ceremonia'], a: 'Sí, muchos de nuestros creadores usan los PowerGrades y LUTs para bodas y eventos. El look cinematográfico funciona muy bien para este tipo de contenido. Puedes ajustar la intensidad según el estilo que busques.' },
+    { q: '¿Sirve para cortometrajes o cine?', k: ['cortometraje','corto','cine','película','pelicula','ficción','ficcion','narrativo'], a: 'Por supuesto. Los PowerGrades están pensados para dar un look cinematográfico profesional. Muchos creadores los usan como base para cortos, documentales y proyectos narrativos.' },
+    { q: '¿Sirve para YouTube o redes sociales?', k: ['youtube','redes','social','instagram','tiktok','reels','shorts','contenido'], a: 'Sí. Los LUTs y PowerGrades funcionan para cualquier tipo de contenido: YouTube, Instagram, TikTok, vlogs, documentales... Le dan a tu vídeo un look profesional sin importar la plataforma.' },
+    { q: '¿Puedo usar los LUTs en CapCut?', k: ['capcut'], a: 'Sí. Los archivos .cube (LUTs) se pueden importar directamente en CapCut. Solo tienes que ir a Ajustes > LUT > Importar y seleccionar el archivo.' },
+
+    // ── PRECIOS Y PLANES ──
+    { q: '¿Cuánto cuesta?', k: ['precio','cuesta','coste','pagar','plan','planes','barato','caro','dinero','euros','dolares','$','vale'], a: 'Hay 3 planes: Essential Creators ($9) con el LUT pack, Evolved Film ($89) con el PowerGrade + curso + comunidad completa, y Time to Evolve ($150/mes) con mentoría 1:1 con Joan. Puedes ver todos los detalles en la sección de planes.' },
+    { q: '¿Qué plan me recomiendas?', k: ['recomienda','recomendar','mejor plan','cuál elijo','cual elijo','no sé cuál','no se cual','elegir','aconsejas'], a: 'Si solo quieres un look rápido para tus vídeos, Essential Creators ($9) es perfecto. Si quieres aprender color en serio con el PowerGrade + curso + comunidad, Evolved Film ($89) es el más completo. Y si buscas atención personalizada con Joan, Time to Evolve ($150/mes).' },
+    { q: '¿Es un pago único o suscripción?', k: ['pago único','unico','suscripción','suscripcion','mensual','recurrente','una vez','para siempre','lifetime','de por vida'], a: 'Essential Creators ($9) y Evolved Film ($89) son pago único, acceso para siempre. Time to Evolve ($150/mes) es suscripción mensual porque incluye mentorías 1:1 continuas con Joan.' },
+    { q: '¿Hay descuentos o cupones?', k: ['descuento','cupón','cupon','oferta','rebaja','promo','promoción','codigo','código'], a: 'De momento no hay cupones activos, pero a veces hacemos ofertas especiales. Síguenos en Instagram (@alwaysjoan_) para enterarte cuando lancemos alguna promo.' },
+    { q: '¿Se puede pagar con tarjeta?', k: ['tarjeta','visa','mastercard','paypal','pago','método','metodo','stripe','forma de pago','apple pay'], a: 'Sí. Aceptamos tarjeta de crédito/débito (Visa, Mastercard, etc.) y otros métodos según la plataforma. El pago es seguro y procesado por Stripe o la pasarela de la plataforma.' },
+    { q: '¿Hay reembolsos?', k: ['reembolso','devolución','devolucion','devolver','arrepiento','cancelar compra','money back'], a: 'No ofrecemos reembolsos ya que todos nuestros productos son digitales y se entregan al instante. Pero si tienes algún problema, escríbenos a alwaysjoan@alwaysfilmlab.com y lo resolvemos.' },
+
+    // ── COMUNIDAD ──
+    { q: '¿Qué es la comunidad?', k: ['comunidad','circle','foro','grupo','miembros','gente'], a: 'La comunidad es un espacio privado en Circle donde todos los miembros comparten su trabajo, reciben feedback, acceden a los cursos y participan en workshops y sesiones en vivo. Es como un grupo privado de creadores que quieren mejorar juntos.' },
+    { q: '¿Cómo accedo a la comunidad?', k: ['acceder comunidad','entrar comunidad','unirme','registrar','login','iniciar sesión'], a: 'Después de comprar cualquier plan, recibirás un email con tu enlace de acceso a Circle. Creas tu cuenta y ya estás dentro. También puedes usar la app de Circle en iOS/Android.' },
+    { q: '¿Puedo compartir mi trabajo en la comunidad?', k: ['compartir trabajo','subir','feedback','opinión','opinion','review','critique','valoración'], a: 'Sí, es una de las mejores partes. Puedes subir tus trabajos, recibir feedback de otros creadores y de Joan, y aprender viendo los proyectos de los demás.' },
+
+    // ── MENTORÍA ──
+    { q: '¿Qué es Time to Evolve?', k: ['time to evolve','evolve','mentoría 1:1','mentoria 1:1','1 a 1','uno a uno'], a: 'Time to Evolve ($150/mes) es el plan premium con mentoría 1:1 con Joan. Incluye sesiones privadas, revisión personalizada de tu trabajo, estrategia de color y narrativa, y acceso completo a todo el contenido y la comunidad. Solo hay 5 plazas.' },
+    { q: '¿Cuántas plazas hay para la mentoría?', k: ['plazas','plaza','disponible','cupo','límite','limite','quedan'], a: 'Solo hay 5 plazas para Time to Evolve. Actualmente hay 3 cubiertas, así que quedan 2 disponibles. Cuando se llenen, habrá lista de espera.' },
+    { q: '¿Cómo son las sesiones de mentoría?', k: ['sesiones','sesión privada','videollamada','zoom','meet','duración','duracion','cada cuánto'], a: 'Son sesiones privadas por videollamada donde Joan revisa tu trabajo, te da feedback directo, y trabajan juntos en tu estilo y flujo de trabajo. Puedes traer tus proyectos reales y resolver dudas en tiempo real.' },
+    { q: '¿Quién es Joan?', k: ['joan','quién es','quien es','fundador','creador','detrás','detras','always joan'], a: 'Joan es el fundador de Always Film Lab. Es colorista y creador de contenido especializado en look cinematográfico. Comparte su conocimiento a través de cursos, PowerGrades y mentorías para ayudar a otros creadores a mejorar su imagen.' },
+
+    // ── DESCARGA Y TÉCNICO ──
+    { q: '¿Cómo descargo los archivos?', k: ['descargar','descarga','download','bajar','archivo','fichero','zip','instalar'], a: 'Después de comprar, recibirás un email con los enlaces de descarga. También puedes acceder a todos tus archivos desde la comunidad en Circle. Los archivos vienen en formato .zip listos para usar.' },
+    { q: '¿Cómo instalo los LUTs?', k: ['instalar lut','importar lut','añadir lut','cargar lut','poner lut','aplicar lut'], a: 'Depende del programa. En DaVinci Resolve: Project Settings > Color Management > Open LUT Folder > pega los archivos > Update Lists. En Premiere: Panel Lumetri > Creative > Browse. En cada programa es similar, arrastra o importa el archivo .cube.' },
+    { q: '¿Cómo instalo el PowerGrade?', k: ['instalar powergrade','importar powergrade','cargar powergrade','usar powergrade','aplicar powergrade','dpx'], a: 'Abre DaVinci Resolve, ve a la pestaña Color, haz clic derecho en la galería de stills, selecciona "Import" y elige el archivo del PowerGrade. Aparecerá como un still que puedes aplicar a cualquier clip.' },
+    { q: '¿En qué formato vienen los LUTs?', k: ['formato','cube','.cube','tipo archivo','extensión','extension'], a: 'Los LUTs vienen en formato .cube, que es el estándar universal compatible con prácticamente todos los programas de edición de vídeo y color.' },
+    { q: '¿Qué es LOG?', k: ['log','slog','vlog','clog','flat','perfil plano','log qué','log que'], a: 'LOG es un perfil de grabación que captura el máximo rango dinámico de tu cámara. La imagen se ve "plana" y desaturada, pero contiene mucha más información de color para trabajar en postproducción. Es ideal para aplicar LUTs y PowerGrades.' },
+    { q: '¿Necesito grabar en LOG?', k: ['necesito log','obligatorio log','sin log','rec709','rec 709','perfil estándar','estandar','natural'], a: 'No es obligatorio. Nuestros LUTs y PowerGrades funcionan con LOG, Rec.709 y perfiles estándar. Grabar en LOG te da más flexibilidad, pero si grabas en el perfil normal de tu cámara también funciona.' },
+
+    // ── DISPOSITIVOS Y ACCESO ──
+    { q: '¿Desde qué dispositivos puedo acceder?', k: ['dispositivo','móvil','movil','tablet','ordenador','celular','app','aplicación','ipad'], a: 'Puedes acceder desde ordenador, tablet o móvil. Los archivos descargables se usan en cualquier software compatible, y la comunidad funciona con la app de Circle en la App Store y Google Play.' },
+    { q: '¿El acceso es para siempre?', k: ['siempre','caduca','expira','tiempo limitado','permanente','de por vida','vitalicio'], a: 'Sí. Essential Creators y Evolved Film son acceso permanente, de por vida. Time to Evolve es mensual mientras mantengas la suscripción activa.' },
+    { q: '¿Puedo acceder desde el móvil?', k: ['desde móvil','desde movil','desde celular','smartphone','teléfono','telefono'], a: 'Sí. La comunidad tiene la app de Circle disponible en la App Store y Google Play. Puedes ver los cursos, participar en la comunidad y descargar archivos desde tu móvil.' },
+
+    // ── SOPORTE ──
+    { q: '¿Hay soporte si me bloqueo?', k: ['soporte','ayuda','bloqueo','duda','problema','contacto','email','correo','escribir'], a: 'Sí. Puedes escribir en la comunidad o enviar tu duda a alwaysjoan@alwaysfilmlab.com — Joan intenta responder siempre lo antes posible.' },
+    { q: '¿Ya compré un producto, cómo accedo?', k: ['ya compré','compre','comprado','acceso automático','tengo','recuperar','no me llega','no llego'], a: 'Si ya compraste productos, recibirás acceso automático a la comunidad en la categoría que te corresponde. Si no te ha llegado el email, revisa spam o escríbenos a alwaysjoan@alwaysfilmlab.com.' },
+    { q: '¿Puedo regalar un plan?', k: ['regalo','regalar','gift','para otro','para un amigo','cumpleaños'], a: 'De momento no tenemos tarjetas regalo directas, pero puedes comprar un plan y enviarnos el email de la persona a alwaysjoan@alwaysfilmlab.com para que le demos el acceso.' },
+    { q: '¿Cómo contacto con vosotros?', k: ['contactar','contacto','hablar','mensaje','whatsapp','instagram','redes'], a: 'Puedes escribirnos a alwaysjoan@alwaysfilmlab.com o por Instagram (@alwaysjoan_). Intentamos responder lo antes posible.' },
+
+    // ── CURSOS Y WORKSHOPS ──
+    { q: '¿Cómo funcionan los workshops?', k: ['workshop','taller','vivo','directo','sesión grupal','sesion grupal','en vivo','live'], a: 'Organizamos workshops en vivo donde podrás aprender nuevas técnicas, resolver dudas y compartir tu progreso. Se quedan grabados para que puedas verlos cuando quieras. En los niveles avanzados hay mentorías más personalizadas.' },
+    { q: '¿Los cursos están grabados?', k: ['grabado','grabados','ver después','ver despues','a mi ritmo','on demand','replay','repetición'], a: 'Sí. Todos los cursos y workshops se quedan grabados en la comunidad. Puedes verlos a tu ritmo, cuando quieras, tantas veces como necesites.' },
+    { q: '¿Cada cuánto se sube contenido nuevo?', k: ['cada cuánto','cada cuanto','frecuencia','seguido','regularidad','calendario'], a: 'Añadimos contenido nuevo cada mes: tutoriales, herramientas, LUTs, workshops y sesiones. Siempre hay algo nuevo para seguir aprendiendo.' },
+    { q: '¿Hay contenido en español?', k: ['español','espanol','idioma','inglés','ingles','lenguaje','castellano','subtítulos','subtitulos'], a: 'Sí, todo el contenido está en español. La comunidad, los cursos, los workshops y las mentorías son en español.' },
+
+    // ── GENERAL ──
+    { q: '¿Qué es Always Film Lab?', k: ['qué es always','que es always','always film','about','sobre','de qué va','de que va'], a: 'Always Film Lab es una plataforma para creadores de vídeo que quieren darle un look cinematográfico a su trabajo. Ofrecemos PowerGrades, LUTs, cursos de color, workshops en vivo y una comunidad activa. Todo creado por Joan para ayudarte a evolucionar tu imagen.' },
+    { q: '¿Necesito experiencia previa?', k: ['experiencia','principiante','nivel','novato','empezar','sé nada','se nada','cero','nunca he'], a: 'No. AlwaysFilmLab está diseñado para todos los niveles: desde principiantes que nunca han usado un nodo, hasta coloristas avanzados que buscan optimizar su flujo de trabajo.' },
+    { q: '¿Necesito DaVinci Resolve?', k: ['necesito davinci','necesito resolve','obligatorio davinci','sin davinci','otro programa'], a: 'Solo necesitas DaVinci Resolve si quieres usar el PowerGrade. Los LUTs funcionan en cualquier programa de edición. DaVinci Resolve tiene una versión gratuita muy completa que puedes descargar.' },
+    { q: 'Hola', k: ['hola','hey','buenas','saludos','qué tal','que tal','buenos días','buenos dias','buenas tardes'], a: '¡Hola! Bienvenido a Always Film Lab. ¿En qué puedo ayudarte? Puedes preguntarme sobre nuestros planes, contenido, compatibilidad o lo que necesites.' },
+    { q: 'Gracias', k: ['gracias','thanks','thank','genial','perfecto','guay','vale','ok','entendido','claro'], a: '¡De nada! Si tienes más preguntas, aquí estoy. Y si quieres hablar con Joan directamente, escríbenos a alwaysjoan@alwaysfilmlab.com.' }
+  ];
+
+  var mainSuggestions = [
+    '¿Qué incluye mi acceso?',
+    '¿Cuánto cuesta?',
+    '¿Qué plan me recomiendas?',
+    '¿Funciona con mi cámara?',
+    '¿En qué programas funciona?'
+  ];
+
+  var chatOpen = false;
+  var welcomed = false;
+
+  window.toggleChat = function() {
+    chatOpen = !chatOpen;
+    document.getElementById('chatFab').classList.toggle('open', chatOpen);
+    document.getElementById('chatWindow').classList.toggle('open', chatOpen);
+    if (chatOpen && !welcomed) {
+      welcomed = true;
+      addMsg('bot', '¡Hola! 👋 Soy el asistente de Always Film Lab. ¿En qué puedo ayudarte?');
+      showSuggestions(mainSuggestions);
+    }
+    if (chatOpen) document.getElementById('chatInput').focus();
+  };
+
+  function addMsg(type, text) {
+    var body = document.getElementById('chatBody');
+    var div = document.createElement('div');
+    div.className = 'chat-msg ' + type;
+    div.textContent = text;
+    body.appendChild(div);
+    body.scrollTop = body.scrollHeight;
+  }
+
+  function showSuggestions(list) {
+    var wrap = document.getElementById('chatSugs');
+    wrap.innerHTML = '';
+    list.forEach(function(text) {
+      var btn = document.createElement('button');
+      btn.className = 'chat-sug-btn';
+      btn.textContent = text;
+      btn.onclick = function() { handleQuestion(text); };
+      wrap.appendChild(btn);
+    });
+  }
+
+  function clearSuggestions() {
+    document.getElementById('chatSugs').innerHTML = '';
+  }
+
+  function findAnswer(input) {
+    var q = input.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    var best = null, bestScore = 0;
+    for (var i = 0; i < faqData.length; i++) {
+      var score = 0;
+      for (var j = 0; j < faqData[i].k.length; j++) {
+        var kw = faqData[i].k[j].normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        if (q.indexOf(kw) !== -1) score += kw.length;
+      }
+      if (score > bestScore) { bestScore = score; best = faqData[i]; }
+    }
+    return bestScore >= 3 ? best : null;
+  }
+
+  function handleQuestion(text) {
+    addMsg('user', text);
+    clearSuggestions();
+    var match = findAnswer(text);
+    setTimeout(function() {
+      if (match) {
+        addMsg('bot', match.a);
+        var others = mainSuggestions.filter(function(s) { return s !== text; }).slice(0, 3);
+        setTimeout(function() { showSuggestions(others); }, 400);
+      } else {
+        addMsg('bot', 'No tengo una respuesta exacta para eso, pero puedes escribirnos a alwaysjoan@alwaysfilmlab.com y te ayudamos encantados. También puedes probar con otra pregunta:');
+        setTimeout(function() { showSuggestions(mainSuggestions); }, 400);
+      }
+    }, 500);
+  }
+
+  window.sendChat = function() {
+    var input = document.getElementById('chatInput');
+    var text = input.value.trim();
+    if (!text) return;
+    input.value = '';
+    handleQuestion(text);
+  };
+})();
+</script>
+
 <!-- Organization Schema -->
 <script type="application/ld+json">
 {
