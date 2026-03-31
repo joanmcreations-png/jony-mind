@@ -95,6 +95,18 @@
     .btn-dark { background: rgba(255,255,255,.1); color: #fff; border: 1px solid rgba(255,255,255,.15); }
     .btn-dark:hover { background: rgba(255,255,255,.18); transform: translateY(-1px); }
 
+    /* ── TOP BAR ─────────────────────────────── */
+    .top-bar {
+      position: relative;
+      background: #fff; color: #111;
+      text-align: center; padding: 9px 16px;
+      font-size: 13px; font-weight: 500; line-height: 1.3;
+      letter-spacing: .01em;
+    }
+    .top-bar a { color: var(--orange); text-decoration: none; font-weight: 700; margin-left: 10px; white-space: nowrap; }
+    .top-bar a:hover { text-decoration: underline; }
+    @media (max-width: 600px) { .top-bar { font-size: 11px; padding: 8px 12px; } }
+
     /* ── NAV ─────────────────────────────────── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
@@ -144,7 +156,7 @@
     .hero {
       position: relative; min-height: calc(100vh - 160px); min-height: calc(100svh - 160px);
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center; padding: 100px 24px 60px;
+      text-align: center; padding: 138px 24px 60px;
       background:
         linear-gradient(180deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,.4) 50%, rgba(0,0,0,.7) 100%),
         url('https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2befbc5f-b9c3-4661-8afb-7fbed302403b/2.5.1_2.5.1.jpg?content-type=image%2Fjpeg') center/cover no-repeat;
@@ -1051,6 +1063,12 @@
   </div>
 </div>
 
+<!-- TOP BAR -->
+<div class="top-bar">
+  Las 350 plazas a $89 están agotadas · El precio sube a $120 en menos de 24h
+  <a href="#planes">Ver planes →</a>
+</div>
+
 <!-- NAV -->
 <nav>
   <div class="nav-links">
@@ -1347,12 +1365,12 @@
         </div></div>
         <span class="tier-badge">Sold out</span>
       </div>
-      <div class="tier-row active">
+      <div class="tier-row">
         <span class="tier-label">$89</span>
         <div class="tier-bar"><div class="tier-bar-ticks">
-          <div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick"></div>
+          <div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div>
         </div></div>
-        <span class="tier-badge">Ahora</span>
+        <span class="tier-badge">Sold out</span>
       </div>
       <div class="tier-row next">
         <span class="tier-label">$120</span>
@@ -1362,7 +1380,8 @@
         <span class="tier-badge">Próximo</span>
       </div>
     </div>
-    <p class="tier-counter"><strong>348</strong> de 350 miembros a este precio<br>Solo quedan <strong>2 plazas</strong> antes de que suba a $120</p>
+    <p class="tier-counter"><strong>350</strong> de 350 plazas agotadas a este precio<br>En menos de <strong>24 horas</strong> el precio sube a <strong>$120</strong></p>
+    <div class="tier-urgency">⏰ Las 350 plazas a $89 se agotaron — el precio sube a $120 en menos de 24h</div>
   </div>
 
   <!-- Lifetime banner -->
@@ -1936,15 +1955,17 @@
   }, { threshold: 0.3 });
   document.querySelectorAll('.stats').forEach(s => statsObs.observe(s));
 
-  // ── Nav scroll effect
+  // ── Nav scroll effect + top bar offset
   const navEl = document.querySelector('nav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 80) {
-      navEl.classList.add('scrolled');
-    } else {
-      navEl.classList.remove('scrolled');
-    }
-  }, { passive: true });
+  const topBarEl = document.querySelector('.top-bar');
+  function updateNav() {
+    const barH = topBarEl ? Math.max(0, topBarEl.offsetHeight - window.scrollY) : 0;
+    navEl.style.top = barH + 'px';
+    if (window.scrollY > 80) navEl.classList.add('scrolled');
+    else navEl.classList.remove('scrolled');
+  }
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
 </script>
 
 <!-- FAQ Schema for Google Rich Results -->
