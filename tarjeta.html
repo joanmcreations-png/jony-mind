@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-L1G4TWBRBP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-L1G4TWBRBP');
+  </script>
+
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1088357306660604');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1088357306660604&ev=PageView&noscript=1"/></noscript>
+
+  <title>Tu Tarjeta de Miembro — Always Film Lab</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/1d0551d9-7e88-40eb-9df2-47b21a127286/store+favicon+1.png?content-type=image%2Fpng">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #E8522A;
+      --orange-dark: #C43E1A;
+      --dark: #111010;
+      --dark2: #1C1B1B;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px 60px;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 48px;
+      max-width: 500px;
+    }
+    .page-header img {
+      width: 48px; height: 48px; border-radius: 12px;
+      margin-bottom: 24px;
+    }
+    .page-header h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(24px, 5vw, 36px);
+      font-weight: 900; line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .page-header p {
+      font-size: 15px; color: rgba(255,255,255,.5);
+      line-height: 1.6;
+    }
+
+    /* ── FORM ── */
+    .card-form {
+      display: flex; flex-direction: column; gap: 16px;
+      max-width: 400px; width: 100%; margin-bottom: 48px;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label {
+      font-size: 12px; font-weight: 600; letter-spacing: .05em;
+      text-transform: uppercase; color: rgba(255,255,255,.4);
+    }
+    .form-group input, .form-group select {
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+      border-radius: 12px; padding: 14px 16px; color: #fff;
+      font-size: 15px; font-family: 'Inter', sans-serif;
+      outline: none; transition: border-color .2s;
+    }
+    .form-group input:focus, .form-group select:focus {
+      border-color: var(--orange);
+    }
+    .form-group input::placeholder { color: rgba(255,255,255,.2); }
+    .form-group select { cursor: pointer; }
+    .form-group select option { background: #1a1a1a; color: #fff; }
+
+    .btn-generate {
+      background: var(--orange); color: #fff; border: none;
+      padding: 16px 32px; border-radius: 100px; font-size: 14px;
+      font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+      cursor: pointer; transition: all .2s; margin-top: 8px;
+      box-shadow: 0 6px 24px rgba(232,82,42,.3);
+    }
+    .btn-generate:hover {
+      background: var(--orange-dark); transform: translateY(-2px);
+      box-shadow: 0 10px 36px rgba(232,82,42,.45);
+    }
+
+    /* ── CARD PREVIEW ── */
+    .card-preview-wrap {
+      display: none; flex-direction: column; align-items: center;
+      gap: 24px; width: 100%;
+    }
+    .card-preview-wrap.show { display: flex; }
+
+    .member-card {
+      width: 420px; max-width: 100%; aspect-ratio: 1.586; /* credit card ratio */
+      border-radius: 20px; position: relative; overflow: hidden;
+      background: radial-gradient(ellipse at 20% 25%, rgba(232,82,42,.07) 0%, transparent 50%), linear-gradient(145deg, #222020 0%, #090808 55%, #181515 100%);
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: 0 24px 80px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.05);
+      padding: 32px;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+
+    /* Holographic shimmer */
+    .member-card::before {
+      content: '';
+      position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+      background: conic-gradient(
+        from 0deg,
+        transparent 0%,
+        rgba(232,82,42,.06) 10%,
+        transparent 20%,
+        rgba(200,170,110,.04) 30%,
+        transparent 40%,
+        rgba(232,82,42,.05) 50%,
+        transparent 60%
+      );
+      animation: hologram 8s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes hologram {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Noise texture overlay */
+    .member-card::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .card-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      position: relative; z-index: 1;
+    }
+    .card-logo {
+      width: 40px; height: 40px; border-radius: 10px;
+    }
+    .card-type {
+      font-size: 9px; font-weight: 700; letter-spacing: .15em;
+      text-transform: uppercase; padding: 5px 12px;
+      border-radius: 100px; border: 1px solid rgba(255,255,255,.1);
+      color: rgba(255,255,255,.4);
+    }
+    .card-type.evolved { border-color: rgba(232,82,42,.3); color: var(--orange); }
+    .card-type.essential { border-color: rgba(255,255,255,.15); color: rgba(255,255,255,.5); }
+    .card-type.premium { border-color: rgba(200,170,110,.3); color: #C8AA6E; }
+
+    .card-bottom {
+      position: relative; z-index: 1;
+    }
+    .card-label {
+      font-size: 8px; font-weight: 600; letter-spacing: .2em;
+      text-transform: uppercase; color: rgba(255,255,255,.25);
+      margin-bottom: 4px;
+    }
+    .card-name {
+      font-family: 'Fraunces', serif;
+      font-size: 22px; font-weight: 900; color: #fff;
+      margin-bottom: 16px; line-height: 1.2;
+    }
+    .card-meta {
+      display: flex; gap: 32px; align-items: flex-end;
+    }
+    .card-meta-item {}
+    .card-meta-label {
+      font-size: 7px; font-weight: 600; letter-spacing: .2em;
+      text-transform: uppercase; color: rgba(255,255,255,.2);
+      margin-bottom: 3px;
+    }
+    .card-meta-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; font-weight: 600; color: rgba(255,255,255,.7);
+    }
+    .card-meta-value.number {
+      font-size: 18px; color: var(--orange); font-weight: 700;
+    }
+
+    /* EMV chip */
+    .card-chip {
+      position: absolute; top: 50%; left: 32px; transform: translateY(-50%);
+      width: 40px; height: 30px; border-radius: 5px; z-index: 2;
+      background: linear-gradient(135deg, #c8a84b 0%, #b08215 30%, #d4b850 55%, #b08215 80%, #c8a84b 100%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 2px 6px rgba(0,0,0,.5);
+    }
+    .card-chip::before {
+      content: ''; position: absolute; top: 3px; left: 3px; right: 3px; bottom: 3px;
+      border: 1px solid rgba(0,0,0,.2); border-radius: 3px;
+    }
+    .card-chip::after {
+      content: ''; position: absolute;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 55%; height: 1px; background: rgba(0,0,0,.2);
+      box-shadow: 0 5px 0 rgba(0,0,0,.18), 0 -5px 0 rgba(0,0,0,.18);
+    }
+
+    /* Shine sweep */
+    .card-shine {
+      position: absolute; top: 0; left: -120%; width: 55%; height: 100%;
+      background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,.07) 45%, rgba(255,255,255,.11) 50%, rgba(255,255,255,.07) 55%, transparent 70%);
+      animation: cardShine 7s ease-in-out infinite;
+      pointer-events: none; z-index: 3;
+    }
+    @keyframes cardShine { 0%,55%{left:-120%} 80%,100%{left:160%} }
+
+    /* Orange line accent */
+    .card-accent {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--orange) 20%, #ff6b3a 50%, var(--orange) 80%, transparent);
+      z-index: 1;
+    }
+
+    /* ── DOWNLOAD BUTTON ── */
+    .btn-download {
+      background: rgba(255,255,255,.06); color: #fff; border: 1px solid rgba(255,255,255,.12);
+      padding: 14px 28px; border-radius: 100px; font-size: 13px;
+      font-weight: 600; cursor: pointer; transition: all .2s;
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-download:hover {
+      background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.2);
+    }
+    .btn-download svg { width: 18px; height: 18px; fill: currentColor; }
+
+    .tip {
+      font-size: 12px; color: rgba(255,255,255,.3);
+      text-align: center; max-width: 360px; line-height: 1.6;
+    }
+
+    @media (max-width: 480px) {
+      .member-card { padding: 24px; border-radius: 16px; }
+      .card-name { font-size: 18px; }
+      .card-meta { gap: 20px; }
+      .card-meta-value.number { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-header">
+    <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/1d0551d9-7e88-40eb-9df2-47b21a127286/store+favicon+1.png?content-type=image%2Fpng" alt="Always Film Lab">
+    <h1>Tu tarjeta de miembro</h1>
+    <p>Genera tu tarjeta digital personalizada como miembro de la comunidad Always Film Lab.</p>
+  </div>
+
+  <!-- Form -->
+  <div class="card-form" id="cardForm">
+    <div class="form-group">
+      <label>Tu nombre</label>
+      <input type="text" id="inputName" placeholder="Ej: Joan Martínez" maxlength="30" autocomplete="off">
+    </div>
+    <div class="form-group">
+      <label>Tu n&uacute;mero de miembro</label>
+      <input type="number" id="inputNumber" placeholder="Ej: 42" min="1" max="9999">
+    </div>
+    <div class="form-group">
+      <label>Tu plan</label>
+      <select id="inputPlan">
+        <option value="essential">Essential Creators</option>
+        <option value="evolved" selected>Evolved Film</option>
+        <option value="premium">Time to Evolve</option>
+      </select>
+    </div>
+    <button class="btn-generate" onclick="generateCard()">Generar mi tarjeta</button>
+  </div>
+
+  <!-- Card Preview -->
+  <div class="card-preview-wrap" id="cardPreview">
+    <div class="member-card" id="memberCard">
+      <div class="card-shine"></div>
+      <div class="card-chip"></div>
+      <div class="card-top">
+        <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/1d0551d9-7e88-40eb-9df2-47b21a127286/store+favicon+1.png?content-type=image%2Fpng" alt="Always Film Lab" class="card-logo">
+        <span class="card-type evolved" id="cardType">EVOLVED FILM</span>
+      </div>
+      <div class="card-bottom">
+        <div class="card-label">Founding Member</div>
+        <div class="card-name" id="cardName">Joan Mart&iacute;nez</div>
+        <div class="card-meta">
+          <div class="card-meta-item">
+            <div class="card-meta-label">Miembro N&ordm;</div>
+            <div class="card-meta-value number" id="cardNumber">#042</div>
+          </div>
+          <div class="card-meta-item">
+            <div class="card-meta-label">Desde</div>
+            <div class="card-meta-value" id="cardDate">2026</div>
+          </div>
+          <div class="card-meta-item">
+            <div class="card-meta-label">Comunidad</div>
+            <div class="card-meta-value">Always Film Lab</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-accent"></div>
+    </div>
+
+    <button class="btn-download" onclick="downloadCard()">
+      <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+      Descargar como imagen
+    </button>
+    <p class="tip">Haz screenshot o descarga tu tarjeta para compartirla en redes.</p>
+
+    <button class="btn-generate" style="background:transparent; border:1px solid rgba(255,255,255,.12); color:rgba(255,255,255,.5); box-shadow:none; font-size:12px; padding:12px 24px;" onclick="resetForm()">Generar otra tarjeta</button>
+  </div>
+
+<script>
+  var planNames = {
+    essential: 'ESSENTIAL CREATORS',
+    evolved: 'EVOLVED FILM',
+    premium: 'TIME TO EVOLVE'
+  };
+
+  function generateCard() {
+    var name = document.getElementById('inputName').value.trim();
+    var num = document.getElementById('inputNumber').value;
+    var plan = document.getElementById('inputPlan').value;
+
+    if (!name) { document.getElementById('inputName').focus(); return; }
+    if (!num) { document.getElementById('inputNumber').focus(); return; }
+
+    // Update card
+    document.getElementById('cardName').textContent = name;
+    document.getElementById('cardNumber').textContent = '#' + String(num).padStart(3, '0');
+    document.getElementById('cardDate').textContent = new Date().getFullYear();
+
+    var typeEl = document.getElementById('cardType');
+    typeEl.textContent = planNames[plan];
+    typeEl.className = 'card-type ' + plan;
+
+    // Update accent color for premium
+    var accent = document.querySelector('.card-accent');
+    var numberEl = document.getElementById('cardNumber');
+    if (plan === 'premium') {
+      accent.style.background = 'linear-gradient(90deg, #C8AA6E, #e0c98a, #C8AA6E)';
+      numberEl.style.color = '#C8AA6E';
+    } else if (plan === 'essential') {
+      accent.style.background = 'linear-gradient(90deg, rgba(255,255,255,.3), rgba(255,255,255,.5), rgba(255,255,255,.3))';
+      numberEl.style.color = 'rgba(255,255,255,.6)';
+    } else {
+      accent.style.background = 'linear-gradient(90deg, var(--orange), #ff6b3a, var(--orange))';
+      numberEl.style.color = 'var(--orange)';
+    }
+
+    // Show card
+    document.getElementById('cardForm').style.display = 'none';
+    document.getElementById('cardPreview').classList.add('show');
+  }
+
+  function resetForm() {
+    document.getElementById('cardForm').style.display = 'flex';
+    document.getElementById('cardPreview').classList.remove('show');
+  }
+
+  function downloadCard() {
+    var card = document.getElementById('memberCard');
+    // Use html2canvas if available, otherwise screenshot tip
+    if (typeof html2canvas !== 'undefined') {
+      html2canvas(card, {
+        backgroundColor: '#0a0a0a',
+        scale: 2,
+        borderRadius: 20
+      }).then(function(canvas) {
+        var link = document.createElement('a');
+        link.download = 'AlwaysFilmLab-MemberCard.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      });
+    } else {
+      // Load html2canvas dynamically
+      var script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+      script.onload = function() { downloadCard(); };
+      document.head.appendChild(script);
+    }
+  }
+</script>
+
+</body>
+</html>
