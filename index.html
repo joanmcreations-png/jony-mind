@@ -205,6 +205,14 @@
     .social-proof-text { color: rgba(255,255,255,.75); font-size: 14px; }
     .social-proof-text strong { color: #fff; }
 
+    .hero-compat {
+      display: flex; align-items: center; justify-content: center; gap: 14px;
+      margin-top: 36px;
+      font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+    }
+    .hero-compat-sep { width: 1px; height: 16px; background: rgba(255,255,255,.15); }
+    .hero-compat img { opacity: .6; }
     .hero-scroll {
       position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); z-index: 2;
       display: flex; flex-direction: column; align-items: center; gap: 6px;
@@ -618,10 +626,18 @@
     .plan.featured .plan-includes { color: rgba(255,255,255,.45); }
     .plan.premium .plan-includes { color: rgba(200,170,110,.7); }
     .lifetime-banner {
-      display: flex; align-items: center; justify-content: center; gap: 16px;
+      display: flex; align-items: center; justify-content: center; gap: 20px;
       max-width: 560px; margin: 48px auto 0; padding: 24px 32px;
       background: var(--dark); border-radius: 16px; text-align: left;
+      border: 1px solid rgba(255,255,255,.08);
+      text-decoration: none; cursor: pointer;
+      transition: border-color .2s, box-shadow .2s;
     }
+    .lifetime-banner:hover {
+      border-color: rgba(232,82,42,.35);
+      box-shadow: 0 0 40px rgba(232,82,42,.12);
+    }
+    .lifetime-icons { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
 
     /* ── PREMIUM (Time to Evolve) ── */
     .plan.premium {
@@ -652,8 +668,10 @@
     /* ── TIER SYSTEM (standalone section) ── */
     .tier-section {
       max-width: 520px; margin: 48px auto 0; padding: 36px 36px 32px;
-      background: rgba(255,255,255,.02);
+      background: rgba(255,255,255,.03);
       border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.1);
+      box-shadow: 0 0 0 1px rgba(232,82,42,.06), 0 0 60px rgba(232,82,42,.1), 0 32px 80px rgba(0,0,0,.35);
     }
     .tier-section-header {
       text-align: center; margin-bottom: 28px;
@@ -668,7 +686,7 @@
     }
     .tier-section-price span {
       font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 400;
-      color: rgba(255,255,255,.25); margin-left: 4px;
+      color: rgba(255,255,255,.6); margin-left: 4px;
     }
     .tier-section-sub {
       font-size: 13px; color: rgba(255,255,255,.35); margin-top: 8px;
@@ -733,7 +751,7 @@
       50% { opacity: .6; }
     }
     .tier-counter {
-      font-size: 14px; color: rgba(255,255,255,.5);
+      font-size: 14px; color: rgba(255,255,255,.8);
       text-align: center; margin-top: 20px; line-height: 1.7;
     }
     .tier-counter strong { color: var(--orange); }
@@ -996,6 +1014,7 @@
       .comparison-grid { grid-template-columns: 1fr; }
       .comparison { padding: 72px 24px; }
       .lifetime-banner { flex-direction: column; text-align: center; padding: 20px 24px; gap: 12px; }
+      .lifetime-icons { justify-content: center; }
       .stats-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
       .stat-num { font-size: clamp(32px, 8vw, 48px); }
       .footer-nav { gap: 32px; }
@@ -1105,6 +1124,13 @@
       </div>
       <p class="social-proof-text"><strong>+1.000</strong> creadores confían en AlwaysFilmLab</p>
     </div>
+  </div>
+  <div class="hero-compat">
+    <span>Funciona con</span>
+    <div class="hero-compat-sep"></div>
+    <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/f80cabc3-a6c1-4f69-9454-1c12069cbc92/davincilogo.png?content-type=image%2Fpng" alt="DaVinci Resolve" height="18">
+    <div class="hero-compat-sep"></div>
+    <svg width="22" height="22" viewBox="0 0 22 22" style="opacity:.6;"><rect width="22" height="22" rx="4" fill="#00005C"/><text x="11" y="16" text-anchor="middle" font-family="serif" font-size="11" font-weight="bold" fill="#9999FF">Pr</text></svg>
   </div>
   <div class="hero-scroll">
     <div class="hero-scroll-line"></div>
@@ -1334,7 +1360,6 @@
     <div class="tier-section-header">
       <div class="tier-section-label">Precio actual de Evolved Film</div>
       <div class="tier-section-price">$120 <span>pago único</span></div>
-      <p class="tier-section-sub">El precio sube cada 50 miembros.</p>
     </div>
     <div class="tier-system">
       <div class="tier-row">
@@ -1368,22 +1393,32 @@
       <div class="tier-row active">
         <span class="tier-label">$120</span>
         <div class="tier-bar"><div class="tier-bar-ticks">
-          <div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div>
+          <div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick filled"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div><div class="tier-tick"></div>
         </div></div>
         <span class="tier-badge">Ahora</span>
       </div>
     </div>
-    <p class="tier-counter"><strong>7</strong> de 100 plazas ocupadas a este precio<br>El precio sube cada <strong>100 nuevos miembros</strong></p>
+    <p class="tier-counter"><strong>9</strong> de 100 plazas ocupadas a este precio<br>El precio sube cada <strong>100 nuevos miembros</strong></p>
   </div>
 
   <!-- Lifetime banner -->
-  <div class="lifetime-banner fade-up">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+  <a href="https://alwaysfilmlab.circle.so/checkout/comunidad-evolved-film" target="_blank" class="lifetime-banner fade-up">
+    <div class="lifetime-icons">
+      <!-- Heart -->
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <!-- DaVinci Resolve -->
+      <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/f80cabc3-a6c1-4f69-9454-1c12069cbc92/davincilogo.png?content-type=image%2Fpng" width="22" height="22" alt="DaVinci Resolve" style="object-fit:contain;">
+      <!-- Adobe Premiere Pro -->
+      <svg width="22" height="22" viewBox="0 0 22 22" title="Adobe Premiere Pro">
+        <rect width="22" height="22" rx="4" fill="#00005C"/>
+        <text x="11" y="16" text-anchor="middle" font-family="serif" font-size="11" font-weight="bold" fill="#9999FF">Pr</text>
+      </svg>
+    </div>
     <div>
       <strong style="color:#fff;">Compra una vez, accede de por vida.</strong><br>
       <span style="color:rgba(255,255,255,.5); font-size:14px;">Sin suscripciones. Todo tuyo para siempre.</span>
     </div>
-  </div>
+  </a>
 </section>
 
 <!-- BEFORE / AFTER -->
