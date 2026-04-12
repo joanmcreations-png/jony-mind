@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Colabora conmigo · @alwaysjoan_ | Always Film Lab</title>
+  <meta name="description" content="Rate card de colaboraciones con marcas para @alwaysjoan_. YouTube, Instagram y paquetes bundle. Niche: cámaras, color grading y filmmaking.">
+  <meta name="robots" content="noindex">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/1d0551d9-7e88-40eb-9df2-47b21a127286/store+favicon+1.png?content-type=image%2Fpng">
+  <link rel="apple-touch-icon" href="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/1d0551d9-7e88-40eb-9df2-47b21a127286/store+favicon+1.png?content-type=image%2Fpng">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange:      #E8522A;
+      --orange-dark: #C43E1A;
+      --cream:       #F4EFE6;
+      --dark:        #111010;
+      --dark2:       #1C1B1B;
+      --dark3:       #232222;
+      --muted:       #6B6B6B;
+      --border:      rgba(255,255,255,.08);
+    }
+
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { font-family: 'Inter', sans-serif; background: var(--dark); color: #fff; overflow-x: hidden; }
+
+    /* ── UTILS ── */
+    .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--orange);
+      display: block; margin-bottom: 14px;
+    }
+    .pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(232,82,42,.12); border: 1px solid rgba(232,82,42,.3);
+      border-radius: 100px; padding: 4px 12px;
+      font-size: 11px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--orange);
+    }
+    .pill-muted {
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.6);
+    }
+    .btn {
+      display: inline-block; padding: 14px 32px; border-radius: 100px;
+      font-size: 13px; font-weight: 700; letter-spacing: 0.07em;
+      text-transform: uppercase; text-decoration: none; cursor: pointer; border: none;
+      transition: background .2s, transform .15s, box-shadow .2s;
+    }
+    .btn-fill { background: var(--orange); color: #fff; box-shadow: 0 6px 24px rgba(232,82,42,.3); }
+    .btn-fill:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 10px 36px rgba(232,82,42,.45); }
+    .btn-outline { background: transparent; border: 2px solid rgba(255,255,255,.2); color: rgba(255,255,255,.7); }
+    .btn-outline:hover { border-color: #fff; color: #fff; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 48px;
+      background: rgba(17,16,16,.85);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      transition: padding .3s, background .3s, box-shadow .3s;
+    }
+    nav.scrolled { background: rgba(17,16,16,.95); box-shadow: 0 4px 24px rgba(0,0,0,.3); }
+    .nav-links { display: flex; gap: 36px; }
+    .nav-links a { color: rgba(255,255,255,.95); text-decoration: none; font-size: 14px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; transition: color .2s; }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-logo {
+      position: absolute; left: 50%; transform: translateX(-50%);
+      text-decoration: none; display: flex; align-items: center;
+    }
+    .nav-logo img { width: 110px; height: auto; filter: brightness(0) invert(1); }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .nav-cta { padding: 10px 24px; font-size: 12px; font-weight: 700; letter-spacing: .06em; }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      background: none; border: none; padding: 4px;
+    }
+    .hamburger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: transform .3s, opacity .3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none; position: fixed; top: 60px; left: 0; right: 0; z-index: 199;
+      background: rgba(17,16,16,.97); backdrop-filter: blur(20px);
+      padding: 28px 32px; flex-direction: column; gap: 20px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: rgba(255,255,255,.8); text-decoration: none; font-size: 18px; font-weight: 600; }
+    .mobile-menu a:hover { color: #fff; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh; min-height: 100svh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 120px 24px 80px;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(17,16,16,.7) 60%, rgba(17,16,16,1) 100%),
+        url('https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2befbc5f-b9c3-4661-8afb-7fbed302403b/2.5.1_2.5.1.jpg?content-type=image%2Fjpeg') center/cover no-repeat;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none; z-index: 1;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      background-repeat: repeat; background-size: 180px;
+      opacity: .45; mix-blend-mode: overlay;
+    }
+    .hero > * { position: relative; z-index: 2; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
+      border-radius: 100px; padding: 6px 18px;
+      color: rgba(255,255,255,.8); font-size: 13px; font-weight: 500;
+      margin-bottom: 36px; backdrop-filter: blur(8px);
+    }
+    .hero-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 8px var(--orange); flex-shrink: 0; }
+
+    .hero h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(48px, 7vw, 88px); font-weight: 900;
+      color: #fff; line-height: .95; letter-spacing: -.025em;
+      max-width: 820px; margin-bottom: 28px;
+    }
+    .hero h1 em { font-style: italic; color: var(--orange); }
+    .hero-sub {
+      color: rgba(255,255,255,.65); font-size: 17px;
+      max-width: 520px; line-height: 1.7; margin-bottom: 52px;
+    }
+
+    /* Stats row */
+    .hero-stats {
+      display: flex; gap: 0; margin-bottom: 52px;
+      border: 1px solid rgba(255,255,255,.12); border-radius: 16px;
+      overflow: hidden; backdrop-filter: blur(8px);
+      background: rgba(255,255,255,.04);
+    }
+    .hero-stat {
+      padding: 20px 32px; text-align: center;
+      border-right: 1px solid rgba(255,255,255,.1);
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-num {
+      font-family: 'Fraunces', serif;
+      font-size: 26px; font-weight: 900; color: #fff;
+      line-height: 1; margin-bottom: 4px;
+    }
+    .hero-stat-label { font-size: 11px; color: rgba(255,255,255,.4); letter-spacing: .08em; text-transform: uppercase; }
+
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+    .btn-hero { padding: 16px 40px; font-size: 14px; }
+
+    /* ── SECTION BASE ── */
+    section { padding: 100px 24px; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 64px; }
+    .section-header h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(36px, 5vw, 56px); font-weight: 900;
+      color: #fff; line-height: 1.05; letter-spacing: -.02em;
+      margin-bottom: 16px;
+    }
+    .section-header p { color: rgba(255,255,255,.5); font-size: 16px; max-width: 480px; margin: 0 auto; line-height: 1.7; }
+
+    /* ── NICHE SECTION ── */
+    .niche-section { padding: 64px 24px; background: var(--dark2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .niche-inner {
+      max-width: 1000px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    }
+    .niche-text .section-header { text-align: left; margin-bottom: 32px; }
+    .niche-text .section-header h2 { font-size: clamp(28px, 4vw, 42px); }
+    .niche-text p { color: rgba(255,255,255,.55); font-size: 15px; line-height: 1.8; margin-bottom: 20px; }
+    .niche-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .niche-tag {
+      padding: 8px 16px; border-radius: 100px;
+      border: 1px solid rgba(255,255,255,.12);
+      font-size: 12px; font-weight: 600; letter-spacing: .06em;
+      text-transform: uppercase; color: rgba(255,255,255,.6);
+    }
+    .niche-stats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    }
+    .niche-stat-card {
+      background: var(--dark3); border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px;
+    }
+    .niche-stat-card .num {
+      font-family: 'Fraunces', serif;
+      font-size: 32px; font-weight: 900; color: #fff;
+      line-height: 1; margin-bottom: 6px;
+    }
+    .niche-stat-card .platform { font-size: 12px; color: rgba(255,255,255,.4); letter-spacing: .08em; text-transform: uppercase; }
+    .niche-stat-card.highlight { border-color: rgba(232,82,42,.3); background: rgba(232,82,42,.06); }
+    .niche-stat-card.highlight .num { color: var(--orange); }
+
+    /* ── RATES SECTION ── */
+    .rates-section { background: var(--dark); }
+
+    /* Channel header */
+    .channel-block { margin-bottom: 52px; }
+    .channel-label {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 20px;
+    }
+    .channel-label-text {
+      font-size: 11px; font-weight: 700; letter-spacing: .16em;
+      text-transform: uppercase; color: rgba(255,255,255,.3);
+    }
+    .channel-label-line { flex: 1; height: 1px; background: var(--border); }
+
+    /* Rate card */
+    .rate-card {
+      background: var(--dark2); border: 1px solid var(--border);
+      border-radius: 20px; padding: 28px 32px;
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 24px; margin-bottom: 12px;
+      transition: border-color .2s, background .2s;
+    }
+    .rate-card:hover { border-color: rgba(255,255,255,.14); }
+    .rate-card.featured {
+      background: rgba(232,82,42,.07);
+      border-color: rgba(232,82,42,.25);
+    }
+    .rate-card.featured:hover { border-color: rgba(232,82,42,.4); }
+    .rate-card.bundle {
+      background: linear-gradient(135deg, rgba(232,82,42,.1) 0%, rgba(232,82,42,.04) 100%);
+      border-color: rgba(232,82,42,.3);
+      flex-direction: column;
+    }
+    .rate-card-left { flex: 1; }
+    .rate-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+    .rate-card-title { font-size: 18px; font-weight: 700; color: #fff; }
+    .rate-card-desc { font-size: 14px; color: rgba(255,255,255,.45); line-height: 1.6; max-width: 440px; }
+    .rate-card-right { text-align: right; flex-shrink: 0; }
+    .rate-price {
+      font-family: 'Fraunces', serif;
+      font-size: 28px; font-weight: 900; color: #fff;
+      line-height: 1; white-space: nowrap;
+    }
+    .rate-card.featured .rate-price { color: var(--orange); }
+    .rate-card.bundle .rate-price { color: var(--orange); }
+    .rate-note { font-size: 12px; color: rgba(255,255,255,.3); margin-top: 4px; }
+
+    /* Bundle layout */
+    .bundle-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; width: 100%; margin-bottom: 16px; }
+    .bundle-items { display: flex; gap: 10px; flex-wrap: wrap; }
+    .bundle-item {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+      border-radius: 100px; padding: 6px 14px;
+      font-size: 12px; font-weight: 600; color: rgba(255,255,255,.7);
+    }
+    .bundle-item svg { flex-shrink: 0; }
+    .bundle-saving {
+      font-size: 12px; color: rgba(232,82,42,.7);
+      font-weight: 600; margin-top: 6px;
+    }
+
+    /* ── USAGE RIGHTS ── */
+    .usage-section { padding: 80px 24px; background: var(--dark2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .usage-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .usage-card {
+      background: var(--dark); border: 1px solid var(--border);
+      border-radius: 20px; padding: 28px 24px; text-align: center;
+      transition: border-color .2s;
+    }
+    .usage-card:hover { border-color: rgba(255,255,255,.14); }
+    .usage-duration {
+      font-family: 'Fraunces', serif;
+      font-size: 38px; font-weight: 900; color: #fff; line-height: 1;
+      margin-bottom: 6px;
+    }
+    .usage-unit { font-size: 14px; color: rgba(255,255,255,.3); margin-bottom: 20px; letter-spacing: .04em; }
+    .usage-price {
+      font-size: 22px; font-weight: 700; color: var(--orange);
+      margin-bottom: 8px;
+    }
+    .usage-desc { font-size: 12px; color: rgba(255,255,255,.35); line-height: 1.5; }
+    .usage-note { margin-top: 32px; text-align: center; font-size: 13px; color: rgba(255,255,255,.3); line-height: 1.6; }
+
+    /* ── CONDITIONS ── */
+    .conditions-section { padding: 80px 24px; background: var(--dark); }
+    .conditions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .condition-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: var(--dark2); border: 1px solid var(--border);
+      border-radius: 16px; padding: 20px 22px;
+    }
+    .condition-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: rgba(232,82,42,.12); border: 1px solid rgba(232,82,42,.2);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; color: var(--orange);
+    }
+    .condition-text strong { display: block; font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .condition-text span { font-size: 13px; color: rgba(255,255,255,.4); line-height: 1.5; }
+
+    /* ── CTA ── */
+    .cta-section {
+      padding: 100px 24px;
+      background: linear-gradient(180deg, var(--dark) 0%, var(--dark2) 100%);
+      text-align: center; border-top: 1px solid var(--border);
+    }
+    .cta-section h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(36px, 5vw, 60px); font-weight: 900;
+      color: #fff; line-height: 1.05; letter-spacing: -.025em;
+      max-width: 620px; margin: 0 auto 20px;
+    }
+    .cta-section h2 em { font-style: italic; color: var(--orange); }
+    .cta-section p { color: rgba(255,255,255,.5); font-size: 16px; max-width: 400px; margin: 0 auto 44px; line-height: 1.7; }
+    .cta-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--border); }
+    .footer-main {
+      max-width: 1200px; margin: 0 auto;
+      padding: 80px 48px 48px;
+    }
+    .footer-top-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 48px; margin-bottom: 64px; }
+    .footer-logo-text { margin-bottom: 16px; }
+    .footer-logo-text img { height: 52px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; }
+    .footer-tagline { font-size: 15px; color: rgba(255,255,255,.35); line-height: 1.7; max-width: 280px; }
+    .footer-nav { display: flex; gap: 64px; flex-wrap: wrap; }
+    .footer-nav-title { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.25); margin-bottom: 20px; }
+    .footer-nav-col a { display: block; font-size: 15px; color: rgba(255,255,255,.45); text-decoration: none; margin-bottom: 14px; transition: color .2s; }
+    .footer-nav-col a:hover { color: #fff; }
+    .footer-bottom-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 32px; border-top: 1px solid var(--border);
+    }
+    .footer-copy { font-size: 13px; color: rgba(255,255,255,.2); letter-spacing: .02em; }
+    .footer-socials { display: flex; gap: 12px; }
+    .social-icon {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,.4); text-decoration: none; transition: all .2s;
+    }
+    .social-icon:hover { background: rgba(255,255,255,.12); color: #fff; border-color: rgba(255,255,255,.2); }
+    .footer-email-row {
+      background: var(--dark2); border-top: 1px solid var(--border);
+      padding: 18px 48px; text-align: center;
+    }
+    .footer-email-row a { font-size: 14px; color: rgba(255,255,255,.35); text-decoration: none; letter-spacing: .04em; transition: color .2s; }
+    .footer-email-row a:hover { color: var(--orange); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 14px 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .hero-stats { flex-wrap: wrap; border-radius: 12px; }
+      .hero-stat { padding: 16px 20px; flex: 1; min-width: 100px; }
+      .hero-stat-num { font-size: 20px; }
+
+      .niche-inner { grid-template-columns: 1fr; gap: 40px; }
+      .niche-text .section-header { text-align: center; }
+      .niche-tags { justify-content: center; }
+
+      .rate-card { flex-direction: column; gap: 16px; }
+      .rate-card-right { text-align: left; }
+      .bundle-top { flex-direction: column; }
+
+      .usage-grid { grid-template-columns: 1fr; gap: 12px; }
+      .usage-card { display: flex; align-items: center; gap: 20px; text-align: left; }
+      .usage-duration { font-size: 28px; margin-bottom: 2px; }
+      .usage-unit { margin-bottom: 0; }
+      .usage-right { flex: 1; }
+
+      .conditions-grid { grid-template-columns: 1fr; }
+
+      .footer-main { padding: 60px 24px 36px; }
+      .footer-top-row { flex-direction: column; gap: 32px; }
+      .footer-nav { justify-content: flex-start; }
+      .footer-bottom-row { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .footer-email-row { padding: 16px 24px; }
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 100px 20px 60px; }
+      .hero-stats { display: grid; grid-template-columns: 1fr 1fr; }
+      .hero-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,.1); }
+      .hero-stat:nth-child(odd) { border-right: 1px solid rgba(255,255,255,.1); }
+      .hero-stat:nth-last-child(-n+2) { border-bottom: none; }
+      section { padding: 72px 20px; }
+      .rate-card { padding: 22px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-links">
+    <a href="mentoria.html">Mentoría 1:1</a>
+    <a href="https://alwaysfilmlab.squarespace.com/tienda" target="_blank">Tienda</a>
+  </div>
+  <a class="nav-logo" href="https://www.alwaysfilmlab.com">
+    <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/1a6abddb-ed7b-4600-a979-99d125130d77/1%2724x1024.png?content-type=image%2Fpng" alt="Always Film Lab" />
+  </a>
+  <div class="nav-right">
+    <a href="mailto:alwaysjoan@alwaysfilmlab.com" class="btn btn-fill nav-cta">Hablamos</a>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="mentoria.html">Mentoría 1:1</a>
+  <a href="https://alwaysfilmlab.squarespace.com/tienda" target="_blank">Tienda</a>
+  <a href="mailto:alwaysjoan@alwaysfilmlab.com" style="color: var(--orange);">Hablamos</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <span class="dot"></span>
+    Disponible para colaboraciones · 2026
+  </div>
+  <h1>Trabaja<br>con <em>@alwaysjoan_</em></h1>
+  <p class="hero-sub">Vídeos de cámaras, color grading y filmmaking. Audiencia de creadores y aficionados al vídeo en España y Latinoamérica.</p>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">29.3K</div>
+      <div class="hero-stat-label">YouTube</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">31K</div>
+      <div class="hero-stat-label">Instagram</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">33.8K</div>
+      <div class="hero-stat-label">TikTok</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">165</div>
+      <div class="hero-stat-label">Vídeos</div>
+    </div>
+  </div>
+
+  <div class="hero-actions">
+    <a href="#rates" class="btn btn-fill btn-hero">Ver tarifas</a>
+    <a href="mailto:alwaysjoan@alwaysfilmlab.com" class="btn btn-outline btn-hero">Hablamos</a>
+  </div>
+</section>
+
+<!-- NICHE -->
+<section class="niche-section">
+  <div class="niche-inner">
+    <div class="niche-text">
+      <div class="section-header">
+        <span class="label">Sobre Joan</span>
+        <h2>Filmmaking<br>sin filtros</h2>
+      </div>
+      <p>Creo contenido especializado en cámaras, color grading y proceso creativo. Basado en Vancouver (CA), con audiencia principalmente en España y Latinoamérica.</p>
+      <p>YouTube largo (~15 min de media) con reviews en profundidad y tutoriales técnicos. Contenido vertical en Instagram y TikTok para máximo alcance.</p>
+      <div class="niche-tags">
+        <span class="niche-tag">Cámaras</span>
+        <span class="niche-tag">Color Grading</span>
+        <span class="niche-tag">Filmmaking</span>
+        <span class="niche-tag">Tech/Foto/Vídeo</span>
+        <span class="niche-tag">Vancouver · CA</span>
+      </div>
+    </div>
+    <div class="niche-stats">
+      <div class="niche-stat-card highlight">
+        <div class="num">29.3K</div>
+        <div class="platform">YouTube</div>
+      </div>
+      <div class="niche-stat-card">
+        <div class="num">31K</div>
+        <div class="platform">Instagram</div>
+      </div>
+      <div class="niche-stat-card">
+        <div class="num">33.8K</div>
+        <div class="platform">TikTok</div>
+      </div>
+      <div class="niche-stat-card">
+        <div class="num">~15min</div>
+        <div class="platform">Avg. length YT</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RATES -->
+<section class="rates-section" id="rates">
+  <div class="container">
+    <div class="section-header">
+      <span class="label">Rate Card 2026</span>
+      <h2>Tarifas de<br>colaboración</h2>
+      <p></p>
+    </div>
+
+    <!-- YouTube -->
+    <div class="channel-block">
+      <div class="channel-label">
+        <span class="channel-label-text">YouTube</span>
+        <div class="channel-label-line"></div>
+      </div>
+
+      <div class="rate-card">
+        <div class="rate-card-left">
+          <div class="rate-card-header">
+            <span class="rate-card-title">Vídeo dedicado</span>
+          </div>
+          <div class="rate-card-desc">El vídeo completo está centrado en tu producto o servicio. Máxima visibilidad y profundidad.</div>
+        </div>
+        <div class="rate-card-right">
+          <div class="rate-price">$1,500 – $2,000</div>
+          <div class="rate-note">Negociable según nicho</div>
+        </div>
+      </div>
+
+      <div class="rate-card featured">
+        <div class="rate-card-left">
+          <div class="rate-card-header">
+            <span class="rate-card-title">Integración orgánica</span>
+            <span class="pill">Más solicitado</span>
+          </div>
+          <div class="rate-card-desc">1–2 min integrado de forma natural en el vídeo. Sin cortes bruscos, cosido al contenido. La opción que mejor convierte.</div>
+        </div>
+        <div class="rate-card-right">
+          <div class="rate-price">$800 – $1,100</div>
+          <div class="rate-note">Según exclusividad</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Instagram -->
+    <div class="channel-block">
+      <div class="channel-label">
+        <span class="channel-label-text">Instagram</span>
+        <div class="channel-label-line"></div>
+      </div>
+
+      <div class="rate-card">
+        <div class="rate-card-left">
+          <div class="rate-card-header">
+            <span class="rate-card-title">Reel dedicado</span>
+          </div>
+          <div class="rate-card-desc">30–60 seg centrado en el producto. Audiencia alineada con tech, foto y vídeo.</div>
+
+        </div>
+        <div class="rate-card-right">
+          <div class="rate-price">$700 – $900</div>
+          <div class="rate-note"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bundle -->
+    <div class="channel-block">
+      <div class="channel-label">
+        <span class="channel-label-text">Bundle</span>
+        <div class="channel-label-line"></div>
+      </div>
+
+      <div class="rate-card bundle">
+        <div class="bundle-top">
+          <div class="rate-card-left">
+            <div class="rate-card-header">
+              <span class="rate-card-title">Integración YouTube + Reel Instagram</span>
+              <span class="pill">Mejor propuesta</span>
+            </div>
+            <div class="rate-card-desc">Presencia en ambas plataformas en el mismo ciclo de contenido. La opción con mejor coste por impacto.</div>
+          </div>
+          <div class="rate-card-right">
+            <div class="rate-price">$1,400 – $1,800</div>
+            <div class="bundle-saving">~20% descuento sobre precios individuales</div>
+          </div>
+        </div>
+        <div class="bundle-items">
+          <div class="bundle-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M9.75 15.02V8.98L15.5 12l-5.75 3.02z"/><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 0 0 .5 6.19 31.7 31.7 0 0 0 0 12a31.7 31.7 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14c1.88.55 9.38.55 9.38.55s7.5 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14A31.7 31.7 0 0 0 24 12a31.7 31.7 0 0 0-.5-5.81z"/></svg>
+            Integración YouTube
+          </div>
+          <div class="bundle-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            Reel Instagram
+          </div>
+          <div class="bundle-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20 6L9 17l-5-5"/></svg>
+            Coordinación incluida
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top: 32px; text-align: center; font-size: 13px; color: rgba(255,255,255,.25);">Todos los precios en USD · Válidos para 2026</p>
+  </div>
+</section>
+
+<!-- USAGE RIGHTS -->
+<section class="usage-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="label">Usage Rights</span>
+      <h2>Derechos de uso</h2>
+      <p>Se añaden sobre cualquier entregable. No incluidos por defecto.</p>
+    </div>
+
+    <div class="usage-grid">
+      <div class="usage-card">
+        <div>
+          <div class="usage-duration">3</div>
+          <div class="usage-unit">meses</div>
+        </div>
+        <div class="usage-right">
+          <div class="usage-price">+$300–400</div>
+          <div class="usage-desc">Para paid ads y campañas de corta duración.</div>
+        </div>
+      </div>
+      <div class="usage-card">
+        <div>
+          <div class="usage-duration">6</div>
+          <div class="usage-unit">meses</div>
+        </div>
+        <div class="usage-right">
+          <div class="usage-price">+$500–700</div>
+          <div class="usage-desc">Campañas medianas y activaciones de temporada.</div>
+        </div>
+      </div>
+      <div class="usage-card">
+        <div>
+          <div class="usage-duration">12</div>
+          <div class="usage-unit">meses</div>
+        </div>
+        <div class="usage-right">
+          <div class="usage-price">+$900–1,200</div>
+          <div class="usage-desc">Campaña anual. Máxima flexibilidad de uso.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="usage-note">
+      Los usage rights no están incluidos en ninguna tarifa. Se cotizan aparte según necesidad.
+    </div>
+  </div>
+</section>
+
+<!-- CONDITIONS -->
+<section class="conditions-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="label">Condiciones</span>
+      <h2>Cómo funciona</h2>
+    </div>
+    <div class="conditions-grid">
+      <div class="condition-item">
+        <div class="condition-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="condition-text">
+          <strong>Exclusividad de categoría</strong>
+          <span>Si necesitas exclusividad en tu categoría durante 30–60 días, se añade un +20–30% sobre el presupuesto total.</span>
+        </div>
+      </div>
+      <div class="condition-item">
+        <div class="condition-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </div>
+        <div class="condition-text">
+          <strong>Revisión de guion</strong>
+          <span>Incluida en todas las colaboraciones. Puedes revisar el mensaje antes de que empiece la grabación.</span>
+        </div>
+      </div>
+      <div class="condition-item">
+        <div class="condition-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="condition-text">
+          <strong>Revisiones adicionales</strong>
+          <span>Tras la aprobación inicial: $100–150 por revisión adicional.</span>
+        </div>
+      </div>
+      <div class="condition-item">
+        <div class="condition-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <div class="condition-text">
+          <strong>Divisa y facturación</strong>
+          <span>Precios en USD. Impuestos a cargo del cliente según su país.</span>
+        </div>
+      </div>
+      <div class="condition-item">
+        <div class="condition-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="condition-text">
+          <strong>Flexibilidad</strong>
+          <span>Los rates pueden ajustarse según tipo de producto, exclusividad y plazos de entrega.</span>
+        </div>
+      </div>
+      <div class="condition-item">
+        <div class="condition-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="condition-text">
+          <strong>Audiencia</strong>
+          <span>Audiencia hispanohablante principalmente en España y Latinoamérica, nicho tech/foto/vídeo.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUÉ NO HAGO -->
+<section class="conditions-section" style="background: var(--dark2); border-top: 1px solid var(--border);">
+  <div class="container">
+    <div class="section-header">
+      <span class="label">Límites</span>
+      <h2>Qué no hago</h2>
+    </div>
+    <div class="conditions-grid">
+      <div class="condition-item">
+        <div class="condition-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+        </div>
+        <div class="condition-text">
+          <strong>Sin fee no hay trato</strong>
+          <span>No acepto colaboraciones solo a cambio de producto, salvo excepciones muy justificadas.</span>
+        </div>
+      </div>
+      <div class="condition-item">
+        <div class="condition-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="condition-text">
+          <strong>Sin contexto creativo, no</strong>
+          <span>No hago unboxings ni menciones sin integración real en el contenido.</span>
+        </div>
+      </div>
+      <div class="condition-item" style="grid-column: 1 / -1;">
+        <div class="condition-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <div class="condition-text">
+          <strong>El guion lo escribo yo</strong>
+          <span>Puedo incluir los puntos clave que necesites, pero el tono y la estructura son míos.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EN LA PRÁCTICA -->
+<section class="cta-section" style="padding: 80px 24px;">
+  <span class="label">En la práctica</span>
+  <h2 style="font-family: 'Fraunces', serif; font-size: clamp(32px, 5vw, 52px); font-weight: 900; color: #fff; line-height: 1.05; letter-spacing: -.025em; max-width: 560px; margin: 0 auto 20px;">Así suena una <em>integración</em></h2>
+  <p>Antes de decidir, mira cómo integro una marca en mis vídeos. Sin cortes raros, sin guion de empresa. Solo contenido que tiene sentido para mi audiencia.</p>
+  <div class="cta-actions">
+    <a href="https://www.youtube.com/@AlwaysJoan" target="_blank" class="btn btn-outline btn-hero">Ver ejemplo</a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <span class="label">¿Listo para colaborar?</span>
+  <h2>Hablemos de<br>tu <em>campaña</em></h2>
+  <p>Escríbeme directamente. Respondo en 24–48h y te preparo una propuesta personalizada.</p>
+  <div class="cta-actions">
+    <a href="mailto:alwaysjoan@alwaysfilmlab.com" class="btn btn-fill btn-hero">alwaysjoan@alwaysfilmlab.com</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="footer-top-row">
+      <div class="footer-brand">
+        <div class="footer-logo-text"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/1a6abddb-ed7b-4600-a979-99d125130d77/1%2724x1024.png?content-type=image%2Fpng" alt="Always Film Lab" loading="lazy" /></div>
+        <div class="footer-tagline">Tu laboratorio de color.<br>Haz que tus vídeos cuenten una historia.</div>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-nav-col">
+          <div class="footer-nav-title">Productos</div>
+          <a href="https://alwaysfilmlab.circle.so/checkout/essential-creators-basic" target="_blank">Essential Creators</a>
+          <a href="https://alwaysfilmlab.circle.so/checkout/comunidad-evolved-film" target="_blank">Evolved Film</a>
+          <a href="https://alwaysfilmlab.circle.so/checkout/time-to-evolve-toolkit" target="_blank">Time to Evolve</a>
+        </div>
+        <div class="footer-nav-col">
+          <div class="footer-nav-title">Legal</div>
+          <a href="privacidad.html">Privacidad</a>
+          <a href="terminos.html">Términos</a>
+          <a href="cookies.html">Cookies</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom-row">
+      <div class="footer-copy">© 2026 Always Film Lab. Todos los derechos reservados.</div>
+      <div class="footer-socials">
+        <a href="https://www.youtube.com/@AlwaysJoan/videos" target="_blank" class="social-icon" title="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 0 0 .5 6.19 31.7 31.7 0 0 0 0 12a31.7 31.7 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14c1.88.55 9.38.55 9.38.55s7.5 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14A31.7 31.7 0 0 0 24 12a31.7 31.7 0 0 0-.5-5.81zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg></a>
+        <a href="https://www.instagram.com/alwaysjoan_/" target="_blank" class="social-icon" title="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.tiktok.com/@alwaysjoan" target="_blank" class="social-icon" title="TikTok"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.05a8.16 8.16 0 004.77 1.52V7.12a4.85 4.85 0 01-1-.43z"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-email-row">
+    <a href="mailto:alwaysjoan@alwaysfilmlab.com">alwaysjoan@alwaysfilmlab.com</a>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+</script>
+
+</body>
+</html>
