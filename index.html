@@ -1044,6 +1044,60 @@
       .how { padding: 56px 16px; }
       .features { padding: 56px 16px; }
     }
+    /* ── IPHONE LUT SECTION ─────────────────── */
+    .iphone-lut-section {
+      background: var(--dark2); padding: 80px 48px;
+      border-top: 1px solid rgba(255,255,255,.06);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .iphone-lut-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    }
+    .iphone-lut-imgs {
+      position: relative;
+      display: grid; grid-template-rows: 1fr 1fr; gap: 8px;
+    }
+    .iph-img-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .iph-pair-bottom { }
+    .iph-img {
+      position: relative; border-radius: 12px; overflow: hidden;
+      aspect-ratio: 16/10;
+    }
+    .iph-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+    .iph-img:hover img { transform: scale(1.03); }
+    .iph-img-after img { filter: saturate(1.08); }
+    .iph-chip {
+      position: absolute; bottom: 8px; left: 8px;
+      font-size: 9px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+      color: rgba(255,255,255,.7); background: rgba(0,0,0,.55); backdrop-filter: blur(6px);
+      padding: 4px 9px; border-radius: 100px; pointer-events: none;
+    }
+    .iph-chip-after { background: rgba(232,82,42,.85); color: #fff; left: auto; right: 8px; }
+    .iph-cta-overlay {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      border-radius: 14px; background: transparent; text-decoration: none;
+      transition: background .2s;
+    }
+    .iph-cta-overlay span {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      color: #fff; background: rgba(10,10,10,.75); backdrop-filter: blur(10px);
+      padding: 12px 22px; border-radius: 100px; border: 1px solid rgba(255,255,255,.15);
+      opacity: 0; transform: translateY(6px);
+      transition: opacity .25s, transform .25s;
+    }
+    .iph-cta-overlay:hover span { opacity: 1; transform: translateY(0); }
+    @media (max-width: 900px) {
+      .iphone-lut-inner { grid-template-columns: 1fr; gap: 40px; }
+      .iphone-lut-section { padding: 60px 24px; }
+    }
+    @media (max-width: 600px) {
+      .iphone-lut-section { padding: 56px 20px; }
+      .iph-img-pair { gap: 6px; }
+      .iphone-lut-imgs { gap: 6px; }
+    }
+
     /* ── COOKIE BANNER ──────────────────────── */
     .cookie-banner {
       position: fixed; left: 0; right: 0; z-index: 9999;
@@ -1275,24 +1329,62 @@
   </div>
 </section>
 
-<!-- IPHONE LUT STRIP -->
-<section style="padding:0 max(24px,calc(50% - 680px)) 80px;">
-  <a href="/iphone-lut" class="fade-up" style="display:flex;align-items:center;gap:28px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:28px 36px;text-decoration:none;transition:background .2s,border-color .2s;position:relative;overflow:hidden;" onmouseenter="this.style.background='rgba(255,255,255,.07)';this.style.borderColor='rgba(255,255,255,.2)'" onmouseleave="this.style.background='rgba(255,255,255,.04)';this.style.borderColor='rgba(255,255,255,.1)'">
-    <div style="flex-shrink:0;width:52px;height:52px;background:rgba(232,82,42,.12);border:1px solid rgba(232,82,42,.25);border-radius:14px;display:flex;align-items:center;justify-content:center;">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8522A" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="17" r="1" fill="#E8522A" stroke="none"/><line x1="9" y1="5" x2="15" y2="5"/></svg>
-    </div>
-    <div style="flex:1;min-width:0;">
-      <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:5px;">Nuevo · Producto independiente</div>
-      <div style="font-size:18px;font-weight:700;color:#fff;letter-spacing:-0.025em;line-height:1.2;">iPhone LUT <span style="font-weight:400;color:rgba(255,255,255,.45);font-size:15px;">— look cinematográfico directamente en tu iPhone</span></div>
-    </div>
-    <div style="flex-shrink:0;display:flex;align-items:center;gap:20px;">
-      <div style="text-align:right;">
-        <div style="font-size:11px;color:rgba(255,255,255,.3);text-decoration:line-through;margin-bottom:2px;">$15.99</div>
-        <div style="font-size:26px;font-weight:700;letter-spacing:-0.04em;color:#fff;line-height:1;">$9.99</div>
+<!-- IPHONE LUT SECTION -->
+<section class="iphone-lut-section fade-up">
+  <div class="iphone-lut-inner">
+
+    <!-- Texto -->
+    <div class="iphone-lut-text">
+      <span class="label">Producto independiente</span>
+      <h2 style="font-family:'Fraunces',serif;font-size:clamp(30px,4vw,52px);font-weight:900;color:#fff;line-height:1.02;letter-spacing:-.025em;margin-bottom:16px;">
+        Tu iPhone ya es<br><em style="font-style:italic;">una película.</em>
+      </h2>
+      <p style="color:rgba(255,255,255,.5);font-size:15px;line-height:1.7;margin-bottom:32px;max-width:380px;">
+        El look cinematográfico del Film Lab, calibrado específicamente para iPhone. Un archivo .cube. Un clic. Sin ajustes.
+      </p>
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:28px;">
+        <a href="/iphone-lut" class="btn btn-fill" style="font-size:14px;padding:15px 32px;">Ver iPhone LUT — $9.99</a>
+        <div>
+          <div style="font-size:11px;color:rgba(255,255,255,.25);text-decoration:line-through;line-height:1;">$15.99</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.35);margin-top:2px;">pago único</div>
+        </div>
       </div>
-      <span class="btn btn-fill" style="padding:11px 22px;font-size:13px;white-space:nowrap;">Ver producto →</span>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        <span style="font-size:11px;font-weight:600;color:rgba(255,255,255,.4);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:100px;padding:5px 13px;">DaVinci</span>
+        <span style="font-size:11px;font-weight:600;color:rgba(255,255,255,.4);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:100px;padding:5px 13px;">Premiere</span>
+        <span style="font-size:11px;font-weight:600;color:rgba(255,255,255,.4);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:100px;padding:5px 13px;">Final Cut</span>
+        <span style="font-size:11px;font-weight:600;color:rgba(255,255,255,.4);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:100px;padding:5px 13px;">CapCut</span>
+      </div>
     </div>
-  </a>
+
+    <!-- Imágenes before/after mini-grid -->
+    <div class="iphone-lut-imgs">
+      <div class="iph-img-pair">
+        <div class="iph-img">
+          <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/19e3e0fe-a1ee-48dc-90be-cb7066e062d7/1_00_00_03_05.jpg?content-type=image%2Fjpeg" alt="Sin LUT" loading="lazy" />
+          <span class="iph-chip">Sin LUT</span>
+        </div>
+        <div class="iph-img iph-img-after">
+          <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/12a6d3ae-7824-4754-b93d-f54053edea69/1_00_00_03_052.jpg?content-type=image%2Fjpeg" alt="Con LUT" loading="lazy" />
+          <span class="iph-chip iph-chip-after">Con LUT</span>
+        </div>
+      </div>
+      <div class="iph-img-pair iph-pair-bottom">
+        <div class="iph-img">
+          <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/632669df-d251-4d14-a126-0aeacf813760/1_00_00_57_042.jpg?content-type=image%2Fjpeg" alt="Sin LUT" loading="lazy" />
+          <span class="iph-chip">Sin LUT</span>
+        </div>
+        <div class="iph-img iph-img-after">
+          <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/b4da2e7a-cc74-4e4f-a678-fac58380b974/1_00_00_57_04.jpg?content-type=image%2Fjpeg" alt="Con LUT" loading="lazy" />
+          <span class="iph-chip iph-chip-after">Con LUT</span>
+        </div>
+      </div>
+      <a href="/iphone-lut" class="iph-cta-overlay" aria-label="Ver iPhone LUT">
+        <span>Ver producto <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M7 2l5 5-5 5"/></svg></span>
+      </a>
+    </div>
+
+  </div>
 </section>
 
 <!-- PLANS -->
