@@ -164,8 +164,8 @@
     .accord-item.open .accord-body { max-height: 400px; }
     .accord-inner { padding: 4px 0 16px; font-size: 13px; color: rgba(255,255,255,.65); line-height: 1.75; }
     .accord-inner ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-    .accord-inner li { display: flex; gap: 8px; }
-    .accord-inner li::before { content: '—'; color: var(--orange); flex-shrink: 0; font-size: 11px; margin-top: 3px; }
+    .accord-inner li { padding-left: 16px; position: relative; }
+    .accord-inner li::before { content: '—'; color: var(--orange); position: absolute; left: 0; top: 0; font-size: 11px; }
     .accord-inner strong { color: rgba(255,255,255,.55); }
 
     /* BEFORE/AFTER SLIDER */
