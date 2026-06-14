@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>iPhone LUT — Always Film Lab</title>
+  <meta name="description" content="One-Click iPhone LUT. El look cinematográfico del Film Lab para tu iPhone. Pago único, $15.99." />
+  <link rel="canonical" href="https://www.alwaysfilmlab.com/iphone-lut" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-L1G4TWBRBP"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L1G4TWBRBP');</script>
+  <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1088357306660604');fbq('track','PageView');</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:     #0a0a0a;
+      --bg2:    #111;
+      --bg3:    #191919;
+      --border: rgba(255,255,255,0.07);
+      --text:   #b8b8b8;
+      --muted:  #555;
+      --orange: #E8522A;
+      --green:  #5a9a6a;
+      --r:      14px;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    h1,h2,h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 700; letter-spacing: -0.035em; line-height: 1.05; color: #fff;
+    }
+    h1 { font-size: clamp(2.2rem, 3.4vw, 4.2rem); }
+    h2 { font-size: clamp(1.7rem, 2.4vw, 3rem); }
+    h1 em, h2 em { font-style: italic; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-weight: 700; font-size: 15px; letter-spacing: -0.01em;
+      padding: 15px 32px; border-radius: 100px; border: none;
+      cursor: pointer; text-decoration: none; white-space: nowrap;
+      transition: opacity .2s, transform .15s;
+    }
+    .btn:hover { opacity: .82; transform: translateY(-1px); }
+    .btn-fill  { background: var(--orange); color: #fff; }
+    .btn-ghost { background: rgba(255,255,255,.06); color: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.1); }
+
+    /* Placeholder */
+    .ph {
+      background: #141414;
+      border: 1.5px dashed rgba(255,255,255,0.08);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 10px; color: rgba(255,255,255,0.15);
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .05em; text-transform: uppercase; text-align: center;
+    }
+    .ph svg { opacity: .2; width: 28px; height: 28px; stroke: currentColor; fill: none; stroke-width: 1.4; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 64px; padding: 0 24px;
+      display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+      transition: background .3s, border-color .3s;
+      border-bottom: 1px solid transparent;
+    }
+    nav.scrolled { background: rgba(10,10,10,.96); backdrop-filter: blur(20px); border-color: var(--border); }
+    .nav-logo { display: flex; justify-content: center; }
+    .nav-logo img { height: 48px; }
+    .nav-back { font-size: 13px; color: #fff; transition: color .2s; letter-spacing: -0.01em; }
+    .nav-back:hover { color: #fff; }
+    .nav-right { }
+
+    /* PRODUCT HERO */
+    .product-hero {
+      max-width: 1100px; margin: 0 auto;
+      padding: 96px 40px 80px;
+      display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: start;
+    }
+
+    /* LEFT */
+    .product-main-img { width: 100%; aspect-ratio: 4/3; border-radius: 18px; overflow: hidden; margin-bottom: 10px; }
+    .product-thumbs { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; }
+    .product-thumb { position: relative; aspect-ratio: 4/3; border-radius: 10px; overflow: hidden; border: 2px solid transparent; transition: border-color .2s; cursor: pointer; }
+    .product-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+    .product-thumb:hover { border-color: rgba(255,255,255,.25); }
+    .product-thumb:hover img { transform: scale(1.04); }
+    .product-thumb:hover .thumb-overlay { background: rgba(0,0,0,.3); }
+    .product-thumb:hover .thumb-overlay span { opacity: 1; transform: translateY(0); }
+
+    /* RIGHT */
+    .product-badge {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      letter-spacing: .07em; text-transform: uppercase;
+      color: rgba(255,255,255,.4); border: 1px solid rgba(255,255,255,.1);
+      border-radius: 100px; padding: 5px 14px; margin-bottom: 16px;
+    }
+    .product-title { margin-bottom: 20px; }
+
+    .product-price-row { display: flex; align-items: baseline; gap: 12px; margin-bottom: 4px; flex-wrap: wrap; }
+    .product-price      { font-size: 44px; font-weight: 700; letter-spacing: -0.04em; color: #fff; line-height: 1; }
+    .product-price-old  { font-size: 22px; font-weight: 600; color: var(--muted); text-decoration: line-through; letter-spacing: -0.02em; }
+    .product-price-note { font-size: 13px; color: var(--muted); }
+    .product-launch     { font-size: 12px; color: var(--orange); font-weight: 600; margin-bottom: 22px; }
+
+    .product-cta { margin-bottom: 18px; }
+    .product-cta .btn { width: 100%; font-size: 15px; padding: 15px; }
+
+    .product-perks { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 24px; }
+    .perk { text-align: center; padding: 14px 8px; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; }
+    .perk-icon { display: flex; justify-content: center; margin-bottom: 7px; color: rgba(255,255,255,.4); }
+    .perk-icon svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.7; stroke-linecap: round; }
+    .perk-label { font-size: 10px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: rgba(255,255,255,.4); }
+
+    .product-compat { display: flex; align-items: center; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; }
+    .compat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; white-space: nowrap; }
+    .compat-apps  { display: flex; gap: 7px; flex-wrap: wrap; }
+    .compat-app {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 11px; font-weight: 600; color: rgba(255,255,255,.35);
+      background: var(--bg3); border: 1px solid var(--border);
+      padding: 4px 10px 4px 5px; border-radius: 6px;
+    }
+    .compat-logo { width: 17px; height: 17px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 8px; font-weight: 800; color: #fff; flex-shrink: 0; }
+    .compat-logo-img { width: 17px; height: 17px; object-fit: contain; border-radius: 3px; flex-shrink: 0; }
+    .step-logos { display: flex; gap: 10px; align-items: center; margin-top: 10px; flex-wrap: wrap; }
+    .step-logo { height: 22px; object-fit: contain; opacity: .55; }
+    /* placeholders — Joan los sustituirá con PNG reales */
+    .l-dr { background: #1C3F5E; }
+    .l-pr { background: #9999FF; }
+    .l-fc { background: #777; }
+    .l-cc { background: #333; }
+
+    /* Acordeón */
+    .product-accord { border-top: 1px solid var(--border); }
+    .accord-item { border-bottom: 1px solid var(--border); }
+    .accord-btn {
+      width: 100%; background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 15px 0; font-family: inherit; font-size: 13px; font-weight: 700;
+      letter-spacing: -0.01em; color: rgba(255,255,255,.7); text-align: left;
+    }
+    .accord-icon { color: var(--muted); font-size: 18px; flex-shrink: 0; transition: transform .2s; }
+    .accord-item.open .accord-icon { transform: rotate(45deg); }
+    .accord-body { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
+    .accord-item.open .accord-body { max-height: 400px; }
+    .accord-inner { padding: 4px 0 16px; font-size: 13px; color: var(--muted); line-height: 1.75; }
+    .accord-inner ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .accord-inner li { display: flex; gap: 8px; }
+    .accord-inner li::before { content: '↗'; color: var(--orange); flex-shrink: 0; font-size: 11px; margin-top: 3px; }
+    .accord-inner strong { color: rgba(255,255,255,.55); }
+
+    /* BEFORE/AFTER SLIDER */
+    .ba-section { padding: 100px 40px; background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .ba-inner { max-width: 960px; margin: 0 auto; }
+    .ba-head { text-align: center; margin-bottom: 44px; }
+    .ba-head h2 { margin-bottom: 8px; }
+    .ba-head p { color: var(--muted); font-size: 14px; }
+
+    .ba-slider {
+      position: relative; width: 100%; aspect-ratio: 16/9;
+      border-radius: 16px; overflow: hidden;
+      cursor: ew-resize; user-select: none; touch-action: pan-y;
+    }
+    .ba-layer { position: absolute; inset: 0; }
+    .ba-layer img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .ba-after-layer { clip-path: inset(0 50% 0 0); }
+    .ba-line {
+      position: absolute; top: 0; bottom: 0; left: 50%;
+      width: 2px; background: rgba(255,255,255,.85);
+      transform: translateX(-50%); pointer-events: none;
+    }
+    .ba-handle {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 44px; height: 44px; border-radius: 50%;
+      background: #fff; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 20px rgba(0,0,0,.5);
+    }
+    .ba-handle svg { width: 26px; height: 14px; stroke: #111; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .ba-label {
+      position: absolute; top: 14px;
+      font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+      color: #fff; background: rgba(0,0,0,.5); backdrop-filter: blur(8px);
+      padding: 5px 13px; border-radius: 100px; pointer-events: none;
+    }
+    .ba-label-l { left: 14px; }
+    .ba-label-r { right: 14px; }
+
+    /* BIG QUOTE */
+    .big-quote { padding: 80px 40px; text-align: center; background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .bq-img-wrap { width: 340px; max-width: 85%; margin: 0 auto 36px; border-radius: 22px; overflow: hidden; aspect-ratio: 4/5; }
+    .bq-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .bq-text blockquote {
+      font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700;
+      font-size: clamp(1.4rem, 2.2vw, 2.4rem); color: #fff;
+      letter-spacing: -0.03em; line-height: 1.25; margin-bottom: 14px; max-width: 640px; margin-left: auto; margin-right: auto;
+    }
+    .bq-text cite { font-size: 12px; color: var(--muted); font-style: normal; }
+
+    /* THUMBNAIL GALLERY */
+    .thumb-section { padding: 0 40px 60px; }
+    .thumb-inner { max-width: 1100px; margin: 0 auto; }
+    .thumb-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; }
+    .thumb-item {
+      position: relative; aspect-ratio: 16/9; border-radius: 14px; overflow: hidden;
+      cursor: pointer; flex-shrink: 0;
+    }
+    .thumb-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+    .thumb-item:hover img { transform: scale(1.04); }
+    .thumb-overlay {
+      position: absolute; inset: 0; background: rgba(0,0,0,0);
+      display: flex; align-items: center; justify-content: center;
+      transition: background .22s;
+    }
+    .thumb-item:hover .thumb-overlay { background: rgba(0,0,0,.28); }
+    .thumb-overlay span {
+      font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      color: #fff; background: rgba(0,0,0,.5); backdrop-filter: blur(8px);
+      padding: 6px 15px; border-radius: 100px;
+      opacity: 0; transform: translateY(5px); transition: opacity .22s, transform .22s;
+    }
+    .thumb-item:hover .thumb-overlay span { opacity: 1; transform: translateY(0); }
+
+    /* LIGHTBOX */
+    .lb {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(0,0,0,.93); backdrop-filter: blur(12px);
+      display: none; align-items: center; justify-content: center; padding: 24px;
+    }
+    .lb.open { display: flex; }
+    .lb-close {
+      position: absolute; top: 20px; right: 20px; width: 44px; height: 44px;
+      border-radius: 50%; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.12);
+      cursor: pointer; color: #fff; font-size: 24px; line-height: 1;
+      display: flex; align-items: center; justify-content: center; transition: background .2s;
+    }
+    .lb-close:hover { background: rgba(255,255,255,.18); }
+    .lb-content { width: 100%; max-width: 1000px; }
+    .lb-slider {
+      position: relative; width: 100%; aspect-ratio: 16/9;
+      border-radius: 16px; overflow: hidden; cursor: ew-resize; user-select: none; touch-action: pan-y;
+    }
+    .lb-layer { position: absolute; inset: 0; }
+    .lb-layer img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .lb-after-layer { clip-path: inset(0 50% 0 0); }
+    .lb-line {
+      position: absolute; top: 0; bottom: 0; left: 50%;
+      width: 2px; background: rgba(255,255,255,.85);
+      transform: translateX(-50%); pointer-events: none;
+    }
+    .lb-handle {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 44px; height: 44px; border-radius: 50%;
+      background: #fff; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 20px rgba(0,0,0,.5);
+    }
+    .lb-handle svg { width: 26px; height: 14px; stroke: #111; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .lb-label {
+      position: absolute; top: 14px;
+      font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+      color: #fff; background: rgba(0,0,0,.5); backdrop-filter: blur(8px);
+      padding: 5px 13px; border-radius: 100px; pointer-events: none;
+    }
+    .lb-label-l { left: 14px; }
+    .lb-label-r { right: 14px; }
+
+    /* INCLUDES */
+    .includes { padding: 100px 40px; background: var(--bg2); border-top: 1px solid var(--border); }
+    .includes-inner { max-width: 1100px; margin: 0 auto; }
+    .sec-head { margin-bottom: 48px; }
+    .sec-head h2 { margin-bottom: 8px; }
+    .sec-head p { color: var(--muted); font-size: 14px; }
+    .inc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+    .inc-card { background: var(--bg3); border: 1px solid var(--border); border-radius: var(--r); padding: 24px 20px; transition: border-color .2s; }
+    .inc-card:hover { border-color: rgba(255,255,255,.11); }
+    .inc-icon-box { width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,.05); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+    .inc-icon-box svg { width: 18px; height: 18px; stroke: rgba(255,255,255,.55); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .inc-val   { font-size: 10px; font-weight: 700; color: var(--green); letter-spacing: .07em; text-transform: uppercase; margin-bottom: 8px; display: block; }
+    .inc-title { font-size: 15px; font-weight: 700; letter-spacing: -0.02em; text-transform: none; color: #fff; margin-bottom: 6px; }
+    .inc-desc  { font-size: 12.5px; color: rgba(255,255,255,.38); line-height: 1.65; }
+    .ctag { display: inline-block; margin-top: 12px; font-size: 10px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: 3px 9px; border-radius: 4px; }
+    .ctag-all { background: rgba(50,80,50,.4); color: #7dba7d; }
+    .ctag-dr  { background: rgba(28,63,94,.4); color: #7bb8e0; }
+
+    /* FOR / NOT FOR */
+    .for-section { padding: 80px 40px; border-top: 1px solid var(--border); }
+    .for-inner { max-width: 860px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .for-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 18px; padding: 28px 26px; }
+    .for-title { font-size: 18px; font-weight: 700; font-family: 'Playfair Display', serif; font-style: italic; letter-spacing: -0.03em; margin-bottom: 20px; }
+    .for-title.green { color: #7dba7d; }
+    .for-title.red   { color: #e06060; }
+    .for-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .for-list li { display: flex; align-items: flex-start; gap: 9px; font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.5; }
+    .fcheck { width: 19px; height: 19px; border-radius: 5px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; margin-top: 1px; }
+    .cy { background: rgba(50,80,50,.5); color: #7dba7d; }
+    .cn { background: rgba(80,30,30,.5); color: #e06060; }
+
+    /* HOW */
+    .how { padding: 100px 40px; background: var(--bg2); border-top: 1px solid var(--border); }
+    .how-inner { max-width: 680px; margin: 0 auto; }
+    .how-steps { display: flex; flex-direction: column; }
+    .how-step { display: flex; gap: 22px; padding: 26px 0; border-bottom: 1px solid var(--border); }
+    .how-step:last-child { border-bottom: none; }
+    .step-n { font-size: 12px; font-weight: 700; color: var(--orange); letter-spacing: .04em; flex-shrink: 0; width: 24px; padding-top: 2px; }
+    .step-t { font-size: 14px; font-weight: 700; color: #fff; letter-spacing: -0.02em; margin-bottom: 4px; }
+    .step-d { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+    /* FAQ */
+    .faq { padding: 100px 40px; border-top: 1px solid var(--border); }
+    .faq-inner { max-width: 660px; margin: 0 auto; }
+    .faq-head { margin-bottom: 36px; }
+    .faq-list { display: flex; flex-direction: column; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between; gap: 20px;
+      padding: 18px 0; font-family: inherit; font-size: 14px; font-weight: 700;
+      letter-spacing: -0.02em; color: #fff; text-align: left;
+    }
+    .faq-icon { color: var(--muted); font-size: 18px; flex-shrink: 0; transition: transform .22s; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a-wrap { max-height: 0; overflow: hidden; transition: max-height .32s ease; }
+    .faq-item.open .faq-a-wrap { max-height: 300px; }
+    .faq-a { padding: 0 0 18px; font-size: 13px; color: var(--muted); line-height: 1.75; }
+    .faq-a strong { color: rgba(255,255,255,.55); }
+
+    /* FINAL CTA */
+    .final-cta { padding: 100px 40px; text-align: center; background: var(--bg2); border-top: 1px solid var(--border); }
+    .fcta-inner { max-width: 500px; margin: 0 auto; }
+    .fcta-inner h2 { margin-bottom: 10px; }
+    .fcta-inner p { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+    .fcta-price { font-size: 52px; font-weight: 700; letter-spacing: -0.04em; color: #fff; line-height: 1; margin-bottom: 24px; }
+    .fcta-price span { font-size: 16px; color: var(--muted); font-weight: 400; letter-spacing: 0; }
+    .fcta-btns { display: flex; flex-direction: column; gap: 10px; max-width: 320px; margin: 0 auto 16px; }
+    .fcta-note { font-size: 12px; color: var(--muted); }
+
+    /* FOOTER */
+    footer { padding: 36px 40px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-logo img { height: 20px; opacity: .5; }
+    .footer-links { display: flex; gap: 22px; }
+    .footer-links a { font-size: 12px; color: var(--muted); transition: color .2s; }
+    .footer-links a:hover { color: rgba(255,255,255,.6); }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,.12); }
+
+    /* MOBILE STICKY CTA */
+    .mobile-sticky-cta {
+      display: none;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      body { padding-bottom: 80px; }
+
+      .product-hero { grid-template-columns: 1fr; gap: 28px; padding: 80px 20px 52px; }
+      .ba-grid { grid-template-columns: 1fr; }
+      .inc-grid { grid-template-columns: repeat(2,1fr); }
+      .for-inner { grid-template-columns: 1fr; }
+
+      .thumb-section { padding: 0 20px 44px; }
+      .thumb-grid { grid-template-columns: repeat(2,1fr); gap: 6px; }
+      .thumb-overlay span { opacity: 1; transform: none; }
+      .ba-section   { padding: 60px 20px; }
+      .big-quote    { padding: 60px 20px; }
+      .includes     { padding: 60px 20px; }
+      .for-section  { padding: 60px 20px; }
+      .how          { padding: 60px 20px; }
+      .faq          { padding: 60px 20px; }
+      .final-cta    { padding: 60px 20px; }
+
+      .mobile-sticky-cta {
+        display: flex; align-items: center; justify-content: space-between; gap: 12px;
+        position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+        background: rgba(10,10,10,.97); backdrop-filter: blur(20px);
+        border-top: 1px solid rgba(255,255,255,.1);
+        padding: 12px 20px 16px;
+        padding-bottom: max(16px, env(safe-area-inset-bottom));
+        transform: translateY(100%);
+        transition: transform .3s ease;
+      }
+      .mobile-sticky-cta.visible { transform: translateY(0); }
+      .msc-info .msc-name { font-size: 10px; color: var(--muted); font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+      .msc-info .msc-price { font-size: 20px; font-weight: 700; letter-spacing: -0.03em; color: #fff; line-height: 1.1; }
+      .msc-btn { padding: 13px 22px !important; font-size: 14px !important; white-space: nowrap; }
+    }
+
+    @media (max-width: 560px) {
+      nav { padding: 0 16px; }
+      .nav-logo img { height: 36px; }
+      .product-thumbs { grid-template-columns: repeat(4,1fr); gap: 6px; }
+
+      .product-hero { padding: 72px 16px 44px; }
+      .product-thumbs { gap: 6px; }
+      .product-price { font-size: 36px; }
+      .product-perks { gap: 7px; }
+      .perk { padding: 11px 5px; }
+      .perk-label { font-size: 9px; }
+      .product-compat { flex-direction: column; align-items: flex-start; gap: 8px; }
+
+      /* Fix grid-column: span 2 en 1-col grid */
+      .inc-card { grid-column: span 1 !important; }
+      .inc-grid { grid-template-columns: 1fr; }
+
+      .sec-head { margin-bottom: 32px; }
+      .bq-inner blockquote { font-size: clamp(1.25rem, 5.5vw, 1.8rem); }
+
+      .fcta-price { font-size: 40px; }
+      .fcta-btns { max-width: 100%; }
+
+      footer { flex-direction: column; align-items: flex-start; padding: 28px 16px; gap: 18px; }
+      .footer-links { gap: 18px; }
+
+      /* Section padding */
+      .ba-section, .big-quote, .includes, .for-section,
+      .how, .faq, .final-cta { padding-left: 16px; padding-right: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- MOBILE STICKY BAR -->
+<div class="mobile-sticky-cta" id="mobileSticky">
+  <div class="msc-info">
+    <div class="msc-name">iPhone LUT</div>
+    <div class="msc-price">$15.99</div>
+  </div>
+  <a href="https://alwaysfilmlab.circle.so/checkout/iphone-lut" target="_blank" class="btn btn-fill msc-btn">Conseguir ahora</a>
+</div>
+
+<nav id="mainNav">
+  <a href="/" class="nav-back">← Volver</a>
+  <div class="nav-logo">
+    <a href="/"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/1a6abddb-ed7b-4600-a979-99d125130d77/1%2724x1024.png?content-type=image%2Fpng" alt="Always Film Lab" /></a>
+  </div>
+  <div class="nav-right"></div>
+</nav>
+
+<!-- PRODUCT HERO -->
+<div class="product-hero">
+
+  <!-- Imágenes -->
+  <div>
+    <div class="product-main-img" style="border-radius:18px;overflow:hidden">
+      <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/d2e561c0-a9b8-4c61-9680-b82e8f98a305/miniatura+2.jpg?content-type=image%2Fjpeg" alt="iPhone LUT — Always Film Lab" style="width:100%;height:100%;object-fit:cover;display:block;" />
+    </div>
+    <div class="product-thumbs">
+      <div class="product-thumb"
+        data-before="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/19e3e0fe-a1ee-48dc-90be-cb7066e062d7/1_00_00_03_05.jpg?content-type=image%2Fjpeg"
+        data-after="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/12a6d3ae-7824-4754-b93d-f54053edea69/1_00_00_03_052.jpg?content-type=image%2Fjpeg">
+        <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/12a6d3ae-7824-4754-b93d-f54053edea69/1_00_00_03_052.jpg?content-type=image%2Fjpeg" alt="Ejemplo 1" draggable="false" />
+        <div class="thumb-overlay"><span>Ver</span></div>
+      </div>
+      <div class="product-thumb"
+        data-before="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/092b7453-1244-4186-9c2c-3ce267d2f9ab/1_00_00_56_002.jpg?content-type=image%2Fjpeg"
+        data-after="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/edb39ce6-4fc6-4d2d-97f1-c66b0c1daf15/1_00_00_56_00.jpg?content-type=image%2Fjpeg">
+        <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/edb39ce6-4fc6-4d2d-97f1-c66b0c1daf15/1_00_00_56_00.jpg?content-type=image%2Fjpeg" alt="Ejemplo 2" draggable="false" />
+        <div class="thumb-overlay"><span>Ver</span></div>
+      </div>
+      <div class="product-thumb"
+        data-before="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/632669df-d251-4d14-a126-0aeacf813760/1_00_00_57_042.jpg?content-type=image%2Fjpeg"
+        data-after="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/b4da2e7a-cc74-4e4f-a678-fac58380b974/1_00_00_57_04.jpg?content-type=image%2Fjpeg">
+        <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/b4da2e7a-cc74-4e4f-a678-fac58380b974/1_00_00_57_04.jpg?content-type=image%2Fjpeg" alt="Ejemplo 3" draggable="false" />
+        <div class="thumb-overlay"><span>Ver</span></div>
+      </div>
+      <div class="product-thumb"
+        data-before="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/d0847ed6-66fb-421c-a169-520b8dd81e27/1_00_16_43_21.jpg?content-type=image%2Fjpeg"
+        data-after="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/afc34be2-1a41-4c88-ad1f-a56679882f1f/1_00_16_43_21+after.jpg?content-type=image%2Fjpeg">
+        <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/afc34be2-1a41-4c88-ad1f-a56679882f1f/1_00_16_43_21+after.jpg?content-type=image%2Fjpeg" alt="Ejemplo 4" draggable="false" />
+        <div class="thumb-overlay"><span>Ver</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Info -->
+  <div>
+    <h1 class="product-title">One-Click<br><em>iPhone LUT</em></h1>
+
+    <div class="product-price-row">
+      <div class="product-price">$9.99</div>
+      <div class="product-price-old">$15.99</div>
+      <div class="product-price-note">pago único</div>
+    </div>
+    <div class="product-launch">Precio especial de lanzamiento</div>
+
+    <div class="product-cta">
+      <a href="https://alwaysfilmlab.circle.so/checkout/iphone-lut" target="_blank" class="btn btn-fill">Conseguir ahora — $9.99</a>
+    </div>
+
+    <div class="product-perks">
+      <div class="perk">
+        <div class="perk-icon"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+        <div class="perk-label">Descarga inmediata</div>
+      </div>
+      <div class="perk">
+        <div class="perk-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="perk-label">One-Click</div>
+      </div>
+      <div class="perk">
+        <div class="perk-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <div class="perk-label">Actualizaciones</div>
+      </div>
+    </div>
+
+    <div class="product-compat">
+      <span class="compat-label">Funciona con</span>
+      <div class="compat-apps">
+        <div class="compat-app"><img class="compat-logo-img" src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/f80cabc3-a6c1-4f69-9454-1c12069cbc92/davincilogo.png?content-type=image%2Fpng" alt="DaVinci" /> DaVinci</div>
+        <div class="compat-app"><img class="compat-logo-img" src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/881dc87f-450f-4f2e-9f24-ffa83035dc40/premierelogo.png?content-type=image%2Fpng" alt="Premiere" /> Premiere</div>
+        <div class="compat-app"><div class="compat-logo l-fc">FC</div> Final Cut</div>
+        <div class="compat-app"><div class="compat-logo l-cc">CC</div> CapCut</div>
+      </div>
+    </div>
+
+    <div class="product-accord">
+      <div class="accord-item">
+        <button class="accord-btn"><span>¿Qué incluye?</span><span class="accord-icon">+</span></button>
+        <div class="accord-body"><div class="accord-inner">
+          <ul>
+            <li><strong>iPhone LUT del Film Lab</strong> — El look principal. Un clic, resultado cinematográfico.</li>
+            <li>LUT de conversión para <strong>Apple LOG</strong> (iPhone 15 Pro / 16 Pro)</li>
+            <li>LUT de conversión para <strong>Samsung LOG</strong></li>
+            <li>LUT de conversión para <strong>Blackmagic Camera App</strong></li>
+            <li><strong>Actualizaciones</strong> incluidas vía comunidad Always Film Lab</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="accord-item">
+        <button class="accord-btn"><span>¿Cómo lo uso?</span><span class="accord-icon">+</span></button>
+        <div class="accord-body"><div class="accord-inner">
+          Descarga los archivos .cube, impórtalos en tu software e impórtalos con un clic. Tutorial incluido en la comunidad. Compatible con cualquier software que soporte .cube.
+        </div></div>
+      </div>
+      <div class="accord-item">
+        <button class="accord-btn"><span>¿Con qué cámaras funciona?</span><span class="accord-icon">+</span></button>
+        <div class="accord-body"><div class="accord-inner">
+          Principalmente diseñado para <strong>iPhone</strong>. Incluye conversiones para Apple LOG, Samsung LOG y Blackmagic Camera App. El look principal funciona con cualquier cámara en Rec.709.
+        </div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BEFORE / AFTER SLIDER -->
+<section class="ba-section">
+  <div class="ba-inner">
+    <div class="ba-head">
+      <h2>Antes y <em>después</em></h2>
+      <p>El mismo clip de iPhone. Arrastra para comparar.</p>
+    </div>
+    <div class="ba-slider" id="baSlider">
+      <div class="ba-layer"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/66f24b90-f1bc-4d19-b61e-ee6b315b18c7/1_00_00_03_052.jpg?content-type=image%2Fjpeg" alt="Sin LUT" draggable="false" /></div>
+      <div class="ba-layer ba-after-layer" id="baAfterLayer"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/b4fc26fa-24a5-468b-bb39-17283c460e95/1_00_00_03_05.jpg?content-type=image%2Fjpeg" alt="Con LUT" draggable="false" /></div>
+      <div class="ba-line" id="baLine">
+        <div class="ba-handle">
+          <svg viewBox="0 0 28 16"><polyline points="7,1 1,8 7,15"/><polyline points="21,1 27,8 21,15"/></svg>
+        </div>
+      </div>
+      <div class="ba-label ba-label-l">Sin LUT</div>
+      <div class="ba-label ba-label-r">Con LUT</div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE + IMAGEN -->
+<div class="big-quote">
+  <div class="bq-img-wrap">
+    <img class="bq-img" src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/ed86fe1a-525f-42cc-b615-9493ee696999/1_00_00_04_15.jpg?content-type=image%2Fjpeg" alt="" />
+  </div>
+  <div class="bq-text">
+    <blockquote>"Por primera vez mis vídeos de iPhone se ven como una película."</blockquote>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb">
+  <button class="lb-close" id="lbClose">×</button>
+  <div class="lb-content">
+    <div class="lb-slider" id="lbSlider">
+      <div class="lb-layer"><img id="lbBefore" src="" alt="Sin LUT" draggable="false" /></div>
+      <div class="lb-layer lb-after-layer" id="lbAfterLayer"><img id="lbAfter" src="" alt="Con LUT" draggable="false" /></div>
+      <div class="lb-line" id="lbLine">
+        <div class="lb-handle"><svg viewBox="0 0 28 16"><polyline points="7,1 1,8 7,15"/><polyline points="21,1 27,8 21,15"/></svg></div>
+      </div>
+      <div class="lb-label lb-label-l">Sin LUT</div>
+      <div class="lb-label lb-label-r">Con LUT</div>
+    </div>
+  </div>
+</div>
+
+<!-- QUÉ INCLUYE -->
+<section class="includes">
+  <div class="includes-inner">
+    <div class="sec-head">
+      <h2>Qué <em>incluye</em></h2>
+      <p>Todo lo que necesitas para el look cinematográfico en iPhone.</p>
+    </div>
+    <div class="inc-grid">
+
+      <div class="inc-card">
+        <div class="inc-icon-box">
+          <svg viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/><circle cx="8" cy="6" r="2" fill="rgba(255,255,255,.55)" stroke="none"/><circle cx="14" cy="12" r="2" fill="rgba(255,255,255,.55)" stroke="none"/><circle cx="10" cy="18" r="2" fill="rgba(255,255,255,.55)" stroke="none"/></svg>
+        </div>
+        <span class="inc-val">Look principal</span>
+        <div class="inc-title">iPhone LUT del Film Lab</div>
+        <div class="inc-desc">El look del Film Lab. Un clic, resultado cinematográfico.</div>
+        <span class="ctag ctag-all">Cualquier software</span>
+      </div>
+
+      <div class="inc-card">
+        <div class="inc-icon-box">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <span class="inc-val">Conversión</span>
+        <div class="inc-title">Apple LOG → Rec.709</div>
+        <div class="inc-desc">iPhone 15 Pro / 16 Pro. Conversión desde Apple Log.</div>
+        <span class="ctag ctag-all">Cualquier software</span>
+      </div>
+
+      <div class="inc-card">
+        <div class="inc-icon-box">
+          <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/></svg>
+        </div>
+        <span class="inc-val">Conversión</span>
+        <div class="inc-title">Samsung LOG → Rec.709</div>
+        <div class="inc-desc">Galaxy S en modo Pro Video. Conversión desde LOG nativa.</div>
+        <span class="ctag ctag-all">Cualquier software</span>
+      </div>
+
+      <div class="inc-card">
+        <div class="inc-icon-box">
+          <svg viewBox="0 0 24 24"><path d="M15 10l4.553-2.069A1 1 0 0 1 21 8.845v6.31a1 1 0 0 1-1.447.894L15 14"/><rect x="1" y="6" width="14" height="12" rx="2"/></svg>
+        </div>
+        <span class="inc-val">Conversión</span>
+        <div class="inc-title">Blackmagic App → Rec.709</div>
+        <div class="inc-desc">App Blackmagic Camera en iPhone y Android.</div>
+        <span class="ctag ctag-all">Cualquier software</span>
+      </div>
+
+      <div class="inc-card" style="grid-column: span 2; border-color: rgba(232,82,42,.2); background: rgba(232,82,42,.04);">
+        <div class="inc-icon-box" style="background:rgba(232,82,42,.1)">
+          <svg viewBox="0 0 24 24" style="stroke:rgba(232,82,42,.8)"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+        </div>
+        <span class="inc-val" style="color:var(--orange)">Siempre incluido</span>
+        <div class="inc-title">Actualizaciones de por vida</div>
+        <div class="inc-desc">Nuevas versiones, looks y tutoriales. Acceso permanente vía comunidad Always Film Lab.</div>
+        <span class="ctag" style="background:rgba(232,82,42,.15);color:var(--orange)">Comunidad Always Film Lab</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PARA QUIÉN -->
+<section class="for-section">
+  <div class="for-inner">
+    <div class="for-card">
+      <div class="for-title green">Para quién es</div>
+      <ul class="for-list">
+        <li><span class="fcheck cy">✓</span>Creadores que graban con iPhone y quieren look cinematográfico</li>
+        <li><span class="fcheck cy">✓</span>Editores de DaVinci, Premiere, CapCut o Final Cut</li>
+        <li><span class="fcheck cy">✓</span>Usuarios de Apple LOG, Samsung LOG o Blackmagic Camera App</li>
+        <li><span class="fcheck cy">✓</span>Quien quiere resultados pro sin horas de corrección de color</li>
+      </ul>
+    </div>
+    <div class="for-card">
+      <div class="for-title red">Para quién no es</div>
+      <ul class="for-list">
+        <li><span class="fcheck cn">✕</span>Quien espera resultados sin ningún ajuste básico de exposición</li>
+        <li><span class="fcheck cn">✕</span>Quien graba en automático sin control de exposición</li>
+        <li><span class="fcheck cn">✕</span>Quien busca miles de LUTs genéricos para rellenar carpetas</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section class="how">
+  <div class="how-inner">
+    <div class="sec-head" style="margin-bottom:36px">
+      <h2>Cómo <em>funciona</em></h2>
+    </div>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="step-n">01</div>
+        <div>
+          <div class="step-t">Compra y descarga</div>
+          <div class="step-d">Acceso inmediato. Descarga los archivos .cube desde tu cuenta.</div>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="step-n">02</div>
+        <div>
+          <div class="step-t">Importa en tu software</div>
+          <div class="step-d">Cualquier software que soporte .cube. Tutorial incluido en la comunidad.</div>
+          <div class="step-logos">
+            <img class="step-logo" src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/f80cabc3-a6c1-4f69-9454-1c12069cbc92/davincilogo.png?content-type=image%2Fpng" alt="DaVinci" />
+            <img class="step-logo" src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/881dc87f-450f-4f2e-9f24-ffa83035dc40/premierelogo.png?content-type=image%2Fpng" alt="Premiere" />
+          </div>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="step-n">03</div>
+        <div>
+          <div class="step-t">Un clic. Resultado inmediato.</div>
+          <div class="step-d">Aplica el LUT, ajusta la intensidad si lo necesitas y listo.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="faq-inner">
+    <div class="faq-head">
+      <h2>Preguntas <em>frecuentes</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q"><span>¿En qué iPhone funciona el Apple LOG LUT?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a-wrap"><div class="faq-a">El LUT de Apple LOG funciona con <strong>iPhone 15 Pro, 15 Pro Max, 16 Pro y 16 Pro Max</strong>, los únicos modelos que graban en Apple Log. El look principal funciona con cualquier iPhone en Rec.709.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>¿Qué software necesito?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a-wrap"><div class="faq-a">Cualquier software que importe archivos <strong>.cube</strong>: DaVinci Resolve (gratuito), Premiere Pro, Final Cut Pro, CapCut, LumaFusion, VN...</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>¿Funciona con Samsung?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a-wrap"><div class="faq-a">Sí. El pack incluye un LUT de conversión para <strong>Samsung LOG → Rec.709</strong> compatible con Galaxy S en modo Pro Video, y otro para la app <strong>Blackmagic Camera</strong> disponible en Android.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>¿Las actualizaciones están incluidas?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a-wrap"><div class="faq-a">Sí, siempre. Todo se actualiza dentro de la comunidad Always Film Lab. Nuevas versiones, looks y tutoriales incluidos para siempre.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="fcta-inner">
+    <h2>One-Click<br><em>iPhone LUT</em></h2>
+    <p>Pago único · Descarga inmediata · Actualizaciones incluidas</p>
+    <div class="fcta-price">$9.99 <span>pago único · antes $15.99</span></div>
+    <div class="fcta-btns">
+      <a href="https://alwaysfilmlab.circle.so/checkout/iphone-lut" target="_blank" class="btn btn-fill">Conseguir ahora — $9.99</a>
+      <a href="/" class="btn btn-ghost">Ver todos los productos</a>
+    </div>
+    <p class="fcta-note">Archivos .cube · Compatible con DaVinci, Premiere, CapCut, Final Cut</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">
+    <a href="/"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/1a6abddb-ed7b-4600-a979-99d125130d77/1%2724x1024.png?content-type=image%2Fpng" alt="Always Film Lab" /></a>
+  </div>
+  <div class="footer-links">
+    <a href="/privacidad.html">Privacidad</a>
+    <a href="/terminos.html">Términos</a>
+    <a href="mailto:alwaysjoan@alwaysfilmlab.com">Contacto</a>
+  </div>
+  <div class="footer-copy">© 2026 Always Film Lab</div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', function() {
+    document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  document.querySelectorAll('.accord-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.closest('.accord-item');
+      item.classList.toggle('open');
+      btn.querySelector('.accord-icon').textContent = item.classList.contains('open') ? '−' : '+';
+    });
+  });
+
+  // Lightbox thumbnails
+  (function() {
+    var lb = document.getElementById('lb');
+    var lbBefore = document.getElementById('lbBefore');
+    var lbAfterImg = document.getElementById('lbAfter');
+    var lbAfterLayer = document.getElementById('lbAfterLayer');
+    var lbLine = document.getElementById('lbLine');
+    var lbSlider = document.getElementById('lbSlider');
+
+    document.querySelectorAll('[data-before]').forEach(function(item) {
+      item.addEventListener('click', function() {
+        lbBefore.src = item.dataset.before;
+        lbAfterImg.src = item.dataset.after;
+        lbAfterLayer.style.clipPath = 'inset(0 50% 0 0)';
+        lbLine.style.left = '50%';
+        lb.classList.add('open');
+      });
+    });
+
+    document.getElementById('lbClose').addEventListener('click', function() { lb.classList.remove('open'); });
+    lb.addEventListener('click', function(e) { if (e.target === lb) lb.classList.remove('open'); });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') lb.classList.remove('open'); });
+
+    var lbDrag = false;
+    function setLbPos(x) {
+      var r = lbSlider.getBoundingClientRect();
+      var pct = Math.min(Math.max(((x - r.left) / r.width) * 100, 1), 99);
+      lbAfterLayer.style.clipPath = 'inset(0 ' + (100 - pct).toFixed(2) + '% 0 0)';
+      lbLine.style.left = pct.toFixed(2) + '%';
+    }
+    lbSlider.addEventListener('mousedown',  function(e){ lbDrag=true; setLbPos(e.clientX); e.preventDefault(); });
+    window.addEventListener('mousemove',    function(e){ if(lbDrag) setLbPos(e.clientX); });
+    window.addEventListener('mouseup',      function(){ lbDrag=false; });
+    lbSlider.addEventListener('touchstart', function(e){ lbDrag=true; setLbPos(e.touches[0].clientX); }, {passive:true});
+    window.addEventListener('touchmove',    function(e){ if(lbDrag) setLbPos(e.touches[0].clientX); }, {passive:true});
+    window.addEventListener('touchend',     function(){ lbDrag=false; });
+  })();
+
+  // Before/After slider
+  (function() {
+    var slider = document.getElementById('baSlider');
+    var after  = document.getElementById('baAfterLayer');
+    var line   = document.getElementById('baLine');
+    if (!slider) return;
+    var pct = 50;
+    function setPos(x) {
+      var r = slider.getBoundingClientRect();
+      pct = Math.min(Math.max(((x - r.left) / r.width) * 100, 1), 99);
+      after.style.clipPath = 'inset(0 ' + (100 - pct).toFixed(2) + '% 0 0)';
+      line.style.left = pct.toFixed(2) + '%';
+    }
+    var drag = false;
+    slider.addEventListener('mousedown',  function(e){ drag=true; setPos(e.clientX); e.preventDefault(); });
+    window.addEventListener('mousemove', function(e){ if(drag) setPos(e.clientX); });
+    window.addEventListener('mouseup',   function(){ drag=false; });
+    slider.addEventListener('touchstart', function(e){ drag=true; setPos(e.touches[0].clientX); }, {passive:true});
+    window.addEventListener('touchmove',  function(e){ if(drag) setPos(e.touches[0].clientX); }, {passive:true});
+    window.addEventListener('touchend',   function(){ drag=false; });
+  })();
+
+  // Mobile sticky CTA — aparece cuando el botón hero sale de pantalla
+  var sticky = document.getElementById('mobileSticky');
+  var heroCta = document.querySelector('.product-cta');
+  if (sticky && heroCta && window.IntersectionObserver) {
+    new IntersectionObserver(function(entries) {
+      sticky.classList.toggle('visible', !entries[0].isIntersecting);
+    }, { threshold: 0 }).observe(heroCta);
+  }
+
+  document.querySelectorAll('.faq-q').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.closest('.faq-item');
+      var open = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(i) { i.classList.remove('open'); });
+      item.classList.toggle('open', !open);
+    });
+  });
+</script>
+
+</body>
+</html>
