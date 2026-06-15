@@ -217,30 +217,39 @@
       gap: 10px;
     }
     .gallery-item {
-      position: relative; border-radius: 14px; overflow: hidden; cursor: pointer;
-      aspect-ratio: 16/9; display: flex;
+      position: relative; border-radius: 14px; overflow: hidden;
+      aspect-ratio: 16/9;
       grid-column: span 2;
     }
     .gallery-item:nth-child(4),
     .gallery-item:nth-child(5) { grid-column: span 3; }
 
-    /* Split halves */
-    .gh { position: relative; width: 50%; flex-shrink: 0; overflow: hidden; }
-    .gh-b .gh-wrap { position: absolute; top: 0; left: 0; width: 200%; height: 100%; }
-    .gh-a .gh-wrap { position: absolute; top: 0; right: 0; width: 200%; height: 100%; }
-    .gh-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .gh-divider {
-      position: absolute; left: 50%; top: 0; bottom: 0;
-      width: 2px; background: rgba(255,255,255,.75);
+    /* Gallery sliders */
+    .gallery-slider { cursor: ew-resize; user-select: none; touch-action: pan-y; }
+    .gs-layer { position: absolute; inset: 0; }
+    .gs-layer img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .gs-after { clip-path: inset(0 50% 0 0); }
+    .gs-line {
+      position: absolute; top: 0; bottom: 0; left: 50%;
+      width: 2px; background: rgba(255,255,255,.88);
       transform: translateX(-50%); pointer-events: none; z-index: 3;
     }
-    .gh-label {
+    .gs-handle {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 36px; height: 36px; border-radius: 50%;
+      background: #fff; box-shadow: 0 2px 16px rgba(0,0,0,.6);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .gs-handle svg { width: 18px; height: 11px; stroke: #111; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    .gs-chip {
       position: absolute; bottom: 10px; z-index: 4;
       font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
       padding: 4px 10px; border-radius: 100px; pointer-events: none;
+      transition: opacity .2s ease;
     }
-    .gh-b .gh-label { left: 10px; background: rgba(0,0,0,.55); color: rgba(255,255,255,.75); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
-    .gh-a .gh-label { right: 10px; background: rgba(232,82,42,.9); color: #fff; }
+    .gs-chip.before { left: 10px; background: rgba(0,0,0,.55); color: rgba(255,255,255,.75); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+    .gs-chip.after  { right: 10px; background: rgba(232,82,42,.9); color: #fff; }
 
     /* ── BEFORE/AFTER (full width) ── */
     .ba-section { background: var(--dark2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -281,6 +290,7 @@
       font-size: 11px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
       padding: 7px 16px; border-radius: 100px; pointer-events: none;
       backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      transition: opacity .2s ease;
     }
     .ba-chip-label.before { left: 20px; background: rgba(255,255,255,.12); color: rgba(255,255,255,.65); border: 1px solid rgba(255,255,255,.15); }
     .ba-chip-label.after  { right: 20px; background: var(--orange); color: #fff; }
@@ -518,7 +528,7 @@
       .gallery { padding: 70px 16px; }
       .gallery-grid { grid-template-columns: repeat(2,1fr); gap: 6px; }
       .gallery-chip { opacity: 1; transform: none; background: rgba(0,0,0,.6); }
-      .gh-label { font-size: 10px; }
+      .gs-chip { font-size: 10px; }
 
       /* BA slider */
       .ba-full { aspect-ratio: 4/3; }
@@ -643,68 +653,68 @@
     <div class="gallery-grid">
 
       <!-- 1 -->
-      <div class="gallery-item fade-up d1">
-        <div class="gh gh-b">
-          <div class="gh-wrap"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/19e3e0fe-a1ee-48dc-90be-cb7066e062d7/1_00_00_03_05.jpg?content-type=image%2Fjpeg" alt="Sin LUT" /></div>
-          <span class="gh-label">Sin LUT</span>
+      <div class="gallery-item gallery-slider fade-up d1">
+        <div class="gs-layer">
+          <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/19e3e0fe-a1ee-48dc-90be-cb7066e062d7/1_00_00_03_05.jpg?content-type=image%2Fjpeg" alt="Sin LUT" draggable="false" />
         </div>
-        <div class="gh gh-a">
-          <div class="gh-wrap"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/12a6d3ae-7824-4754-b93d-f54053edea69/1_00_00_03_052.jpg?content-type=image%2Fjpeg" alt="Con LUT" /></div>
-          <span class="gh-label">Con LUT</span>
+        <div class="gs-layer gs-after">
+          <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/12a6d3ae-7824-4754-b93d-f54053edea69/1_00_00_03_052.jpg?content-type=image%2Fjpeg" alt="Con LUT" draggable="false" />
         </div>
-        <div class="gh-divider"></div>
+        <span class="gs-chip before">Sin LUT</span>
+        <span class="gs-chip after">Con LUT</span>
+        <div class="gs-line"><div class="gs-handle"><svg viewBox="0 0 20 12"><polyline points="5,1 1,6 5,11"/><polyline points="15,1 19,6 15,11"/></svg></div></div>
       </div>
 
       <!-- 2 -->
-      <div class="gallery-item fade-up d2">
-        <div class="gh gh-b">
-          <div class="gh-wrap"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/092b7453-1244-4186-9c2c-3ce267d2f9ab/1_00_00_56_002.jpg?content-type=image%2Fjpeg" alt="Sin LUT" /></div>
-          <span class="gh-label">Sin LUT</span>
+      <div class="gallery-item gallery-slider fade-up d2">
+        <div class="gs-layer">
+          <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/092b7453-1244-4186-9c2c-3ce267d2f9ab/1_00_00_56_002.jpg?content-type=image%2Fjpeg" alt="Sin LUT" draggable="false" />
         </div>
-        <div class="gh gh-a">
-          <div class="gh-wrap"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/edb39ce6-4fc6-4d2d-97f1-c66b0c1daf15/1_00_00_56_00.jpg?content-type=image%2Fjpeg" alt="Con LUT" /></div>
-          <span class="gh-label">Con LUT</span>
+        <div class="gs-layer gs-after">
+          <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/edb39ce6-4fc6-4d2d-97f1-c66b0c1daf15/1_00_00_56_00.jpg?content-type=image%2Fjpeg" alt="Con LUT" draggable="false" />
         </div>
-        <div class="gh-divider"></div>
+        <span class="gs-chip before">Sin LUT</span>
+        <span class="gs-chip after">Con LUT</span>
+        <div class="gs-line"><div class="gs-handle"><svg viewBox="0 0 20 12"><polyline points="5,1 1,6 5,11"/><polyline points="15,1 19,6 15,11"/></svg></div></div>
       </div>
 
       <!-- 3 -->
-      <div class="gallery-item fade-up d3">
-        <div class="gh gh-b">
-          <div class="gh-wrap"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/632669df-d251-4d14-a126-0aeacf813760/1_00_00_57_042.jpg?content-type=image%2Fjpeg" alt="Sin LUT" /></div>
-          <span class="gh-label">Sin LUT</span>
+      <div class="gallery-item gallery-slider fade-up d3">
+        <div class="gs-layer">
+          <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/632669df-d251-4d14-a126-0aeacf813760/1_00_00_57_042.jpg?content-type=image%2Fjpeg" alt="Sin LUT" draggable="false" />
         </div>
-        <div class="gh gh-a">
-          <div class="gh-wrap"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/b4da2e7a-cc74-4e4f-a678-fac58380b974/1_00_00_57_04.jpg?content-type=image%2Fjpeg" alt="Con LUT" /></div>
-          <span class="gh-label">Con LUT</span>
+        <div class="gs-layer gs-after">
+          <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/b4da2e7a-cc74-4e4f-a678-fac58380b974/1_00_00_57_04.jpg?content-type=image%2Fjpeg" alt="Con LUT" draggable="false" />
         </div>
-        <div class="gh-divider"></div>
+        <span class="gs-chip before">Sin LUT</span>
+        <span class="gs-chip after">Con LUT</span>
+        <div class="gs-line"><div class="gs-handle"><svg viewBox="0 0 20 12"><polyline points="5,1 1,6 5,11"/><polyline points="15,1 19,6 15,11"/></svg></div></div>
       </div>
 
       <!-- 4 (ancho extra) -->
-      <div class="gallery-item fade-up d1">
-        <div class="gh gh-b">
-          <div class="gh-wrap"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/d0847ed6-66fb-421c-a169-520b8dd81e27/1_00_16_43_21.jpg?content-type=image%2Fjpeg" alt="Sin LUT" /></div>
-          <span class="gh-label">Sin LUT</span>
+      <div class="gallery-item gallery-slider fade-up d1">
+        <div class="gs-layer">
+          <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/d0847ed6-66fb-421c-a169-520b8dd81e27/1_00_16_43_21.jpg?content-type=image%2Fjpeg" alt="Sin LUT" draggable="false" />
         </div>
-        <div class="gh gh-a">
-          <div class="gh-wrap"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/afc34be2-1a41-4c88-ad1f-a56679882f1f/1_00_16_43_21+after.jpg?content-type=image%2Fjpeg" alt="Con LUT" /></div>
-          <span class="gh-label">Con LUT</span>
+        <div class="gs-layer gs-after">
+          <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/afc34be2-1a41-4c88-ad1f-a56679882f1f/1_00_16_43_21+after.jpg?content-type=image%2Fjpeg" alt="Con LUT" draggable="false" />
         </div>
-        <div class="gh-divider"></div>
+        <span class="gs-chip before">Sin LUT</span>
+        <span class="gs-chip after">Con LUT</span>
+        <div class="gs-line"><div class="gs-handle"><svg viewBox="0 0 20 12"><polyline points="5,1 1,6 5,11"/><polyline points="15,1 19,6 15,11"/></svg></div></div>
       </div>
 
       <!-- 5 (ancho extra) -->
-      <div class="gallery-item fade-up d2">
-        <div class="gh gh-b">
-          <div class="gh-wrap"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/a18e301c-3850-4685-ad17-77cbf4dfdfd4/1_00_00_34_1523.jpg?content-type=image%2Fjpeg" alt="Sin LUT" /></div>
-          <span class="gh-label">Sin LUT</span>
+      <div class="gallery-item gallery-slider fade-up d2">
+        <div class="gs-layer">
+          <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/a18e301c-3850-4685-ad17-77cbf4dfdfd4/1_00_00_34_1523.jpg?content-type=image%2Fjpeg" alt="Sin LUT" draggable="false" />
         </div>
-        <div class="gh gh-a">
-          <div class="gh-wrap"><img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/f146e673-d03a-4ba3-abff-a7c17a52f3ce/1_00_00_34_15.jpg?content-type=image%2Fjpeg" alt="Con LUT" /></div>
-          <span class="gh-label">Con LUT</span>
+        <div class="gs-layer gs-after">
+          <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/f146e673-d03a-4ba3-abff-a7c17a52f3ce/1_00_00_34_15.jpg?content-type=image%2Fjpeg" alt="Con LUT" draggable="false" />
         </div>
-        <div class="gh-divider"></div>
+        <span class="gs-chip before">Sin LUT</span>
+        <span class="gs-chip after">Con LUT</span>
+        <div class="gs-line"><div class="gs-handle"><svg viewBox="0 0 20 12"><polyline points="5,1 1,6 5,11"/><polyline points="15,1 19,6 15,11"/></svg></div></div>
       </div>
 
     </div>
@@ -992,9 +1002,11 @@
 
   // Before/After slider
   (function() {
-    var slider = document.getElementById('baSlider');
-    var after  = document.getElementById('baAfter');
-    var line   = document.getElementById('baLine');
+    var slider     = document.getElementById('baSlider');
+    var after      = document.getElementById('baAfter');
+    var line       = document.getElementById('baLine');
+    var chipBefore = slider ? slider.querySelector('.ba-chip-label.before') : null;
+    var chipAfter  = slider ? slider.querySelector('.ba-chip-label.after')  : null;
     if (!slider) return;
     var drag = false;
     function setPos(x) {
@@ -1002,6 +1014,8 @@
       var pct = Math.min(Math.max(((x - r.left) / r.width) * 100, 1), 99);
       after.style.clipPath = 'inset(0 ' + (100 - pct).toFixed(2) + '% 0 0)';
       line.style.left = pct.toFixed(2) + '%';
+      if (chipBefore) chipBefore.style.opacity = pct < 20 ? '0' : '1';
+      if (chipAfter)  chipAfter.style.opacity  = pct > 80 ? '0' : '1';
     }
     slider.addEventListener('mousedown',  function(e){ drag=true; setPos(e.clientX); e.preventDefault(); });
     window.addEventListener('mousemove',  function(e){ if(drag) setPos(e.clientX); });
@@ -1029,6 +1043,31 @@
       item.classList.toggle('open', !isOpen);
     });
   });
+
+  // Gallery sliders
+  (function() {
+    var active = null;
+    function setPos(slider, x) {
+      var after  = slider.querySelector('.gs-after');
+      var line   = slider.querySelector('.gs-line');
+      var chipL  = slider.querySelector('.gs-chip.before');
+      var chipR  = slider.querySelector('.gs-chip.after');
+      var r = slider.getBoundingClientRect();
+      var pct = Math.min(Math.max(((x - r.left) / r.width) * 100, 1), 99);
+      after.style.clipPath = 'inset(0 ' + (100 - pct).toFixed(2) + '% 0 0)';
+      line.style.left = pct.toFixed(2) + '%';
+      if (chipL) chipL.style.opacity = pct < 20 ? '0' : '1';
+      if (chipR) chipR.style.opacity = pct > 80 ? '0' : '1';
+    }
+    document.querySelectorAll('.gallery-slider').forEach(function(slider) {
+      slider.addEventListener('mousedown',  function(e){ active = slider; setPos(slider, e.clientX); e.preventDefault(); });
+      slider.addEventListener('touchstart', function(e){ active = slider; setPos(slider, e.touches[0].clientX); }, { passive: true });
+    });
+    window.addEventListener('mousemove',  function(e){ if (active) setPos(active, e.clientX); });
+    window.addEventListener('mouseup',    function(){ active = null; });
+    window.addEventListener('touchmove',  function(e){ if (active) setPos(active, e.touches[0].clientX); }, { passive: true });
+    window.addEventListener('touchend',   function(){ active = null; });
+  })();
 
   // Mobile sticky
   var sticky = document.getElementById('mobileSticky');
