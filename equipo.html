@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-L1G4TWBRBP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-L1G4TWBRBP');
+  </script>
+
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1088357306660604');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1088357306660604&ev=PageView&noscript=1"/></noscript>
+
+  <title>Mi Equipo — Always Film Lab</title>
+  <meta name="description" content="El equipo con el que Joan filma, ilumina y edita. Cámaras, objetivos, audio, iluminación, edición y accesorios.">
+  <meta property="og:title" content="Mi Equipo — Always Film Lab">
+  <meta property="og:description" content="Todo el gear con el que filmo. Cámaras, audio, luz y edición.">
+  <meta property="og:url" content="https://www.alwaysfilmlab.com/equipo">
+
+  <link rel="icon" type="image/png" href="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/1d0551d9-7e88-40eb-9df2-47b21a127286/store+favicon+1.png?content-type=image%2Fpng">
+  <link rel="apple-touch-icon" href="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/1d0551d9-7e88-40eb-9df2-47b21a127286/store+favicon+1.png?content-type=image%2Fpng">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange:      #E8522A;
+      --orange-dark: #C43E1A;
+      --cream:       #F4EFE6;
+      --dark:        #111010;
+      --dark2:       #1C1B1B;
+      --muted:       #6B6B6B;
+    }
+
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark); color: #fff;
+      overflow-x: hidden; margin: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    body::after {
+      content:''; position:fixed; inset:0; pointer-events:none; z-index:5; opacity:.022; mix-blend-mode:overlay;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='ng'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23ng)'/%3E%3C/svg%3E");
+      background-size:200px;
+    }
+
+    .label {
+      font-size: 11px; font-weight: 700; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--orange);
+      display: block; margin-bottom: 22px;
+    }
+    .btn {
+      display: inline-block; padding: 14px 32px; border-radius: 100px;
+      font-size: 13px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+      text-decoration: none; cursor: pointer; border: none;
+      transition: background .2s, transform .15s, box-shadow .2s;
+    }
+    .btn-fill {
+      background: linear-gradient(180deg, #ef5d33 0%, var(--orange) 55%, var(--orange-dark) 100%);
+      color: #fff;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.22), 0 8px 20px rgba(0,0,0,.30), 0 2px 5px rgba(196,62,26,.35);
+    }
+    .btn-fill:hover {
+      transform: translateY(-2px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 16px 34px rgba(0,0,0,.40), 0 4px 12px rgba(196,62,26,.42);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 48px;
+      background: rgba(17,16,16,.85);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      transition: background .3s, box-shadow .3s;
+    }
+    nav.scrolled { background: rgba(17,16,16,.97); box-shadow: 0 4px 24px rgba(0,0,0,.35); }
+    .nav-links { display: flex; gap: 36px; }
+    .nav-links a {
+      color: rgba(255,255,255,.8); text-decoration: none;
+      font-size: 14px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-links a.active { color: var(--orange); }
+    .nav-logo {
+      position: absolute; left: 50%; transform: translateX(-50%);
+      text-decoration: none; display: flex; align-items: center;
+    }
+    .nav-logo img { width: 110px; height: auto; filter: brightness(0) invert(1); }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .nav-cta { padding: 10px 24px; font-size: 12px; font-weight: 700; letter-spacing: .06em; }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      background: none; border: none; padding: 4px;
+    }
+    .hamburger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: transform .3s, opacity .3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none; position: fixed; top: 61px; left: 0; right: 0; z-index: 199;
+      background: rgba(17,16,16,.98); backdrop-filter: blur(20px);
+      padding: 28px 32px; flex-direction: column; gap: 20px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: rgba(255,255,255,.8); text-decoration: none; font-size: 18px; font-weight: 600; }
+    .mobile-menu a:hover { color: #fff; }
+
+    /* ── HERO ── */
+    .page-hero {
+      padding: 168px 24px 80px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(232,82,42,.07) 0%, transparent 70%);
+    }
+    .page-hero h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(52px, 8vw, 100px);
+      font-weight: 700; line-height: 1.0;
+      letter-spacing: -0.035em; color: #fff;
+      margin-bottom: 24px;
+    }
+    .page-hero h1 em { font-style: italic; color: var(--cream); }
+    .page-hero p {
+      font-size: 17px; line-height: 1.7;
+      color: rgba(255,255,255,.45);
+      max-width: 460px; margin: 0 auto;
+    }
+
+    /* ── GEAR GRID ── */
+    .gear-wrap {
+      max-width: 1400px; margin: 0 auto;
+      padding: 72px 0 80px;
+    }
+
+    .gear-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: rgba(255,255,255,.04);
+    }
+
+    .gear-card {
+      background: var(--dark);
+      overflow: hidden;
+    }
+
+    .gear-img-wrap {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: var(--dark2);
+    }
+
+    .gear-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: var(--pos, center);
+      transform-origin: var(--pos, center);
+      filter: saturate(.75) brightness(.95);
+      transform: scale(var(--zoom, 1));
+      transition: transform .7s cubic-bezier(.25,.46,.45,.94), filter .4s;
+    }
+    .gear-card:hover .gear-img {
+      transform: scale(calc(var(--zoom, 1) * 1.05));
+      filter: saturate(.95) brightness(1.05);
+    }
+
+    .gear-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.7) 0%, rgba(0,0,0,.2) 60%, transparent 100%);
+      display: flex; align-items: flex-end; justify-content: center;
+      padding-bottom: 24px;
+      opacity: 0;
+      transition: opacity .35s;
+    }
+    .gear-card:hover .gear-overlay { opacity: 1; }
+
+    .gear-overlay-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--orange); color: #fff;
+      font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      text-decoration: none; padding: 11px 24px; border-radius: 100px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.4);
+      transition: background .2s, transform .15s;
+    }
+    .gear-overlay-btn:hover { background: var(--orange-dark); transform: scale(1.04); }
+
+    .gear-info { padding: 20px 24px 26px; }
+
+    .gear-cat-badge {
+      display: inline-block;
+      font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 7px;
+    }
+
+    .gear-name {
+      font-family: 'Fraunces', serif;
+      font-size: 21px; font-weight: 700;
+      letter-spacing: -0.02em; line-height: 1.15;
+      color: #fff; margin-bottom: 9px;
+    }
+
+    .gear-desc {
+      font-size: 13px; color: rgba(255,255,255,.4); line-height: 1.6;
+    }
+
+    .gear-link {
+      display: none;
+      align-items: center; gap: 6px;
+      margin-top: 14px;
+      font-size: 12px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+      color: var(--orange); text-decoration: none;
+    }
+    .gear-link:hover { color: var(--orange-dark); }
+
+    /* ── AFFILIATE NOTE ── */
+    .affiliate-note {
+      text-align: center;
+      padding: 56px 24px 80px;
+      border-top: 1px solid rgba(255,255,255,.05);
+      color: rgba(255,255,255,.28);
+      font-size: 13px; line-height: 1.9;
+      max-width: 500px; margin: 0 auto;
+    }
+    .affiliate-note a {
+      color: rgba(255,255,255,.45); text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,.15);
+      transition: color .2s;
+    }
+    .affiliate-note a:hover { color: var(--orange); border-color: var(--orange); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding: 40px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .foot-logo img { width: 80px; filter: brightness(0) invert(1); opacity: .3; }
+    footer p { font-size: 13px; color: rgba(255,255,255,.2); }
+    footer a { color: rgba(255,255,255,.35); text-decoration: none; font-size: 13px; transition: color .2s; }
+    footer a:hover { color: var(--orange); }
+
+    /* ── SPONSORS STRIP ── */
+    .sponsors-strip {
+      border-top: 1px solid rgba(255,255,255,.06);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      background: #0e0d0c;
+      padding: 0 48px;
+    }
+    .sponsors-strip-inner {
+      max-width: 1400px; margin: 0 auto;
+      display: flex; align-items: stretch; gap: 0;
+    }
+    .sponsors-strip-label {
+      font-size: 10px; font-weight: 700; letter-spacing: .16em;
+      text-transform: uppercase; color: rgba(255,255,255,.2);
+      white-space: nowrap; flex-shrink: 0;
+      display: flex; align-items: center;
+      padding-right: 28px;
+      border-right: 1px solid rgba(255,255,255,.07);
+    }
+    .sponsors-chips {
+      display: flex; align-items: stretch; flex: 1;
+    }
+    .sponsor-chip {
+      display: flex; align-items: center; justify-content: center; gap: 9px;
+      padding: 0 22px; height: 60px; flex: 1;
+      border-right: 1px solid rgba(255,255,255,.06);
+      text-decoration: none;
+      transition: background .2s;
+      position: relative; overflow: hidden;
+    }
+    .sponsor-chip:first-child { border-left: 1px solid rgba(255,255,255,.06); margin-left: 24px; }
+    .sponsor-chip:hover { background: rgba(255,255,255,.05); }
+    .sponsor-chip:hover .sponsor-chip-logo { opacity: .8; filter: brightness(0) invert(1); }
+    .sponsor-chip:hover .sponsor-chip-name { color: rgba(255,255,255,.8); }
+    .sponsor-chip-logo {
+      height: 16px; width: auto; max-width: 60px;
+      filter: brightness(0) invert(1);
+      opacity: .3; transition: opacity .2s;
+      object-fit: contain;
+    }
+    .sponsor-chip-name {
+      font-size: 11px; font-weight: 600; color: rgba(255,255,255,.3);
+      letter-spacing: .02em; transition: color .2s; white-space: nowrap;
+    }
+    .sponsor-chip-arrow {
+      font-size: 10px; color: var(--orange); opacity: 0;
+      position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+      transition: opacity .2s;
+    }
+    .sponsor-chip:hover .sponsor-chip-arrow { opacity: 1; }
+
+    .btn-outline {
+      background: transparent; border: 1.5px solid rgba(255,255,255,.18); color: rgba(255,255,255,.65);
+    }
+    .btn-outline:hover { border-color: rgba(255,255,255,.45); color: #fff; transform: translateY(-1px); }
+
+    @media (max-width: 960px) {
+      .sponsors-strip { padding: 0 24px; }
+      .sponsors-strip-label { display: none; }
+      .sponsor-chip:first-child { margin-left: 0; border-left: none; }
+      .sponsor-chip { padding: 0 14px; }
+      .sponsor-chip-name { display: none; }
+    }
+    @media (max-width: 480px) {
+      .sponsor-chip { height: 52px; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-right .nav-cta { display: none; }
+      .gear-grid { grid-template-columns: repeat(2, 1fr); }
+      .gear-link { display: inline-flex; }
+      .musicbed-card { grid-template-columns: 1fr; }
+      .musicbed-img { min-height: 260px; }
+      .musicbed-img::after { background: linear-gradient(to bottom, transparent 55%, var(--dark2) 100%); }
+      .musicbed-body { padding: 36px 28px; }
+      .codes-grid { grid-template-columns: repeat(2, 1fr); }
+      footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; gap: 12px; }
+    }
+    @media (max-width: 520px) {
+      .gear-grid { grid-template-columns: 1fr; }
+      .page-hero { padding: 128px 20px 64px; }
+      .sponsors-cta-inner { padding: 64px 20px 72px; }
+      .sponsors-cta-logos { gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav id="nav">
+    <div class="nav-links">
+      <a href="/iphone-lut">iPhone LUT</a>
+      <a href="https://alwaysfilmlab.squarespace.com/tienda" target="_blank">Tienda</a>
+      <a href="/equipo" class="active">Mi equipo</a>
+    </div>
+    <a class="nav-logo" href="https://www.alwaysfilmlab.com">
+      <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/1a6abddb-ed7b-4600-a979-99d125130d77/1%2724x1024.png?content-type=image%2Fpng" alt="Always Film Lab" />
+    </a>
+    <div class="nav-right">
+      <a href="https://alwaysfilmlab.circle.so/checkout/essential-creators-basic" target="_blank" class="btn btn-fill nav-cta">Comunidad</a>
+      <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── MOBILE MENU ── -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/iphone-lut" onclick="closeMobileMenu()">iPhone LUT</a>
+    <a href="https://alwaysfilmlab.squarespace.com/tienda" target="_blank" onclick="closeMobileMenu()">Tienda</a>
+    <a href="/equipo" onclick="closeMobileMenu()" style="color:var(--orange);">Mi equipo</a>
+    <a href="https://alwaysfilmlab.circle.so/checkout/essential-creators-basic" target="_blank" class="btn btn-fill" style="text-align:center;margin-top:8px;" onclick="closeMobileMenu()">Entrar a la comunidad</a>
+  </div>
+
+  <!-- ── HERO ── -->
+  <section class="page-hero">
+    <span class="label">Mi setup</span>
+    <h1>El equipo con el que<br><em>lo hago todo.</em></h1>
+    <p>Todo lo que uso para filmar, iluminar y editar.</p>
+  </section>
+
+  <!-- ── SPONSORS STRIP ── -->
+  <div class="sponsors-strip">
+    <div class="sponsors-strip-inner">
+      <span class="sponsors-strip-label">Descuentos</span>
+      <div class="sponsors-chips">
+        <a href="/sponsors" class="sponsor-chip">
+          <img class="sponsor-chip-logo" src="https://logo.clearbit.com/musicbed.com" alt="Musicbed" onerror="this.style.display='none'"/>
+          <span class="sponsor-chip-name">Musicbed</span>
+          <span class="sponsor-chip-arrow">→</span>
+        </a>
+        <a href="/sponsors" class="sponsor-chip">
+          <img class="sponsor-chip-logo" src="https://logo.clearbit.com/insta360.com" alt="Insta360" onerror="this.style.display='none'"/>
+          <span class="sponsor-chip-name">Insta360</span>
+          <span class="sponsor-chip-arrow">→</span>
+        </a>
+        <a href="/sponsors" class="sponsor-chip">
+          <img class="sponsor-chip-logo" src="https://logo.clearbit.com/manychat.com" alt="ManyChat" onerror="this.style.display='none'"/>
+          <span class="sponsor-chip-name">ManyChat</span>
+          <span class="sponsor-chip-arrow">→</span>
+        </a>
+        <a href="/sponsors" class="sponsor-chip">
+          <img class="sponsor-chip-logo" src="https://logo.clearbit.com/milanote.com" alt="Milanote" onerror="this.style.display='none'"/>
+          <span class="sponsor-chip-name">Milanote</span>
+          <span class="sponsor-chip-arrow">→</span>
+        </a>
+        <a href="/sponsors" class="sponsor-chip">
+          <img class="sponsor-chip-logo" src="https://logo.clearbit.com/sirui.com" alt="Sirui" onerror="this.style.display='none'"/>
+          <span class="sponsor-chip-name">Sirui</span>
+          <span class="sponsor-chip-arrow">→</span>
+        </a>
+        <a href="/sponsors" class="sponsor-chip">
+          <img class="sponsor-chip-logo" src="https://logo.clearbit.com/feiyutech.com" alt="Feiyu" onerror="this.style.display='none'"/>
+          <span class="sponsor-chip-name">Feiyu</span>
+          <span class="sponsor-chip-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── GEAR GRID ── -->
+  <div class="gear-wrap">
+    <div class="gear-grid" id="gearGrid"></div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <a href="https://www.alwaysfilmlab.com" class="foot-logo">
+      <img src="https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/1a6abddb-ed7b-4600-a979-99d125130d77/1%2724x1024.png?content-type=image%2Fpng" alt="Always Film Lab" />
+    </a>
+    <p>© 2025 Always Film Lab. Todos los derechos reservados.</p>
+    <div style="display:flex;gap:24px;">
+      <a href="https://www.alwaysfilmlab.com">Inicio</a>
+      <a href="/iphone-lut">iPhone LUT</a>
+      <a href="https://alwaysfilmlab.squarespace.com/tienda" target="_blank">Tienda</a>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    function closeMobileMenu() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    }
+
+    // ─── GEAR DATA ─────────────────────────────────────────────────────────────
+    // Reemplaza img con fotos reales de producto cuando Joan las mande
+    const gear = [
+      // ── MOCHILAS ──
+      { catLabel: 'Mochila', name: 'WANDRD PRVKE 41', desc: 'Mi mochila principal. Cabe absolutamente todo — cámaras, portátil, ropa. En negro, que es lo único.', img: 'https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/def6384d-d1e2-4722-b075-057d82478c75/PRVKE_41_-_Black_2.png?content-type=image%2Fpng', link: 'https://amzn.to/44k1RX9', pos: '65% 45%', zoom: 1.45 },
+      { catLabel: 'Mochila', name: 'tomtoc (pequeña)', desc: 'Para cuando no necesito llevarlo todo. Compacta, protege bien la cámara y pasa desapercibida.', img: 'https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/190ec3b3-63e3-438f-8692-b186249441dd/cosas+que+uso_00_01_57_01.jpg?content-type=image%2Fjpeg', link: 'https://amzn.to/4wB9ZOU' },
+      { catLabel: 'Mochila', name: 'Uniqlo Multi Pocket', desc: 'La descubrí de casualidad y me enamoró. Minimalista y con mil bolsillos para llevar de todo.', img: 'https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/10d6b8ba-6490-4f1c-8cfa-1a66e4630e45/cosas+que+uso_00_02_03_03.jpg?content-type=image%2Fjpeg', link: 'https://www.uniqlo.com/ca/en/products/E479281-000/00?srsltid=AfmBOop7tiUOTkq8zR0OEFT_WEKuWQk9JRX8rGvFyYFCZzb9grJSmhUg&colorDisplayCode=09&sizeDisplayCode=999' },
+      { catLabel: 'Mochila', name: 'Peak Design Travel Backpack 45L', desc: 'La mochila grande para cuando viajo con todo el equipo. Expandible y a prueba de agua.', img: 'https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/5a4993ae-091a-49c4-8e02-271f7054adff/1_00_00_50_07.jpg?content-type=image%2Fjpeg', link: 'https://amzn.to/4wHLzU9', pos: '58% 68%', zoom: 1.6 },
+      { catLabel: 'Mochila', name: 'Thule (DSLR)', desc: 'Otra opción que uso para rodajes con más peso de cámara encima.', img: 'https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/dbfc374c-1248-410c-9919-c72aa00e3065/cosas+que+uso_00_02_22_06.jpg?content-type=image%2Fjpeg', link: 'https://amzn.to/4hcGPRE' },
+
+      // ── CÁMARAS ──
+      { catLabel: 'Cámara', name: 'Sony ZV-E1', desc: 'Mi cámara principal ahora mismo. Full frame en un cuerpo increíblemente compacto.', img: 'https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/05a8e527-8fc2-4c37-b484-a7745f8a60c6/cosas+que+uso_00_02_39_11.jpg?content-type=image%2Fjpeg', link: 'https://amzn.to/3SUzAnv' },
+      { catLabel: 'Cámara', name: 'Sony FX30', desc: 'APS-C Cinema line. La uso para planos secundarios o cuando necesito dos cámaras en rodaje.', img: 'https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/8cf76d5d-8122-451a-b028-423edf274625/cosas+que+uso_00_03_04_07.jpg?content-type=image%2Fjpeg', link: 'https://amzn.to/4eU1TLs' },
+      { catLabel: 'Teléfono', name: 'iPhone 15 Pro', desc: 'Siempre encima. Lo uso para fotos, BTS y clips rápidos.', img: 'https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/39d3d77f-534a-4c84-89d0-ff8a9e397b56/1_00_00_03_03.jpg?content-type=image%2Fjpeg', link: 'https://amzn.to/3R91fAr' },
+      { catLabel: 'Accesorio', name: 'Ulanzi Ventilador', desc: 'Para que la cámara no se apague por calor en rodajes largos.', img: 'https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/9c6d4911-6e80-497a-a78c-3b7475039a77/cosas+que+uso_00_02_57_00.jpg?content-type=image%2Fjpeg', link: 'https://www.amazon.ca/ULANZI-Telescopic-Adjustable-Intelligent-Monitoring/dp/B0CP7N63TN' },
+
+      // ── OBJETIVOS ──
+      { catLabel: 'Objetivo', name: 'Sigma 16-28mm f/2.8', desc: 'Mi zoom principal. Ligero, gran angular, f/2.8 constante. Lo llevo a todos los rodajes.', img: 'https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/acba8d87-e5c6-40c1-a0fa-4e9d5cff75e6/cosas+que+uso_00_04_13_19.jpg?content-type=image%2Fjpeg', link: 'https://amzn.to/4vWjzfg' },
+      { catLabel: 'Objetivo', name: 'Viltrox 9mm', desc: 'Gran angular ultra compacto para planos imposibles.', img: 'https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/c9a556ba-2aed-4b15-b5b4-e6bf3d3bb87e/cosas+que+uso_00_04_30_12.jpg?content-type=image%2Fjpeg', link: 'https://amzn.to/4vZUTTn' },
+      { catLabel: 'Objetivo', name: 'Sirui 85mm', desc: 'Para retratos y primeros planos. Ese bokeh no tiene precio.', img: 'https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/c5b4e137-e332-4f24-ad78-0184fec97070/cosas+que+uso_00_04_34_09.jpg?content-type=image%2Fjpeg', link: 'https://amzn.to/4vXu5Dj' },
+{ catLabel: 'Objetivo', name: '7Artisans 50mm', desc: 'Me lo regalaron y me tiene enamorado. Compresión y bokeh brutales.', img: 'https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/f08c740f-8103-4168-9f2b-df4d3b2385d6/cosas+que+uso_00_04_37_12.jpg?content-type=image%2Fjpeg', link: 'https://amzn.to/3R4FYIm' },
+
+      // ── ALMACENAMIENTO ──
+      { catLabel: 'Almacenamiento', name: 'Tarjetas SD V90 (128GB + 256GB)', desc: 'ProGrade 128GB y Kingston 256GB. Rápidas y fiables para grabar en 4K sin miedo.', img: 'https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/181882b7-6047-4832-bf33-50f8216a5def/cosas+que+uso_00_03_00_03.jpg?content-type=image%2Fjpeg', link: 'https://amzn.to/4f4NKtC' },
+
+      // ── AUDIO ──
+      { catLabel: 'Audio', name: 'Rode NT-USB Mini', desc: 'El micro de mesa para mis vídeos. USB directo al ordenador, limpio y sin drama.', img: 'https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/de3835f1-d352-42cb-be33-b4c38a8039ac/cosas+que+uso_00_05_02_20.jpg?content-type=image%2Fjpeg', link: 'https://amzn.to/4yhwnyo' },
+      { catLabel: 'Audio', name: 'DJI Mic (1ª gen)', desc: 'Mi micro inalámbrico de toda la vida. Lo monto en cámara y me olvido.', img: 'https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/d32e4e6c-20c2-4508-920b-0675dbb8683c/cosas+que+uso_00_05_09_16.jpg?content-type=image%2Fjpeg', link: 'https://amzn.to/4vuUcAl' },
+      { catLabel: 'Audio', name: 'Rode VideoMic Pro', desc: 'El micro de cámara para vlogs y entrevistas rápidas, sin cables.', img: 'https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/5daf145d-462a-45ac-bdb5-3359480783f8/cosas+que+uso_00_05_22_09.jpg?content-type=image%2Fjpeg', link: 'https://amzn.to/44s6ApJ' },
+      { catLabel: 'Audio', name: 'Sony WH-1000XM3', desc: 'Mis cascos para editar y desconectar del ruido de fuera.', img: 'https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/9ff9c10e-af88-4757-a63e-f2f57ff21203/cosas+que+uso_00_05_31_04.jpg?content-type=image%2Fjpeg', link: 'https://amzn.to/4vtMeHN' },
+      { catLabel: 'Audio', name: 'AirPods Pro', desc: 'Para el día a día — llamadas, música y comprobar audio rápido.', img: 'https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/f8cecdbe-39fd-4e1f-874a-c14c27f4ff5e/cosas+que+uso_00_05_48_17.jpg?content-type=image%2Fjpeg', link: 'https://amzn.to/3TsZD5k', pos: '25% 40%' },
+
+      // ── SOPORTE Y MOVIMIENTO ──
+      { catLabel: 'Trípode', name: 'Ulanzi Zero Y (viaje)', desc: 'Mi trípode de viaje. Ligero y aguanta bien en exteriores.', img: 'https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/d3d73900-c0cd-4de8-a5c0-b2eca7dc5f9b/cosas+que+uso_00_06_34_20.jpg?content-type=image%2Fjpeg', link: 'https://amzn.to/4h6oiX9' },
+      { catLabel: 'Trípode', name: 'Ulanzi (mesa)', desc: 'Mi compañero de vlog. Pequeño y va en el bolsillo.', img: 'https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/df9f20ec-3c62-4e58-a3de-ce6b1d79876a/cosas+que+uso_00_06_53_22.jpg?content-type=image%2Fjpeg', link: 'https://www.amazon.com/ULANZI-vlogging-TT38-ClickOpen-flexibles/dp/B0D6YXYDMS' },
+      { catLabel: 'Trípode', name: 'Peak Design Travel Tripod', desc: 'El mejor trípode de viaje que he probado. Cuando lo necesito, no hay comparación.', img: 'https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/554ad5c7-8f81-4bc2-8339-e8b6a2aa210b/cosas+que+uso_00_06_37_11.jpg?content-type=image%2Fjpeg', link: 'https://amzn.to/4vr2xoJ' },
+      { catLabel: 'Trípode', name: 'Manfrotto', desc: 'El trípode que utilicé toda la vida. Sólido y de confianza.', img: 'https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/4148f9df-28a5-4b94-8219-4bf60e4c5757/cosas+que+uso_00_06_47_10.jpg?content-type=image%2Fjpeg', link: 'https://amzn.to/4vWjHLM' },
+      { catLabel: 'Trípode', name: 'K&F Concept', desc: 'El trípode alto para cuando necesito más altura de cámara.', img: 'https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/75fd5f2d-ab87-4c93-923e-6930f3db21e0/cosas+que+uso_00_06_41_20.jpg?content-type=image%2Fjpeg', link: 'https://amzn.to/4aITqIv' },
+
+      // ── ILUMINACIÓN ──
+      { catLabel: 'Iluminación', name: 'SmallRig RC 60B', desc: 'Mi luz principal. Bicolor potente para casa y estudio. Brutal para el precio que tiene.', img: 'https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/2171409e-b931-413e-a71b-73cd2f70456c/cosas+que+uso_00_07_23_13.jpg?content-type=image%2Fjpeg', link: 'https://amzn.to/4vtqgo1' },
+
+      // ── ESCRITORIO ──
+      { catLabel: 'Escritorio', name: 'Logitech (teclado)', desc: 'Mi teclado de todos los días para editar y escribir guiones.', img: 'https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/1230dd0a-fd1e-474e-8386-488238667f4c/cosas+que+uso_00_07_52_06.jpg?content-type=image%2Fjpeg', link: 'https://amzn.to/4vYYEbK', pos: '56% 45%' },
+      { catLabel: 'Escritorio', name: 'ASUS ProArt', desc: 'Mi pantalla de color para editar y hacer grading con confianza.', img: 'https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/952896a3-0d0f-4191-b333-9329abcaab2a/cosas+que+uso_00_07_49_12.jpg?content-type=image%2Fjpeg', link: 'https://amzn.to/4aM02G7' },
+      { catLabel: 'Almacenamiento', name: 'Lector de tarjetas ProGrade', desc: 'Para pasar el material de las tarjetas al ordenador rápido, sin cuellos de botella.', img: 'https://images.squarespace-cdn.com/content/675de1c0b3fd8502d67074e0/7b6177a4-98c6-43f4-a91f-336572ffc2e3/cosas+que+uso_00_07_47_19.jpg?content-type=image%2Fjpeg', link: '#', pos: '43% 43%' },
+    ];
+    // ───────────────────────────────────────────────────────────────────────────
+
+    function storeFor(url) {
+      if (!url || url === '#') return null;
+      if (/amzn\.to|amazon\./i.test(url)) return 'Amazon';
+      if (/uniqlo\.com/i.test(url)) return 'Uniqlo';
+      return 'la web';
+    }
+
+    const grid = document.getElementById('gearGrid');
+    gear.forEach(item => {
+      const card = document.createElement('article');
+      card.className = 'gear-card';
+      const store = storeFor(item.link);
+      const isAmazon = store === 'Amazon';
+      const btnLabel = store ? `Ver en ${store} →` : 'Próximamente';
+      const rel = isAmazon ? 'noopener noreferrer sponsored' : 'noopener noreferrer';
+      const imgStyle = [item.pos ? `--pos:${item.pos}` : '', item.zoom ? `--zoom:${item.zoom}` : ''].filter(Boolean).join(';');
+      card.innerHTML = `
+        <div class="gear-img-wrap">
+          <img class="gear-img" src="${item.img}" alt="${item.name}" loading="lazy"${imgStyle ? ` style="${imgStyle}"` : ''} />
+          <div class="gear-overlay">
+            ${store
+              ? `<a class="gear-overlay-btn" href="${item.link}" target="_blank" rel="${rel}">${btnLabel}</a>`
+              : `<span class="gear-overlay-btn" style="opacity:.55;cursor:default;">Próximamente</span>`
+            }
+          </div>
+        </div>
+        <div class="gear-info">
+          <p class="gear-cat-badge">${item.catLabel}</p>
+          <h2 class="gear-name">${item.name}</h2>
+          <p class="gear-desc">${item.desc}</p>
+          ${store ? `<a class="gear-link" href="${item.link}" target="_blank" rel="${rel}">${btnLabel}</a>` : ''}
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+  </script>
+</body>
+</html>
