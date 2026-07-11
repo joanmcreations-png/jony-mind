@@ -289,6 +289,13 @@
       padding-right: 28px;
       border-right: 1px solid rgba(255,255,255,.07);
     }
+    .sponsors-viewport {
+      flex: 1; min-width: 0; overflow: hidden;
+    }
+    .sponsors-track {
+      display: flex; align-items: stretch;
+    }
+    .sponsors-track > .sponsors-chips:nth-child(2) { display: none; }
     .sponsors-chips {
       display: flex; align-items: stretch; flex: 1;
     }
@@ -330,8 +337,16 @@
       .sponsors-strip { padding: 0 24px; }
       .sponsors-strip-label { display: none; }
       .sponsor-chip:first-child { margin-left: 0; border-left: none; }
-      .sponsor-chip { padding: 0 14px; }
-      .sponsor-chip-name { display: none; }
+      .sponsor-chip { padding: 0 14px; flex: 0 0 auto; }
+      .sponsors-track {
+        width: max-content;
+        animation: sponsors-scroll 22s linear infinite;
+      }
+      .sponsors-track > .sponsors-chips:nth-child(2) { display: flex; }
+    }
+    @keyframes sponsors-scroll {
+      from { transform: translateX(-50%); }
+      to { transform: translateX(0); }
     }
     @media (max-width: 480px) {
       .sponsor-chip { height: 52px; }
@@ -399,6 +414,8 @@
   <div class="sponsors-strip">
     <div class="sponsors-strip-inner">
       <span class="sponsors-strip-label">Descuentos</span>
+      <div class="sponsors-viewport">
+      <div class="sponsors-track">
       <div class="sponsors-chips">
         <div class="sponsor-chip">
           <img class="sponsor-chip-logo" src="https://logo.clearbit.com/musicbed.com" alt="Musicbed" onerror="this.style.display='none'"/>
@@ -424,6 +441,34 @@
           <img class="sponsor-chip-logo" src="https://logo.clearbit.com/feiyutech.com" alt="Feiyu" onerror="this.style.display='none'"/>
           <span class="sponsor-chip-name">Feiyu</span>
         </div>
+      </div>
+      <div class="sponsors-chips" aria-hidden="true">
+        <div class="sponsor-chip">
+          <img class="sponsor-chip-logo" src="https://logo.clearbit.com/musicbed.com" alt="" onerror="this.style.display='none'"/>
+          <span class="sponsor-chip-name">Musicbed</span>
+        </div>
+        <div class="sponsor-chip">
+          <img class="sponsor-chip-logo" src="https://logo.clearbit.com/insta360.com" alt="" onerror="this.style.display='none'"/>
+          <span class="sponsor-chip-name">Insta360</span>
+        </div>
+        <div class="sponsor-chip">
+          <img class="sponsor-chip-logo" src="https://logo.clearbit.com/manychat.com" alt="" onerror="this.style.display='none'"/>
+          <span class="sponsor-chip-name">ManyChat</span>
+        </div>
+        <div class="sponsor-chip">
+          <img class="sponsor-chip-logo" src="https://logo.clearbit.com/milanote.com" alt="" onerror="this.style.display='none'"/>
+          <span class="sponsor-chip-name">Milanote</span>
+        </div>
+        <div class="sponsor-chip">
+          <img class="sponsor-chip-logo" src="https://logo.clearbit.com/sirui.com" alt="" onerror="this.style.display='none'"/>
+          <span class="sponsor-chip-name">Sirui</span>
+        </div>
+        <div class="sponsor-chip">
+          <img class="sponsor-chip-logo" src="https://logo.clearbit.com/feiyutech.com" alt="" onerror="this.style.display='none'"/>
+          <span class="sponsor-chip-name">Feiyu</span>
+        </div>
+      </div>
+      </div>
       </div>
     </div>
   </div>
